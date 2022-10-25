@@ -4,9 +4,12 @@
  */
 package drones.dominio;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author nrusso
+ * @author Nicolas Russo
+ * @author Francisco Suarez 
  */
 public class Sistema {
   public ArrayList<Articulo> articulos;

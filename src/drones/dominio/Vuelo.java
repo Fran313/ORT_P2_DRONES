@@ -4,17 +4,50 @@
  */
 package drones.dominio;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author nrusso
+ * @author Nicolas Russo
+ * @author Francisco Suarez 
  */
 public class Vuelo {
-  public ArrayList<Articulo> articulos;
-  public ArrayLis<Funcionario> funcionarios;
-  public ArrayList<Dron> drones;
-  public ArrayList<Carga> cargas;
-    
-    public void inicio () {
-        
-    }
+  private Dron dron; 
+  private Posicion fila;
+  ArrayList<Integer> datos = new ArrayList<>();
+
+  public Vuelo(Dron dron, Posicion fila, ArrayList<Integer> datos) {
+    this.dron = dron;
+    this.fila = fila;
+    this.datos = datos;
+  }
+
+  public Dron getDron() {
+    return this.dron;
+  }
+
+  public void setDron(Dron dron) {
+    this.dron = dron;
+  }
+
+  public Posicion getFila() {
+    return this.fila;
+  }
+
+  public void setFila(Posicion fila) {
+    this.fila = fila;
+  }
+
+  public ArrayList<Integer> getDatos() {
+    return this.datos;
+  }
+
+  public void setDatos(ArrayList<Integer> datos) {
+    this.datos = datos;
+  }
+
+  public Boolean getExito() {
+    return datos.size() == 10;
+  }
+
 }
