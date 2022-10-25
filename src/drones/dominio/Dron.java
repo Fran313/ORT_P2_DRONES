@@ -17,11 +17,10 @@ public class Dron {
     private int camara;
     ArrayList<Vuelo> vuelos = new ArrayList<>();
 
-    public Dron(String identificacion, String modelo, int camara, ArrayList<Vuelo> vuelos) {
+    public Dron(String identificacion, String modelo, int camara) {
         this.identificacion = identificacion;
         this.modelo = modelo;
-        this.camara = camara;
-        this.vuelos = vuelos;
+        this.camara = camara;        
     }
 
     public String getIdentificacion() {
