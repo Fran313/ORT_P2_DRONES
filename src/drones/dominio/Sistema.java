@@ -20,4 +20,19 @@ public class Sistema {
     public void inicio () {
         
     }
+
+    public void agregarFuncionario (String nombre, int edad, int numero) {
+      Funcionario funcionario = new Funcionario (nombre, edad, numero);
+      funcionarios.add(funcionario);
+    }
+    
+    public void agregarDrone (String identificacion, String modelo, int camara) {
+      Dron dron = new Dron(identificacion, modelo, camara);
+      drones.add(dron);
+    }
+
+    public void agregarCarga (int codigo, Articulo articulo, Funcionario funcionario, int cantidad, Posicion posicion) {
+      Carga carga = new Carga(codigo, articulo, funcionario, cantidad, posicion);
+      cargas.add(carga);
+    }
 }
