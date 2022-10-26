@@ -46,6 +46,7 @@ public class Posicion {
         this.columna = columna;
     }    
 
+    @Override
     public boolean equals (Object object) {
         if(object == null || !(object instanceof Posicion)) {
             return false;
