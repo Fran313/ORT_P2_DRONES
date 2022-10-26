@@ -44,5 +44,14 @@ public class Posicion {
 
     public void setColumna(int columna) {
         this.columna = columna;
+    }    
+
+    public boolean equals (Object object) {
+        if(object == null || !(object instanceof Posicion)) {
+            return false;
+        } else {
+            Posicion posicion = (Posicion) object;
+            return (posicion.getArea() == this.area) && (posicion.getFila() == this.fila) && (posicion.getColumna() == this.columna);
+        }    
     }
 }
