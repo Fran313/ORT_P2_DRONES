@@ -35,4 +35,12 @@ public class Sistema {
       Carga carga = new Carga(codigo, articulo, funcionario, cantidad, posicion);
       cargas.add(carga);
     }
+
+    public Carga buscarCarga (final Posicion posicion) {
+      return this.cargas.stream().filter(c -> c.getPosicion().equals(posicion)).findAny().orElse(null);      
+    }
+
+    public void eliminarCarga (final Carga carga) {
+      this.cargas.remove(carga);
+    }
 }
