@@ -37,10 +37,14 @@ public class Sistema {
     }
 
     public Carga buscarCarga (final Posicion posicion) {
-      return this.cargas.stream().filter(c -> c.getPosicion().equals(posicion)).findAny().orElse(null);      
+      return this.cargas.stream().filter(c -> c.getPosicion().equals(posicion)).findAny().orElse(null);   
     }
 
     public void eliminarCarga (final Carga carga) {
       this.cargas.remove(carga);
+    }
+
+    public Dron buscarDron (String identificacion) {
+      return this.drones.stream().filter(d -> d.getIdentificacion().equals(identificacion)).findAny().orElse(null);   
     }
 }

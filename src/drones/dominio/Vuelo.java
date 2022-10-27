@@ -4,7 +4,12 @@
  */
 package drones.dominio;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Formatter;
+import java.util.Scanner;
 
 /**
  *
@@ -20,6 +25,26 @@ public class Vuelo {
     this.dron = dron;
     this.fila = fila;
     this.datos = datos;
+  }
+
+  public static Vuelo fromFile (Path path, Sistema sistema) throws IOException {
+    
+    Scanner arch = new Scanner (path);
+    String identificacion = arch.nextLine();    
+    Dron dron = sistema.buscarDron(identificacion);
+
+    String stringPos = arch.nextLine();
+    int intArea = Integer.parseInt(stringPos.substring(0, 1));
+    int fila = Integer.parseInt(stringPos.substring(2, stringPos.length()));
+    Posicion posicion = new Posicion(intArea, fila);
+
+    ArrayList<Integer> datos = new ArrayList<>();
+    while(arch.hasNext()) {
+      datos.add(arch.nextInt());
+    }
+
+    arch.close();
+    return new Vuelo(dron, posicion, datos);    
   }
 
   public Dron getDron() {
