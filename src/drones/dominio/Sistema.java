@@ -16,19 +16,29 @@ public class Sistema {
   public ArrayList<Funcionario> funcionarios;
   public ArrayList<Dron> drones;
   public ArrayList<Carga> cargas;
+
+  public Sistema() {
+    articulos = new ArrayList<>();
+    funcionarios = new ArrayList<>();
+    drones = new ArrayList<>();
+    cargas = new ArrayList<>();
+  }
     
     public void inicio () {
         
     }
+
+
 
     public void agregarFuncionario (String nombre, int edad, int numero) {
       Funcionario funcionario = new Funcionario (nombre, edad, numero);
       funcionarios.add(funcionario);
     }
     
-    public void agregarDrone (String identificacion, String modelo, int camara) {
+    public Dron agregarDron (String identificacion, String modelo, int camara) {
       Dron dron = new Dron(identificacion, modelo, camara);
       drones.add(dron);
+      return dron;
     }
 
     public void agregarCarga (int codigo, Articulo articulo, Funcionario funcionario, int cantidad, Posicion posicion) {

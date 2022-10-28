@@ -10,7 +10,7 @@ import drones.dominio.Sistema;
  *
  * @author nrusso
  */
-public class Drones {
+ class Drones {
 
     /**
      * @param args the command line arguments

@@ -5,10 +5,12 @@
 package drones.dominio;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Formatter;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -34,8 +36,8 @@ public class Vuelo {
     Dron dron = sistema.buscarDron(identificacion);
 
     String stringPos = arch.nextLine();
-    int intArea = Integer.parseInt(stringPos.substring(0, 1));
-    int fila = Integer.parseInt(stringPos.substring(2, stringPos.length()));
+    int intArea = (int) stringPos.charAt(0) - 65;
+    int fila = Integer.parseInt(stringPos.substring(2, stringPos.length())) - 1;
     Posicion posicion = new Posicion(intArea, fila);
 
     ArrayList<Integer> datos = new ArrayList<>();
@@ -71,8 +73,8 @@ public class Vuelo {
     this.datos = datos;
   }
 
-  public Boolean getExito() {
-    return datos.size() == 10;
+  public Boolean getExito(List<Integer> d) {
+    return datos.size() == 10 && datos.equals(d);
   }
 
 }
