@@ -58,4 +58,14 @@ public class Carga {
     public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
     }
+
+    @Override
+    public boolean equals (Object object) {
+        if ((object == null) || !(object instanceof Carga)) {
+            return false;
+        } else {
+            Carga carga = (Carga) object;
+            return (carga.codigo == this.codigo);
+        }
+    }
 }

@@ -30,23 +30,24 @@ public class Vuelo {
   }
 
   public static Vuelo fromFile (Path path, Sistema sistema) throws IOException {
-    
-    Scanner arch = new Scanner (path);
-    String identificacion = arch.nextLine();    
-    Dron dron = sistema.buscarDron(identificacion);
+      
+      Scanner arch = new Scanner (path);
+      String identificacion = arch.nextLine();    
+      Dron dron = sistema.buscarDron(identificacion);
+  
+      String stringPos = arch.nextLine();
+      int intArea = (int) stringPos.charAt(0) - 65;
+      int fila = Integer.parseInt(stringPos.substring(2, stringPos.length())) - 1;
+      Posicion posicion = new Posicion(intArea, fila);
+  
+      ArrayList<Integer> datos = new ArrayList<>();
+      while(arch.hasNext()) {
+        datos.add(arch.nextInt());
+      }
+  
+      arch.close();
 
-    String stringPos = arch.nextLine();
-    int intArea = (int) stringPos.charAt(0) - 65;
-    int fila = Integer.parseInt(stringPos.substring(2, stringPos.length())) - 1;
-    Posicion posicion = new Posicion(intArea, fila);
-
-    ArrayList<Integer> datos = new ArrayList<>();
-    while(arch.hasNext()) {
-      datos.add(arch.nextInt());
-    }
-
-    arch.close();
-    return new Vuelo(dron, posicion, datos);    
+      return new Vuelo(dron, posicion, datos);
   }
 
   public Dron getDron() {
