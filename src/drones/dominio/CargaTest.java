@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class CargaTest {
-
     static Carga cargaBase;
 
     @BeforeAll

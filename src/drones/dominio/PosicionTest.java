@@ -7,11 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 
 public class PosicionTest {
-    
+
     static Posicion pBase;
 
     @BeforeAll
-    public static void setup () {
+    public static void setup() {
         pBase = new Posicion(1, 1, 1);
     }
 
@@ -24,7 +24,7 @@ public class PosicionTest {
     }
 
     @Test
-    public void itShouldCreatePosicionFromNumbers() {        
+    public void itShouldCreatePosicionFromNumbers() {
         assertEquals(1, pBase.getArea());
         assertEquals(1, pBase.getFila());
         assertEquals(1, pBase.getColumna());
