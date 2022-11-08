@@ -4,6 +4,8 @@
  */
 package drones.interfaz;
 
+import javax.swing.*;
+
 import java.awt.Color;
 import java.awt.Insets;
 import javax.swing.JButton;
@@ -19,8 +21,17 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
      */
     public IngresoEgresoCarga() {
         initComponents();
-                
-
+        for (int i = 0; i < 12; i++) {
+                    for (int j = 0; j < 10; j++) {                       
+                        JButton nuevo = new JButton(" ");
+                        nuevo.setMargin(new Insets(-5, -5, -5, -5));
+                        nuevo.setBackground(Color.BLACK);
+                        nuevo.setForeground(Color.WHITE);
+                        nuevo.setText( "texto"); // texto ejemplo, a completar
+                        //nuevo.addActionListener(new EspacioListener());
+                        ButtonsGrid.add(nuevo);                        
+                    }                    
+                }                               
     }
 
     /**
@@ -225,7 +236,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+            public void run() {                        
                 new IngresoEgresoCarga().setVisible(true);
             }
         });
