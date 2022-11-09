@@ -12,10 +12,10 @@ import java.util.ArrayList;
  * @author Francisco Suarez 
  */
 public class Sistema {
-  public ArrayList<Articulo> articulos;
-  public ArrayList<Funcionario> funcionarios;
-  public ArrayList<Dron> drones;
-  public ArrayList<Carga> cargas;
+  private ArrayList<Articulo> articulos;
+  private ArrayList<Funcionario> funcionarios;
+  private ArrayList<Dron> drones;
+  private ArrayList<Carga> cargas;
 
   public Sistema() {
     articulos = new ArrayList<>();
@@ -25,7 +25,14 @@ public class Sistema {
   }
     
     public void inicio () {
-        
+        Articulo bandera = new Articulo("Bandera", "De peñarol");
+        Funcionario fran = new Funcionario("Franki", 19, 812763);
+        Posicion p = new Posicion(0, 0, 0);
+        this.agregarCarga(1891, bandera, fran, 0, p);
+    }
+    
+    public ArrayList<Carga> getCargas() {
+        return this.cargas;
     }
 
 

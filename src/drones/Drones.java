@@ -5,7 +5,7 @@
 package drones;
 
 import drones.dominio.Sistema;
-
+import drones.interfaz.Inicio;
 /**
  *
  * @author nrusso
@@ -17,7 +17,9 @@ import drones.dominio.Sistema;
      */
     public static void main(String[] args) {
         Sistema sistema = new Sistema();
+        Inicio inicio = new Inicio(sistema);
         sistema.inicio();
+        inicio.setVisible(true);
     }
     
 }
