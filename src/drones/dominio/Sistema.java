@@ -25,10 +25,10 @@ public class Sistema {
   }
     
     public void inicio () {
-        Articulo bandera = new Articulo("Bandera", "De peñarol");
-        Funcionario fran = new Funcionario("Franki", 19, 812763);
+        Articulo a = this.agregarArticulo("Bandera", "De peñarol");
+        Funcionario f = this.agregarFuncionario("Franki", 19, 812763);
         Posicion p = new Posicion(0, 0, 0);
-        this.agregarCarga(1891, bandera, fran, 0, p);
+        this.agregarCarga(1891, a, f, 0, p);
     }
     
     public ArrayList<Carga> getCargas() {
@@ -37,9 +37,25 @@ public class Sistema {
 
 
 
-    public void agregarFuncionario (String nombre, int edad, int numero) {
+    public Funcionario agregarFuncionario (String nombre, int edad, int numero) {
       Funcionario funcionario = new Funcionario (nombre, edad, numero);
       funcionarios.add(funcionario);
+      return funcionario;
+    }
+    
+    public Articulo agregarArticulo (String nombre, String descripcion) {
+      Articulo articulo = new Articulo (nombre, descripcion);
+      articulos.add(articulo);
+      return articulo;
+    }
+    
+    
+    public ArrayList<Funcionario> getFuncionarios () {
+        return this.funcionarios;
+    }
+    
+    public ArrayList<Articulo> getArticulos () {
+        return this.articulos;
     }
     
     public Dron agregarDron (String identificacion, String modelo, int camara) {
