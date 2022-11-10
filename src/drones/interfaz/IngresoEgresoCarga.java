@@ -98,7 +98,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
     
     private void setAreaSeleccionada(int area) {
         if (area >= 0 && area < 5) {
-            areaSeleccionada = area;
+            this.areaSeleccionada = area;
             hydrateButtons();
         }
     }
@@ -372,16 +372,14 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PreviousAreaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousAreaButtonActionPerformed
-        if (areaSeleccionada > 0) {
-            setAreaSeleccionada(areaSeleccionada-1);
-            
+        if (this.areaSeleccionada > 0) {
+            setAreaSeleccionada(this.areaSeleccionada-1);
         }
     }//GEN-LAST:event_PreviousAreaButtonActionPerformed
 
     private void NextAreaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextAreaButtonActionPerformed
-        if (areaSeleccionada < 5) {
-            //setAreaSeleccionada(areaSeleccionada +1);
-            ButtonsGrid.removeAll();
+        if (this.areaSeleccionada < 5) {
+            setAreaSeleccionada(areaSeleccionada +1);
         }
     }//GEN-LAST:event_NextAreaButtonActionPerformed
 
