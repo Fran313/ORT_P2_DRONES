@@ -54,12 +54,14 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
                     }                    
                 }
 
-        hydrateButtons();
+        hydrate();
         
     }
     
-    private void hydrateButtons() {
+    private void hydrate() {
         CardLayout cl = (CardLayout)(pnlRight.getLayout());
+        
+        lblArea.setText("Area " + (char) (areaSeleccionada + 65));
         
         // Mostramos el filler en el panel de la derecha antes de actualizar 
         // los botones
@@ -112,7 +114,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
                                 btnEgresar.addActionListener(new ActionListener() {
                                     public void actionPerformed(ActionEvent e) {
                                         sistema.eliminarCarga(c);
-                                        hydrateButtons();
+                                        hydrate();
                                     }
                                 });
                                 
@@ -132,7 +134,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
     private void setAreaSeleccionada(int area) {
         if (area >= 0 && area < 5) {
             this.areaSeleccionada = area;
-            hydrateButtons();
+            hydrate();
         }
     }
 
