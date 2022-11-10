@@ -26,21 +26,89 @@ public class RegistroDeVuelo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jFileChooser1 = new javax.swing.JFileChooser();
+        pnlDiff = new javax.swing.JPanel();
+        JLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lblTotalCoincidencias = new javax.swing.JLabel();
+        lblTotalDiferencias = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblDiff = new javax.swing.JTable();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridLayout(2, 1));
+
+        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFileChooser1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jFileChooser1);
+
+        pnlDiff.setLayout(new java.awt.BorderLayout());
+
+        JLabel1.setText("Area: A Fila: 3");
+        pnlDiff.add(JLabel1, java.awt.BorderLayout.NORTH);
+
+        jPanel3.setLayout(new java.awt.GridLayout(2, 1));
+
+        lblTotalCoincidencias.setText("Total de coincidencias: 6");
+        jPanel3.add(lblTotalCoincidencias);
+
+        lblTotalDiferencias.setText("Total de diferencias: 4");
+        jPanel3.add(lblTotalDiferencias);
+
+        pnlDiff.add(jPanel3, java.awt.BorderLayout.SOUTH);
+
+        tblDiff.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Archivo", null, null, null, null, null, null, null, null, null, null},
+                {"Manual", null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "De", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblDiff);
+        if (tblDiff.getColumnModel().getColumnCount() > 0) {
+            tblDiff.getColumnModel().getColumn(0).setResizable(false);
+            tblDiff.getColumnModel().getColumn(1).setResizable(false);
+            tblDiff.getColumnModel().getColumn(2).setResizable(false);
+            tblDiff.getColumnModel().getColumn(3).setResizable(false);
+            tblDiff.getColumnModel().getColumn(4).setResizable(false);
+            tblDiff.getColumnModel().getColumn(5).setResizable(false);
+            tblDiff.getColumnModel().getColumn(6).setResizable(false);
+            tblDiff.getColumnModel().getColumn(7).setResizable(false);
+            tblDiff.getColumnModel().getColumn(8).setResizable(false);
+            tblDiff.getColumnModel().getColumn(9).setResizable(false);
+            tblDiff.getColumnModel().getColumn(10).setResizable(false);
+        }
+
+        pnlDiff.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(pnlDiff);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +146,13 @@ public class RegistroDeVuelo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLabel1;
+    private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblTotalCoincidencias;
+    private javax.swing.JLabel lblTotalDiferencias;
+    private javax.swing.JPanel pnlDiff;
+    private javax.swing.JTable tblDiff;
     // End of variables declaration//GEN-END:variables
 }
