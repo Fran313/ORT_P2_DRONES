@@ -7,6 +7,7 @@ package drones.interfaz;
 import drones.dominio.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +29,7 @@ public class RegistrarArticulo extends javax.swing.JFrame {
     public RegistrarArticulo (Sistema s) {
         this.sistema = s;
         initComponents();
+        hydrate();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -167,20 +169,27 @@ public class RegistrarArticulo extends javax.swing.JFrame {
         if (txtNombre.getText().equals("") || txtDescripcion.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campos incompletos", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            this.sistema.agregarArticulo(txtNombre.getText(), txtDescripcion.getText());            
             
-            String[] datosArticulo = {txtNombre.getText(), txtDescripcion.getText()};
-
-            DefaultTableModel tblModel = (DefaultTableModel) tblArticulos.getModel();
-            tblModel.addRow(this.sistema.getArticulos().toArray());
-
-            txtNombre.setText("");
-            txtDescripcion.setText("");
-            
-            //this.sistema.agregarArticulo(txtNombre.getText(), txtDescripcion.getText());
+            this.sistema.agregarArticulo(txtNombre.getText(), txtDescripcion.getText());
+            hydrate(); 
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
    
+    public void hydrate () {
+        ArrayList<Articulo> articulos = this.sistema.getArticulos();
+        
+        DefaultTableModel tblModel = (DefaultTableModel) tblArticulos.getModel();
+            
+            tblModel.setRowCount(0);
+                                    
+            for (int i = 0; i < articulos.size(); i++) {
+                String[] row = {articulos.get(i).getNombre(), articulos.get(i).getDescripcion()};
+                tblModel.addRow(row);
+            }                        
+            
+            txtNombre.setText("");
+            txtDescripcion.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
