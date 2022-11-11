@@ -16,14 +16,14 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
-    public Inicio(Sistema s) {
-        this.sistema = s;
-        initComponents();
-    }
-
     public Inicio() {
         initComponents();
     }
+    
+    public Inicio(Sistema s) {
+        this.sistema = s;
+        initComponents();
+    }  
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,42 +34,57 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnIngresoEgresoCarga = new javax.swing.JButton();
+        btnRegistroArticulo = new javax.swing.JButton();
+        btnRegistrarFuncionario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(3, 2, 30, 30));
 
-        jButton1.setText("Ingreso/Egreso Carga");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresoEgresoCarga.setText("Ingreso/Egreso Carga");
+        btnIngresoEgresoCarga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIngresoEgresoCargaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
+        getContentPane().add(btnIngresoEgresoCarga);
 
-        jButton2.setText("Registrar Articulo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistroArticulo.setText("Registrar Articulo");
+        btnRegistroArticulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRegistroArticuloActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
+        getContentPane().add(btnRegistroArticulo);
+
+        btnRegistrarFuncionario.setText("RegistrarFuncionario");
+        btnRegistrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarFuncionarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistrarFuncionario);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIngresoEgresoCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoEgresoCargaActionPerformed
         this.setVisible(false);
         IngresoEgresoCarga ingresoEgreso = new IngresoEgresoCarga(this.sistema);
         ingresoEgreso.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnIngresoEgresoCargaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnRegistroArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroArticuloActionPerformed
         this.setVisible(false);
         RegistrarArticulo registrarArticulo = new RegistrarArticulo(this.sistema);
         registrarArticulo.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnRegistroArticuloActionPerformed
+
+    private void btnRegistrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarFuncionarioActionPerformed
+        this.setVisible(false);
+        RegistrarFuncionario registrarFuncionario = new RegistrarFuncionario(this.sistema);
+        registrarFuncionario.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarFuncionarioActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -107,7 +122,8 @@ public class Inicio extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnIngresoEgresoCarga;
+    private javax.swing.JButton btnRegistrarFuncionario;
+    private javax.swing.JButton btnRegistroArticulo;
     // End of variables declaration//GEN-END:variables
 }
