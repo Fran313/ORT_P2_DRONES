@@ -29,7 +29,7 @@ public class RegistrarArticulo extends javax.swing.JFrame {
     public RegistrarArticulo (Sistema s) {
         this.sistema = s;
         initComponents();
-        hydrate();
+        hydrate();       
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,6 +53,7 @@ public class RegistrarArticulo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Artículos");
+        setMinimumSize(new java.awt.Dimension(1200, 700));
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
         java.awt.GridBagLayout pnlIngresoArticulosLayout = new java.awt.GridBagLayout();
