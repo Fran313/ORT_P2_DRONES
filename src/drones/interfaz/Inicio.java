@@ -35,6 +35,7 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(3, 2, 30, 30));
@@ -47,6 +48,14 @@ public class Inicio extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1);
 
+        jButton2.setText("Registrar Articulo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -55,6 +64,12 @@ public class Inicio extends javax.swing.JFrame {
         IngresoEgresoCarga ingresoEgreso = new IngresoEgresoCarga(this.sistema);
         ingresoEgreso.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        RegistrarArticulo registrarArticulo = new RegistrarArticulo(this.sistema);
+        registrarArticulo.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -93,5 +108,6 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
