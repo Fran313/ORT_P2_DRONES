@@ -46,10 +46,18 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnRegistrarFuncionario">
       <Properties>
-        <Property name="text" type="java.lang.String" value="RegistrarFuncionario"/>
+        <Property name="text" type="java.lang.String" value="Registrar Funcionario"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarFuncionarioActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRegistrarDron">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registrar Dron"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarDronActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

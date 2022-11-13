@@ -37,6 +37,7 @@ public class Inicio extends javax.swing.JFrame {
         btnIngresoEgresoCarga = new javax.swing.JButton();
         btnRegistroArticulo = new javax.swing.JButton();
         btnRegistrarFuncionario = new javax.swing.JButton();
+        btnRegistrarDron = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(3, 2, 30, 30));
@@ -57,13 +58,21 @@ public class Inicio extends javax.swing.JFrame {
         });
         getContentPane().add(btnRegistroArticulo);
 
-        btnRegistrarFuncionario.setText("RegistrarFuncionario");
+        btnRegistrarFuncionario.setText("Registrar Funcionario");
         btnRegistrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarFuncionarioActionPerformed(evt);
             }
         });
         getContentPane().add(btnRegistrarFuncionario);
+
+        btnRegistrarDron.setText("Registrar Dron");
+        btnRegistrarDron.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarDronActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistrarDron);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -85,6 +94,12 @@ public class Inicio extends javax.swing.JFrame {
         RegistrarFuncionario registrarFuncionario = new RegistrarFuncionario(this.sistema);
         registrarFuncionario.setVisible(true);
     }//GEN-LAST:event_btnRegistrarFuncionarioActionPerformed
+
+    private void btnRegistrarDronActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarDronActionPerformed
+        this.setVisible(false);
+        RegistrarDron registrarDron = new RegistrarDron(this.sistema);
+        registrarDron.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarDronActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -123,6 +138,7 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresoEgresoCarga;
+    private javax.swing.JButton btnRegistrarDron;
     private javax.swing.JButton btnRegistrarFuncionario;
     private javax.swing.JButton btnRegistroArticulo;
     // End of variables declaration//GEN-END:variables
