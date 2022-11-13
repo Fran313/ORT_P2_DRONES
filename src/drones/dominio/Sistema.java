@@ -34,8 +34,18 @@ public class Sistema {
     public ArrayList<Carga> getCargas() {
         return this.cargas;
     }
-
-
+    
+    public ArrayList<Funcionario> getFuncionarios () {
+        return this.funcionarios;
+    }
+    
+    public ArrayList<Articulo> getArticulos () {
+        return this.articulos;
+    }
+    
+    public ArrayList<Dron> getDrones () {
+        return this.drones;
+    }
 
     public Funcionario agregarFuncionario (String nombre, int edad, int numero) {
       Funcionario funcionario = new Funcionario (nombre, edad, numero);
@@ -47,16 +57,7 @@ public class Sistema {
       Articulo articulo = new Articulo (nombre, descripcion);
       articulos.add(articulo);
       return articulo;
-    }
-    
-    
-    public ArrayList<Funcionario> getFuncionarios () {
-        return this.funcionarios;
-    }
-    
-    public ArrayList<Articulo> getArticulos () {
-        return this.articulos;
-    }
+    }            
     
     public Dron agregarDron (String identificacion, String modelo, int camara) {
       Dron dron = new Dron(identificacion, modelo, camara);
@@ -72,12 +73,12 @@ public class Sistema {
     public Carga buscarCarga (final Posicion posicion) {
       return this.cargas.stream().filter(c -> c.getPosicion().equals(posicion)).findAny().orElse(null);   
     }
-
-    public void eliminarCarga (final Carga carga) {
-      this.cargas.remove(carga);
-    }
-
+    
     public Dron buscarDron (String identificacion) {
       return this.drones.stream().filter(d -> d.getIdentificacion().equals(identificacion)).findAny().orElse(null);   
     }
+
+    public void eliminarCarga (final Carga carga) {
+      this.cargas.remove(carga);
+    } 
 }
