@@ -28,12 +28,20 @@
     <Property name="verticalGap" type="int" value="30"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnIngresoEgresoCarga">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingreso/Egreso Carga"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresoEgresoCargaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRegistroDeVuelo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registro de Vuelo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistroDeVueloActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

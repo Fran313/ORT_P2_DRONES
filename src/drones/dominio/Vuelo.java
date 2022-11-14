@@ -20,12 +20,14 @@ import java.util.Scanner;
  */
 public class Vuelo {
   private Dron dron; 
-  private Posicion fila;
+  private int area;
+  private int fila;
   ArrayList<Integer> datos = new ArrayList<>();
 
-  public Vuelo(Dron dron, Posicion fila, ArrayList<Integer> datos) {
+  public Vuelo(Dron dron, int area, int fila, ArrayList<Integer> datos) {
     this.dron = dron;
     this.fila = fila;
+    this.area = area;
     this.datos = datos;
   }
 
@@ -38,7 +40,6 @@ public class Vuelo {
       String stringPos = arch.nextLine();
       int intArea = (int) stringPos.charAt(0) - 65;
       int fila = Integer.parseInt(stringPos.substring(2, stringPos.length())) - 1;
-      Posicion posicion = new Posicion(intArea, fila);
   
       ArrayList<Integer> datos = new ArrayList<>();
       while(arch.hasNext()) {
@@ -47,7 +48,7 @@ public class Vuelo {
   
       arch.close();
 
-      return new Vuelo(dron, posicion, datos);
+      return new Vuelo(dron, intArea, fila, datos);
   }
 
   public Dron getDron() {
@@ -58,12 +59,20 @@ public class Vuelo {
     this.dron = dron;
   }
 
-  public Posicion getFila() {
+  public int getFila() {
     return this.fila;
   }
+  
+  public int getArea() {
+    return this.area;
+  }
 
-  public void setFila(Posicion fila) {
+  public void setFila(int fila) {
     this.fila = fila;
+  }
+  
+  public void setArea(int area) {
+    this.area = area;
   }
 
   public ArrayList<Integer> getDatos() {

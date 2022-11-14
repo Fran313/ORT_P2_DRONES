@@ -17,11 +17,6 @@ public class Posicion {
         this.columna = columna;
     }    
 
-    public Posicion(int area, int fila) {
-        this.area = area;
-        this.fila = fila;        
-    }
-
     public static Posicion fromChar (char area, int fila, int columna) {
         int intArea = (int) Character.toUpperCase(area) - 65;
         return new Posicion (intArea, fila, columna);

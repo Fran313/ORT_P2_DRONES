@@ -34,27 +34,42 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnIngresoEgresoCarga = new javax.swing.JButton();
+        btnRegistroDeVuelo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(3, 2, 30, 30));
 
-        jButton1.setText("Ingreso/Egreso Carga");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresoEgresoCarga.setText("Ingreso/Egreso Carga");
+        btnIngresoEgresoCarga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIngresoEgresoCargaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
+        getContentPane().add(btnIngresoEgresoCarga);
+
+        btnRegistroDeVuelo.setText("Registro de Vuelo");
+        btnRegistroDeVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroDeVueloActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistroDeVuelo);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIngresoEgresoCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresoEgresoCargaActionPerformed
         this.setVisible(false);
         IngresoEgresoCarga ingresoEgreso = new IngresoEgresoCarga(this.sistema);
         ingresoEgreso.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnIngresoEgresoCargaActionPerformed
+
+    private void btnRegistroDeVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroDeVueloActionPerformed
+        this.setVisible(false);
+        RegistroDeVuelo registroDeVuelo = new RegistroDeVuelo(this.sistema);
+        registroDeVuelo.setVisible(true);
+    }//GEN-LAST:event_btnRegistroDeVueloActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -92,6 +107,7 @@ public class Inicio extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIngresoEgresoCarga;
+    private javax.swing.JButton btnRegistroDeVuelo;
     // End of variables declaration//GEN-END:variables
 }
