@@ -4,6 +4,8 @@
  */
 package drones.interfaz;
 
+import drones.dominio.Articulo;
+import drones.dominio.Funcionario;
 import drones.dominio.Posicion;
 import drones.dominio.Sistema;
 import java.awt.CardLayout;
@@ -31,12 +33,8 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         this.sistema = s;
         this.areaSeleccionada = 0;
         this.buttons  = new JButton[12][10];
-
         
         initComponents();
-        
-        
-
         
         for (int y = 0; y < 12; y++) {
                     for (int x = 0; x < 10; x++) {                       
@@ -80,14 +78,32 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         );
 
         // Botones sin carga
-        for (JButton[] row : buttons) {
-            for (JButton button : row) {
+        for (int y = 0; y < buttons.length; y++) {
+            JButton[] row = buttons[y];
+            for (int x = 0; x < row.length; x++) {
+                JButton button = row[x];
                 button.setForeground(Color.BLACK);
                 removeAllActionListeners(button);
+                final int _x = x;
+                final int _y = y;
 
                 button.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         cl.show(pnlRight, "ingreso");
+                        removeAllActionListeners(btnIngresar);
+                        btnIngresar.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent e) {
+                                Funcionario f = sistema.getFuncionarios().get(lstFuncionarios.getSelectedIndex());
+                                Articulo a = sistema.getArticulos().get(lstArticulos.getSelectedIndex());
+                                int cantidad = Integer.parseInt(fieldIngresoCantidad.getText());
+                                int codigo = Integer.parseInt(fieldIngresoCodigo.getText());
+                                
+                                Posicion posicion = new Posicion(areaSeleccionada, _x, _y);
+                                
+                                sistema.agregarCarga(codigo, a, f, cantidad, posicion);
+                                hydrate();
+                            }
+                        });
                     }
                 });
             }
@@ -181,8 +197,8 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         NextAreaButton = new javax.swing.JButton();
         pnlRight = new javax.swing.JPanel();
         pnlIngreso = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        lblIngreso = new javax.swing.JLabel();
+        pnlIngresoContent = new javax.swing.JPanel();
         pnlFuncionarios = new javax.swing.JPanel();
         lblFuncionarios = new javax.swing.JLabel();
         scrollFuncionarios = new javax.swing.JScrollPane();
@@ -213,7 +229,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         btnEgresar = new javax.swing.JButton();
         fillerRight = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 500));
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
@@ -361,11 +377,11 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         pnlIngreso.setName(""); // NOI18N
         pnlIngreso.setLayout(new java.awt.BorderLayout());
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Ingreso");
-        pnlIngreso.add(jLabel2, java.awt.BorderLayout.NORTH);
+        lblIngreso.setForeground(new java.awt.Color(0, 0, 0));
+        lblIngreso.setText("Ingreso");
+        pnlIngreso.add(lblIngreso, java.awt.BorderLayout.NORTH);
 
-        jPanel1.setLayout(new java.awt.GridLayout(1, 3));
+        pnlIngresoContent.setLayout(new java.awt.GridLayout(1, 3));
 
         pnlFuncionarios.setBackground(new java.awt.Color(51, 255, 51));
         pnlFuncionarios.setLayout(new java.awt.BorderLayout());
@@ -380,7 +396,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
 
         pnlFuncionarios.add(scrollFuncionarios, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(pnlFuncionarios);
+        pnlIngresoContent.add(pnlFuncionarios);
 
         pnlArticulos.setBackground(new java.awt.Color(51, 255, 51));
         pnlArticulos.setLayout(new java.awt.BorderLayout());
@@ -394,7 +410,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
 
         pnlArticulos.add(scrollArticulos, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(pnlArticulos);
+        pnlIngresoContent.add(pnlArticulos);
 
         pnlCantidadCodigo.setBackground(new java.awt.Color(51, 255, 51));
         pnlCantidadCodigo.setLayout(new java.awt.GridLayout(3, 1));
@@ -405,6 +421,12 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         lblIngresoCantidad.setForeground(new java.awt.Color(0, 0, 0));
         lblIngresoCantidad.setText("Cantidad");
         pnlCantidad.add(lblIngresoCantidad);
+
+        fieldIngresoCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldIngresoCantidadActionPerformed(evt);
+            }
+        });
         pnlCantidad.add(fieldIngresoCantidad);
 
         pnlCantidadCodigo.add(pnlCantidad);
@@ -427,9 +449,9 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         });
         pnlCantidadCodigo.add(btnIngresar);
 
-        jPanel1.add(pnlCantidadCodigo);
+        pnlIngresoContent.add(pnlCantidadCodigo);
 
-        pnlIngreso.add(jPanel1, java.awt.BorderLayout.CENTER);
+        pnlIngreso.add(pnlIngresoContent, java.awt.BorderLayout.CENTER);
 
         pnlRight.add(pnlIngreso, "ingreso");
 
@@ -521,10 +543,6 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnEgresarActionPerformed
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
 //    /**
 //     * @param args the command line arguments
 //     */
@@ -596,8 +614,6 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler fillerRight;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblArea;
     private javax.swing.JLabel lblArticulo;
@@ -610,6 +626,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
     private javax.swing.JLabel lblFuncionario;
     private javax.swing.JLabel lblFuncionarioContent;
     private javax.swing.JLabel lblFuncionarios;
+    private javax.swing.JLabel lblIngreso;
     private javax.swing.JLabel lblIngresoCantidad;
     private javax.swing.JLabel lblIngresoCodigo;
     private javax.swing.JList<String> lstArticulos;
@@ -622,6 +639,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
     private javax.swing.JPanel pnlEgreso;
     private javax.swing.JPanel pnlFuncionarios;
     private javax.swing.JPanel pnlIngreso;
+    private javax.swing.JPanel pnlIngresoContent;
     private javax.swing.JPanel pnlLeft;
     private javax.swing.JPanel pnlRight;
     private javax.swing.JScrollPane scrollArticulos;

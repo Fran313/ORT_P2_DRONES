@@ -35,6 +35,7 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         btnIngresoEgresoCarga = new javax.swing.JButton();
+        btnRegistroDeVuelo = new javax.swing.JButton();
         btnRegistroArticulo = new javax.swing.JButton();
         btnRegistrarFuncionario = new javax.swing.JButton();
         btnRegistrarDron = new javax.swing.JButton();
@@ -50,6 +51,13 @@ public class Inicio extends javax.swing.JFrame {
         });
         getContentPane().add(btnIngresoEgresoCarga);
 
+        btnRegistroDeVuelo.setText("Registro de Vuelo");
+        btnRegistroDeVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroDeVueloActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistroDeVuelo);
         btnRegistroArticulo.setText("Registrar Articulo");
         btnRegistroArticulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +91,11 @@ public class Inicio extends javax.swing.JFrame {
         ingresoEgreso.setVisible(true);
     }//GEN-LAST:event_btnIngresoEgresoCargaActionPerformed
 
+    private void btnRegistroDeVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroDeVueloActionPerformed
+        this.setVisible(false);
+        RegistroDeVuelo registroDeVuelo = new RegistroDeVuelo(this.sistema);
+        registroDeVuelo.setVisible(true);
+    }//GEN-LAST:event_btnRegistroDeVueloActionPerformed
     private void btnRegistroArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroArticuloActionPerformed
         this.setVisible(false);
         RegistrarArticulo registrarArticulo = new RegistrarArticulo(this.sistema);
@@ -138,7 +151,11 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresoEgresoCarga;
+<<<<<<< HEAD
     private javax.swing.JButton btnRegistrarDron;
+=======
+    private javax.swing.JButton btnRegistroDeVuelo;
+>>>>>>> ab8da057104bc7e332ca526b589293ef8b748be9
     private javax.swing.JButton btnRegistrarFuncionario;
     private javax.swing.JButton btnRegistroArticulo;
     // End of variables declaration//GEN-END:variables

@@ -4,17 +4,43 @@
  */
 package drones.interfaz;
 
+import drones.dominio.Posicion;
+import drones.dominio.Sistema;
+import drones.dominio.Vuelo;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author Franc
  */
 public class RegistroDeVuelo extends javax.swing.JFrame {
 
+    Sistema sistema;
+    
     /**
      * Creates new form RegistroDeVuelo
      */
-    public RegistroDeVuelo() {
+    public RegistroDeVuelo(Sistema s) {
+        this.sistema = s;
         initComponents();
+        
+        // Set working directory as current directory
+        File workingDirectory = new File(System.getProperty("user.dir"));
+        jFileChooser1.setCurrentDirectory(workingDirectory);
+        
+        // Center all table cells
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tblDiff.setDefaultRenderer(Object.class, centerRenderer);
+        
     }
 
     /**
@@ -39,6 +65,7 @@ public class RegistroDeVuelo extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridLayout(2, 1));
 
         jFileChooser1.setApproveButtonToolTipText("");
+        jFileChooser1.setCurrentDirectory(null);
         jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFileChooser1ActionPerformed(evt);
@@ -108,43 +135,31 @@ public class RegistroDeVuelo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        // TODO add your handling code here:
+        if (evt.getActionCommand() == JFileChooser.APPROVE_SELECTION) {
+            try {
+                Vuelo v = Vuelo.fromFile(Paths.get(jFileChooser1.getSelectedFile().getAbsolutePath()), this.sistema);
+                
+                for (int i = 0; i < v.getDatos().size(); i++) {
+                    tblDiff.setValueAt(v.getDatos().get(i), 0, i+1);
+                }
+                
+                sistema.getCargas().stream()
+                    .filter(c -> {
+                        Posicion p = c.getPosicion();
+                        return p.getFila() == v.getFila()
+                                && p.getArea() == v.getArea();
+                    })
+                    .forEach(c -> {
+                        tblDiff.setValueAt(c.getCantidad(), 1, c.getPosicion().getColumna());
+                    });
+                
+                
+            } catch (IOException ex) {
+                Logger.getLogger(RegistroDeVuelo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroDeVuelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroDeVuelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroDeVuelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroDeVuelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistroDeVuelo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabel1;
