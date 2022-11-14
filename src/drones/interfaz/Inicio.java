@@ -5,6 +5,14 @@
 package drones.interfaz;
 
 import drones.dominio.Sistema;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +31,22 @@ public class Inicio extends javax.swing.JFrame {
     public Inicio(Sistema s) {
         this.sistema = s;
         initComponents();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try {
+                    FileOutputStream fileOut = new FileOutputStream("./sistema.ser");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(sistema);
+                    out.close();
+                    fileOut.close();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, "El archivo de serialización no existe", ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, "La serialización ha fallado", ex);
+                }
+            }
+        });
     }  
     
     /**

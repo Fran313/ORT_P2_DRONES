@@ -1,10 +1,13 @@
 package drones.dominio;
+
+import java.io.Serializable;
+
 /**
  *
  * @author Nicolas Russo
  * @author Francisco Suarez 
  */
-public class Funcionario {
+public class Funcionario implements Serializable {
     private String nombre;
     private int edad; 
     private int numero;
