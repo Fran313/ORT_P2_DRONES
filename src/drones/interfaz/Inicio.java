@@ -151,11 +151,8 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresoEgresoCarga;
-<<<<<<< HEAD
     private javax.swing.JButton btnRegistrarDron;
-=======
     private javax.swing.JButton btnRegistroDeVuelo;
->>>>>>> ab8da057104bc7e332ca526b589293ef8b748be9
     private javax.swing.JButton btnRegistrarFuncionario;
     private javax.swing.JButton btnRegistroArticulo;
     // End of variables declaration//GEN-END:variables
