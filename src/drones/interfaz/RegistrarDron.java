@@ -192,10 +192,10 @@ public class RegistrarDron extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         if(txtIdentificacion.getText().equals("") ||
            txtModelo.getText().equals("") ||
-           Pattern.matches("[a-zA-Z]+", txtTipo.getText()) ||
+           !Pattern.matches("[0-9]+", txtTipo.getText()) ||
            txtTipo.getText().equals("")) {
         
-        JOptionPane.showMessageDialog(null, "Capos Incorrectos",
+        JOptionPane.showMessageDialog(null, "Campos Incorrectos",
                 "Error", JOptionPane.ERROR_MESSAGE);        
         } else {
             this.sistema.agregarDron(txtIdentificacion.getText(),
