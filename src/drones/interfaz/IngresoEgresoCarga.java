@@ -442,6 +442,11 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         pnlCantidadCodigo.add(pnlCodigo);
 
         btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
         pnlCantidadCodigo.add(btnIngresar);
 
         pnlIngresoContent.add(pnlCantidadCodigo);
@@ -537,10 +542,6 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
     private void btnEgresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEgresarActionPerformed
         
     }//GEN-LAST:event_btnEgresarActionPerformed
-
-    private void fieldIngresoCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldIngresoCantidadActionPerformed
-        
-    }//GEN-LAST:event_fieldIngresoCantidadActionPerformed
 
 //    /**
 //     * @param args the command line arguments

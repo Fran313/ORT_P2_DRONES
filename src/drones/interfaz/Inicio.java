@@ -16,14 +16,14 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
-    public Inicio(Sistema s) {
-        this.sistema = s;
-        initComponents();
-    }
-
     public Inicio() {
         initComponents();
     }
+    
+    public Inicio(Sistema s) {
+        this.sistema = s;
+        initComponents();
+    }  
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,6 +36,8 @@ public class Inicio extends javax.swing.JFrame {
 
         btnIngresoEgresoCarga = new javax.swing.JButton();
         btnRegistroDeVuelo = new javax.swing.JButton();
+        btnRegistroArticulo = new javax.swing.JButton();
+        btnRegistrarFuncionario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(3, 2, 30, 30));
@@ -55,6 +57,21 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnRegistroDeVuelo);
+        btnRegistroArticulo.setText("Registrar Articulo");
+        btnRegistroArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroArticuloActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistroArticulo);
+
+        btnRegistrarFuncionario.setText("RegistrarFuncionario");
+        btnRegistrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarFuncionarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistrarFuncionario);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -70,6 +87,17 @@ public class Inicio extends javax.swing.JFrame {
         RegistroDeVuelo registroDeVuelo = new RegistroDeVuelo(this.sistema);
         registroDeVuelo.setVisible(true);
     }//GEN-LAST:event_btnRegistroDeVueloActionPerformed
+    private void btnRegistroArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroArticuloActionPerformed
+        this.setVisible(false);
+        RegistrarArticulo registrarArticulo = new RegistrarArticulo(this.sistema);
+        registrarArticulo.setVisible(true);
+    }//GEN-LAST:event_btnRegistroArticuloActionPerformed
+
+    private void btnRegistrarFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarFuncionarioActionPerformed
+        this.setVisible(false);
+        RegistrarFuncionario registrarFuncionario = new RegistrarFuncionario(this.sistema);
+        registrarFuncionario.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarFuncionarioActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -109,5 +137,7 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresoEgresoCarga;
     private javax.swing.JButton btnRegistroDeVuelo;
+    private javax.swing.JButton btnRegistrarFuncionario;
+    private javax.swing.JButton btnRegistroArticulo;
     // End of variables declaration//GEN-END:variables
 }

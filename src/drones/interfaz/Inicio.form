@@ -42,6 +42,20 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistroDeVueloActionPerformed"/>
+    <Component class="javax.swing.JButton" name="btnRegistroArticulo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registrar Articulo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistroArticuloActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnRegistrarFuncionario">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="RegistrarFuncionario"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarFuncionarioActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
