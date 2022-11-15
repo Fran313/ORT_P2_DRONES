@@ -30,26 +30,35 @@ public class Vuelo {
     this.area = area;
     this.datos = datos;
   }
-
-  public static Vuelo fromFile (Path path, Sistema sistema) throws IOException {
-      
-      Scanner arch = new Scanner (path);
-      String identificacion = arch.nextLine();    
-      Dron dron = sistema.buscarDron(identificacion);
   
-      String stringPos = arch.nextLine();
-      int intArea = (int) stringPos.charAt(0) - 65;
-      int fila = Integer.parseInt(stringPos.substring(2, stringPos.length())) - 1;
-  
+  public static Vuelo fromFile (String path, Sistema sistema) {
+      //TODO: Check if ArchivoLectura receive Path or String param for constructor
+      ArchivoLectura arch = new ArchivoLectura(path);
+      Dron dron;
+      int intArea;
+      int fila;
       ArrayList<Integer> datos = new ArrayList<>();
-      while(arch.hasNext()) {
-        datos.add(arch.nextInt());
+      
+      //I must use if because .hayMasLineas() returns the new line, there is no other method
+      if(arch.hayMasLineas()) {
+          String identificacion = arch.linea();
+          dron = sistema.buscarDron(identificacion);
       }
-  
-      arch.close();
-
+      
+      if(arch.hayMasLineas()) {
+          String stringPos = arch.linea();          
+          intArea = (int)(stringPos.charAt(0) - 65);
+          fila = Integer.parseInt(stringPos.substring(2,stringPos.length()));
+      }
+            
+      while(arch.hayMasLineas()){
+          datos.add(Integer.valueOf(arch.linea()));
+      }
+      
+      arch.cerrar();
+                
       return new Vuelo(dron, intArea, fila, datos);
-  }
+  }  
 
   public Dron getDron() {
     return this.dron;
