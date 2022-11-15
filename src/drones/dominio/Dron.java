@@ -4,6 +4,7 @@
  */
 package drones.dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * @author Nicolas Russo
  * @author Francisco Suarez 
  */
-public class Dron {
+public class Dron implements Serializable {
     private String identificacion;
     private String modelo;
     private int camara;

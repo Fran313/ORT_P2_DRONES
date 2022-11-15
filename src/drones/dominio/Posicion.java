@@ -1,12 +1,14 @@
 package drones.dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nicolas Russo
  * @author Francisco Suarez 
  */
 
-public class Posicion {
+public class Posicion implements Serializable {
     private int area;
     private int fila;
     private int columna;

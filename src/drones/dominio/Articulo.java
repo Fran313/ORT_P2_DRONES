@@ -4,12 +4,14 @@
  */
 package drones.dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nicolas Russo
  * @author Francisco Suarez 
  */
-public class Articulo {
+public class Articulo implements Serializable {
   private String nombre;
   private String descripcion;
 

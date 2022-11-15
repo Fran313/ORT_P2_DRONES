@@ -4,6 +4,7 @@
  */
 package drones.dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * @author Nicolas Russo
  * @author Francisco Suarez 
  */
-public class Sistema {
+public class Sistema implements Serializable {
   private ArrayList<Articulo> articulos;
   private ArrayList<Funcionario> funcionarios;
   private ArrayList<Dron> drones;
@@ -24,7 +25,7 @@ public class Sistema {
     cargas = new ArrayList<>();
   }
     
-    public void inicio () {
+    public void cargarDatosEjemplo () {
         Articulo a = this.agregarArticulo("Bandera", "De peñarol");
         Funcionario f = this.agregarFuncionario("Franki", 19, 812763);
         Posicion p = new Posicion(0, 0, 0);

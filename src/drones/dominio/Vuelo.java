@@ -5,6 +5,7 @@
 package drones.dominio;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +19,7 @@ import java.util.Scanner;
  * @author Nicolas Russo
  * @author Francisco Suarez 
  */
-public class Vuelo {
+public class Vuelo implements Serializable {
   private Dron dron; 
   private int area;
   private int fila;
