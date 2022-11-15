@@ -4,23 +4,17 @@
  */
 package drones.dominio;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.List;
-import java.util.Scanner;
 
 /**
- *
  * @author Nicolas Russo
- * @author Francisco Suarez 
+ * @author Francisco Suarez
  */
 public class Vuelo implements Serializable {
-  private Dron dron; 
+  private Dron dron;
   private int area;
   private int fila;
   ArrayList<Integer> datos = new ArrayList<>();
@@ -31,35 +25,35 @@ public class Vuelo implements Serializable {
     this.area = area;
     this.datos = datos;
   }
-  
-  public static Vuelo fromFile (Path path, Sistema sistema) {
-      //TODO: Check if ArchivoLectura receive Path or String param for constructor
-      ArchivoLectura arch = new ArchivoLectura(path);
-      Dron dron;
-      int intArea;
-      int fila;
-      ArrayList<Integer> datos = new ArrayList<>();
-      
-      //I must use if because .hayMasLineas() returns the new line, there is no other method
-      if(arch.hayMasLineas()) {
-          String identificacion = arch.linea();
-          dron = sistema.buscarDron(identificacion);
-      }
-      
-      if(arch.hayMasLineas()) {
-          String stringPos = arch.linea();          
-          intArea = (int)(stringPos.charAt(0) - 65);
-          fila = Integer.parseInt(stringPos.substring(2,stringPos.length()));
-      }
-            
-      while(arch.hayMasLineas()){
-          datos.add(Integer.valueOf(arch.linea()));
-      }
-      
-      arch.cerrar();
-                
-      return new Vuelo(dron, intArea, fila, datos);
-  }  
+
+  public static Vuelo fromFile(Path path, Sistema sistema) {
+    // TODO: Check if ArchivoLectura receive Path or String param for constructor
+    ArchivoLectura arch = new ArchivoLectura(path);
+    Dron dron;
+    int intArea;
+    int fila;
+    ArrayList<Integer> datos = new ArrayList<>();
+
+    // I must use if because .hayMasLineas() returns the new line, there is no other method
+    if (arch.hayMasLineas()) {
+      String identificacion = arch.linea();
+      dron = sistema.buscarDron(identificacion);
+    }
+
+    if (arch.hayMasLineas()) {
+      String stringPos = arch.linea();
+      intArea = (int) (stringPos.charAt(0) - 65);
+      fila = Integer.parseInt(stringPos.substring(2, stringPos.length()));
+    }
+
+    while (arch.hayMasLineas()) {
+      datos.add(Integer.valueOf(arch.linea()));
+    }
+
+    arch.cerrar();
+
+    return new Vuelo(dron, intArea, fila, datos);
+  }
 
   public Dron getDron() {
     return this.dron;
@@ -72,7 +66,7 @@ public class Vuelo implements Serializable {
   public int getFila() {
     return this.fila;
   }
-  
+
   public int getArea() {
     return this.area;
   }
@@ -80,7 +74,7 @@ public class Vuelo implements Serializable {
   public void setFila(int fila) {
     this.fila = fila;
   }
-  
+
   public void setArea(int area) {
     this.area = area;
   }
@@ -96,5 +90,4 @@ public class Vuelo implements Serializable {
   public Boolean getExito(List<Integer> d) {
     return datos.size() == 10 && datos.equals(d);
   }
-
 }

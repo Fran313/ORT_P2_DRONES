@@ -7,9 +7,8 @@ package drones.dominio;
 import java.io.Serializable;
 
 /**
- *
  * @author Nicolas Russo
- * @author Francisco Suarez 
+ * @author Francisco Suarez
  */
 public class Articulo implements Serializable {
   private String nombre;
@@ -35,10 +34,9 @@ public class Articulo implements Serializable {
   public void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
   }
-  
-  @Override
-  public String toString () {
-      return this.nombre;
-  }
 
+  @Override
+  public String toString() {
+    return this.nombre;
+  }
 }

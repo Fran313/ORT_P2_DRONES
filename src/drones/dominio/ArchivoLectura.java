@@ -6,46 +6,43 @@ package drones.dominio;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
- *
  * @author Franc
  */
 public class ArchivoLectura {
-    
-    private Scanner in;
-    
-    private String linea;
-    
-    public ArchivoLectura (Path fileName) {
-        try {
-            //Should be: in = new Scanner(Paths.get(fileName));
-            in = new Scanner(fileName);
-        } catch (IOException e) {
-            System.err.print("Error de apertura");
-            System.exit(1);
-        }
+
+  private Scanner in;
+
+  private String linea;
+
+  public ArchivoLectura(Path fileName) {
+    try {
+      // Should be: in = new Scanner(Paths.get(fileName));
+      in = new Scanner(fileName);
+    } catch (IOException e) {
+      System.err.print("Error de apertura");
+      System.exit(1);
     }
-    
-    public boolean hayMasLineas(){
-        boolean hay = false;
-        linea = null;
-        
-        if(in.hasNext()) {
-            linea = in.nextLine();
-            hay = true;
-        }
-        return hay;
+  }
+
+  public boolean hayMasLineas() {
+    boolean hay = false;
+    linea = null;
+
+    if (in.hasNext()) {
+      linea = in.nextLine();
+      hay = true;
     }
-    
-    public String linea() {
-        return linea;
-    }
-    
-    public void cerrar() {
-        in.close();
-    }
-    
+    return hay;
+  }
+
+  public String linea() {
+    return linea;
+  }
+
+  public void cerrar() {
+    in.close();
+  }
 }
