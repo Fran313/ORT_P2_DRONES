@@ -5,6 +5,7 @@
 package drones.dominio;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
@@ -18,9 +19,10 @@ public class ArchivoLectura {
     
     private String linea;
     
-    public ArchivoLectura (String fileName) {
+    public ArchivoLectura (Path fileName) {
         try {
-            in = new Scanner(Paths.get(fileName));
+            //Should be: in = new Scanner(Paths.get(fileName));
+            in = new Scanner(fileName);
         } catch (IOException e) {
             System.err.print("Error de apertura");
             System.exit(1);

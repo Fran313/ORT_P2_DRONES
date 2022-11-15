@@ -32,7 +32,7 @@ public class Vuelo implements Serializable {
     this.datos = datos;
   }
   
-  public static Vuelo fromFile (String path, Sistema sistema) {
+  public static Vuelo fromFile (Path path, Sistema sistema) {
       //TODO: Check if ArchivoLectura receive Path or String param for constructor
       ArchivoLectura arch = new ArchivoLectura(path);
       Dron dron;
