@@ -36,42 +36,44 @@ public class RegistrarVuelo extends javax.swing.JFrame {
     tblDiff.setDefaultRenderer(Object.class, centerRenderer);
   }
 
+  private void hydrate(Vuelo v) {
+    int[] archivo = new int[10];
+
+    for (int i = 0; i < v.getDatos().size(); i++) {
+      archivo[i] = v.getDatos().get(i);
+    }
+
+    int[] manual = new int[10];
+
+    sistema.getCargas().stream()
+        .filter(
+            c -> {
+              Posicion p = c.getPosicion();
+              return p.getFila() == v.getFila() && p.getArea() == v.getArea();
+            })
+        .forEach(
+            c -> {
+              manual[c.getPosicion().getColumna()] = c.getCantidad();
+
+            });
+
+    for (int col = 0; col < 10; col++) {
+      tblDiff.setValueAt(archivo[col], 0, col + 1);
+      tblDiff.setValueAt(manual[col], 1, col + 1);
+    }
+
+  }
+
   private void jFileChooser1ActionPerformed(
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_jFileChooser1ActionPerformed
     if (evt.getActionCommand() == JFileChooser.APPROVE_SELECTION) {
       try {
-        Vuelo v = Vuelo.fromFile(
+        Vuelo vuelo = Vuelo.fromFile(
             Paths.get(jFileChooser1.getSelectedFile().getAbsolutePath()), this.sistema);
-
-        int[] archivo = new int[10];
-
-        for (int i = 0; i < v.getDatos().size(); i++) {
-          archivo[i] = v.getDatos().get(i);
-        }
-
-        int[] manual = new int[10];
-
-        sistema.getCargas().stream()
-            .filter(
-                c -> {
-                  Posicion p = c.getPosicion();
-                  return p.getFila() == v.getFila() && p.getArea() == v.getArea();
-                })
-            .forEach(
-                c -> {
-                  manual[c.getPosicion().getColumna()] = c.getCantidad();
-
-                });
-
-        for (int col = 0; col < 10; col++) {
-          tblDiff.setValueAt(archivo[col], 0, col + 1);
-          tblDiff.setValueAt(manual[col], 1, col + 1);
-        }
-
-      } catch (Exception e) {        
+        hydrate(vuelo);
+      } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Mal formato de archivo", "Error", JOptionPane.ERROR_MESSAGE);
       }
-
     }
   } // GEN-LAST:event_jFileChooser1ActionPerformed
 
