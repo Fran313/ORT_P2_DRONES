@@ -13,15 +13,7 @@ public class PosicionTest {
   public static void setup() {
     pBase = new Posicion(1, 1, 1);
   }
-
-  @Test
-  public void itShouldCreatePosicionFromCharArea() {
-    Posicion p = Posicion.fromChar('C', 6, 2);
-    assertEquals(2, p.getArea());
-    assertEquals(6, p.getFila());
-    assertEquals(2, p.getColumna());
-  }
-
+  
   @Test
   public void itShouldCreatePosicionFromNumbers() {
     assertEquals(1, pBase.getArea());

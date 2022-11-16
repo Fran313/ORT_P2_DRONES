@@ -16,12 +16,7 @@ public class Posicion implements Serializable {
     this.fila = fila;
     this.columna = columna;
   }
-
-  public static Posicion fromChar(char area, int fila, int columna) {
-    int intArea = (int) Character.toUpperCase(area) - 65;
-    return new Posicion(intArea, fila, columna);
-  }
-
+  
   public int getArea() {
     return this.area;
   }
