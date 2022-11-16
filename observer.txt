@@ -1,0 +1,21 @@
+Vuelos:
+	Observable: -Registrar Vuelo
+	Observers:  -Emision de estadisticas
+
+Drones:
+	Observable: -Registrar Dron
+	Observers : -Emision de estadisticas
+
+Cargas: ----
+
+Articulos:
+	Observable: -Registrar Articulo
+	Observers:  -Ingrso/Egreso manual de carga
+
+Funcionarios:
+	Observable: -Registrar Funcionario
+	Observers:  -Ingreso/Egreso manual de carga
+
+
+
+CAMBIAR ARCHIVO LECTURA Y GRABACION PARA OTRO PACKAGE
