@@ -35,8 +35,8 @@ class Drones {
 
     } catch (IOException | ClassNotFoundException e) {
       Logger.getLogger(Inicio.class.getName())
-          .log(Level.INFO, "No se encontró un sistema previo. Nuevo sistema creado", e);
-      sistema = new Sistema();
+          .log(Level.INFO, "No se encontró un sistema previo. Nuevo sistema creado");
+      sistema = new Sistema();        
     }
 
     // sistema.cargarDatosEjemplo();
