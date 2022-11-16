@@ -123,7 +123,7 @@ public class Inicio extends javax.swing.JFrame {
   private void btnRegistroDeVueloActionPerformed(
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnRegistroDeVueloActionPerformed
     this.setVisible(false);
-    RegistroDeVuelo registroDeVuelo = new RegistroDeVuelo(this.sistema);
+    RegistrarVuelo registroDeVuelo = new RegistrarVuelo(this.sistema);
     registroDeVuelo.setVisible(true);
   } // GEN-LAST:event_btnRegistroDeVueloActionPerformed
 
