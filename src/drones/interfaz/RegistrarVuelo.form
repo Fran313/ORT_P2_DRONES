@@ -39,10 +39,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="JLabel1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Area: A Fila: 3"/>
-          </Properties>
+        <Component class="javax.swing.JLabel" name="lblFila">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="North"/>
