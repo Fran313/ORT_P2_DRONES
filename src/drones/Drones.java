@@ -34,12 +34,14 @@ class Drones {
       Logger.getLogger(Inicio.class.getName()).log(Level.INFO, "Sistema cargado de sistema.ser");
 
     } catch (IOException | ClassNotFoundException e) {
+
       Logger.getLogger(Inicio.class.getName())
           .log(Level.INFO, "No se encontró un sistema previo. Nuevo sistema creado");
-      sistema = new Sistema();        
-    }
 
-    // sistema.cargarDatosEjemplo();
+      sistema = new Sistema();
+      sistema.cargarDatosEjemplo();
+
+    }
 
     Inicio inicio = new Inicio(sistema);
     inicio.setVisible(true);
