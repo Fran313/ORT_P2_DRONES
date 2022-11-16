@@ -38,7 +38,7 @@ public class Vuelo implements Serializable {
     // method
     if (arch.hayMasLineas()) {
       String identificacion = arch.linea();
-      dron = sistema.buscarDron(identificacion);
+      dron = sistema.buscarDron(identificacion);      
     }
 
     if (arch.hayMasLineas()) {
@@ -57,8 +57,10 @@ public class Vuelo implements Serializable {
       throw new Exception("El archivo tiene formato incorrecto");
     }
 
-    return new Vuelo(dron, intArea, fila, datos);
-  }
+    Vuelo vuelo = new Vuelo(dron, intArea, fila, datos);
+    dron.agregarVuelo(vuelo);
+    return vuelo;
+  }    
 
   public Dron getDron() {
     return this.dron;
