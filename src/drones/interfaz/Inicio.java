@@ -78,64 +78,74 @@ public class Inicio extends javax.swing.JFrame {
    */
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated
-  // Code">//GEN-BEGIN:initComponents
-  private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-    btnIngresoEgresoCarga = new javax.swing.JButton();
-    btnRegistroDeVuelo = new javax.swing.JButton();
-    btnRegistroArticulo = new javax.swing.JButton();
-    btnRegistrarFuncionario = new javax.swing.JButton();
-    btnRegistrarDron = new javax.swing.JButton();
+        btnIngresoEgresoCarga = new javax.swing.JButton();
+        btnRegistroDeVuelo = new javax.swing.JButton();
+        btnRegistroArticulo = new javax.swing.JButton();
+        btnRegistrarFuncionario = new javax.swing.JButton();
+        btnRegistrarDron = new javax.swing.JButton();
+        btnEstadisticas = new javax.swing.JButton();
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-    getContentPane().setLayout(new java.awt.GridLayout(3, 2, 30, 30));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridLayout(3, 2, 30, 30));
 
-    btnIngresoEgresoCarga.setText("Ingreso/Egreso Carga");
-    btnIngresoEgresoCarga.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnIngresoEgresoCargaActionPerformed(evt);
-          }
+        btnIngresoEgresoCarga.setText("Ingreso/Egreso Carga");
+        btnIngresoEgresoCarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresoEgresoCargaActionPerformed(evt);
+            }
         });
-    getContentPane().add(btnIngresoEgresoCarga);
+        getContentPane().add(btnIngresoEgresoCarga);
 
-    btnRegistroDeVuelo.setText("Registro de Vuelo");
-    btnRegistroDeVuelo.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnRegistroDeVueloActionPerformed(evt);
-          }
+        btnRegistroDeVuelo.setText("Registro de Vuelo");
+        btnRegistroDeVuelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroDeVueloActionPerformed(evt);
+            }
         });
-    getContentPane().add(btnRegistroDeVuelo);
-    btnRegistroArticulo.setText("Registrar Articulo");
-    btnRegistroArticulo.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnRegistroArticuloActionPerformed(evt);
-          }
-        });
-    getContentPane().add(btnRegistroArticulo);
+        getContentPane().add(btnRegistroDeVuelo);
 
-    btnRegistrarFuncionario.setText("Registrar Funcionario");
-    btnRegistrarFuncionario.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnRegistrarFuncionarioActionPerformed(evt);
-          }
+        btnRegistroArticulo.setText("Registrar Articulo");
+        btnRegistroArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroArticuloActionPerformed(evt);
+            }
         });
-    getContentPane().add(btnRegistrarFuncionario);
+        getContentPane().add(btnRegistroArticulo);
 
-    btnRegistrarDron.setText("Registrar Dron");
-    btnRegistrarDron.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnRegistrarDronActionPerformed(evt);
-          }
+        btnRegistrarFuncionario.setText("Registrar Funcionario");
+        btnRegistrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarFuncionarioActionPerformed(evt);
+            }
         });
-    getContentPane().add(btnRegistrarDron);
+        getContentPane().add(btnRegistrarFuncionario);
 
-    pack();
-  } // </editor-fold>//GEN-END:initComponents
+        btnRegistrarDron.setText("Registrar Dron");
+        btnRegistrarDron.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarDronActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegistrarDron);
+
+        btnEstadisticas.setText("Ver estadisticas");
+        btnEstadisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstadisticasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEstadisticas);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
+        Statistics stats = new Statistics(this.sistema);
+        openFrame(stats);
+    }//GEN-LAST:event_btnEstadisticasActionPerformed
 
   private void btnIngresoEgresoCargaActionPerformed(
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnIngresoEgresoCargaActionPerformed
@@ -215,11 +225,12 @@ public class Inicio extends javax.swing.JFrame {
   // });
   // }
 
-  // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton btnIngresoEgresoCarga;
-  private javax.swing.JButton btnRegistrarDron;
-  private javax.swing.JButton btnRegistroDeVuelo;
-  private javax.swing.JButton btnRegistrarFuncionario;
-  private javax.swing.JButton btnRegistroArticulo;
-  // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEstadisticas;
+    private javax.swing.JButton btnIngresoEgresoCarga;
+    private javax.swing.JButton btnRegistrarDron;
+    private javax.swing.JButton btnRegistrarFuncionario;
+    private javax.swing.JButton btnRegistroArticulo;
+    private javax.swing.JButton btnRegistroDeVuelo;
+    // End of variables declaration//GEN-END:variables
 }

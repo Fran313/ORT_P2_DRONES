@@ -54,4 +54,9 @@ public class Dron implements Serializable {
   public void setVuelos(ArrayList<Vuelo> vuelos) {
     this.vuelos = vuelos;
   }
+  
+  @Override
+  public String toString () {
+      return this.identificacion;
+  }
 }
