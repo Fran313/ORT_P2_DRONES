@@ -60,7 +60,8 @@ public class Sistema implements Serializable {
 
   public Articulo agregarArticulo(String nombre, String descripcion) {
     Articulo articulo = new Articulo(nombre, descripcion);
-    changes.firePropertyChange("articulos", articulos, articulos.add(articulo));     
+   articulos.add(articulo);
+    changes.firePropertyChange("articulos", null, articulos);
    return articulo;
   }
   
