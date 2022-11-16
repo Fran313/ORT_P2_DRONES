@@ -15,20 +15,20 @@ public class Sistema implements Serializable {
   private ArrayList<Articulo> articulos;
   private ArrayList<Funcionario> funcionarios;
   private ArrayList<Dron> drones;
-  private ArrayList<Carga> cargas; 
+  private ArrayList<Carga> cargas;
 
   public Sistema() {
     articulos = new ArrayList<>();
     funcionarios = new ArrayList<>();
     drones = new ArrayList<>();
-    cargas = new ArrayList<>();    
+    cargas = new ArrayList<>();
   }
 
   public void cargarDatosEjemplo() {
     Articulo a = this.agregarArticulo("Bandera", "De peñarol");
     Funcionario f = this.agregarFuncionario("Franki", 19, 812763);
     Posicion p = new Posicion(0, 0, 0);
-    this.agregarCarga(1891, a, f, 0, p);
+    this.agregarCarga(1891, a, f, 7389099, p);
     this.agregarDron("holasoyDron1", "asdf", 2);
   }
 
@@ -56,10 +56,10 @@ public class Sistema implements Serializable {
 
   public Articulo agregarArticulo(String nombre, String descripcion) {
     Articulo articulo = new Articulo(nombre, descripcion);
-   articulos.add(articulo);    
-   return articulo;
+    articulos.add(articulo);
+    return articulo;
   }
-  
+
   public Dron agregarDron(String identificacion, String modelo, int camara) {
     Dron dron = new Dron(identificacion, modelo, camara);
     drones.add(dron);

@@ -7,12 +7,17 @@ package drones.interfaz;
 import drones.dominio.Posicion;
 import drones.dominio.Sistema;
 import drones.dominio.Vuelo;
+
+import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
 import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 
 /**
  * @author Franc
@@ -36,42 +41,65 @@ public class RegistrarVuelo extends javax.swing.JFrame {
     tblDiff.setDefaultRenderer(Object.class, centerRenderer);
   }
 
+  private void hydrate(Vuelo v) {
+    lblFila.setText("Area: " + String.valueOf(Posicion.areaCode(v.getArea())) + " Fila: " + (v.getFila() + 1));
+    int[] archivo = new int[10];
+    int sizeDatos = v.getDatos().size();
+
+    for (int i = 0; i < sizeDatos; i++) {
+      archivo[i] = v.getDatos().get(i);
+    }
+
+    int[] manual = new int[10];
+
+    sistema.getCargas().stream()
+        .filter(
+            c -> {
+              Posicion p = c.getPosicion();
+              return p.getFila() == v.getFila() && p.getArea() == v.getArea();
+            })
+        .forEach(
+            c -> {
+              manual[c.getPosicion().getColumna()] = c.getCantidad();
+            });
+
+    DefaultTableCellRenderer redRenderer = new DefaultTableCellRenderer();
+    redRenderer.setBackground(Color.RED);
+    DefaultTableCellRenderer greenRenderer = new DefaultTableCellRenderer();
+    greenRenderer.setBackground(Color.GREEN);
+
+    int coincidencias = 0;
+    for (int col = 0; col < sizeDatos; col++) {
+      DefaultTableCellRenderer renderer;
+      if (archivo[col] == manual[col]) {
+        renderer = greenRenderer;
+        coincidencias++;
+      } else {
+        renderer = redRenderer;
+      }
+      tblDiff.getColumnModel().getColumn(col + 1).setCellRenderer(renderer);
+    }
+
+    lblTotalCoincidencias.setText("Total de coincidencias: " + coincidencias);
+    lblTotalDiferencias.setText("Total de diferencias: " + (sizeDatos - coincidencias));
+
+    for (int col = 0; col < 10; col++) {
+      tblDiff.setValueAt(archivo[col], 0, col + 1);
+      tblDiff.setValueAt(manual[col], 1, col + 1);
+    }
+
+  }
+
   private void jFileChooser1ActionPerformed(
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_jFileChooser1ActionPerformed
     if (evt.getActionCommand() == JFileChooser.APPROVE_SELECTION) {
       try {
-        Vuelo v = Vuelo.fromFile(
+        Vuelo vuelo = Vuelo.fromFile(
             Paths.get(jFileChooser1.getSelectedFile().getAbsolutePath()), this.sistema);
-
-        int[] archivo = new int[10];
-
-        for (int i = 0; i < v.getDatos().size(); i++) {
-          archivo[i] = v.getDatos().get(i);
-        }
-
-        int[] manual = new int[10];
-
-        sistema.getCargas().stream()
-            .filter(
-                c -> {
-                  Posicion p = c.getPosicion();
-                  return p.getFila() == v.getFila() && p.getArea() == v.getArea();
-                })
-            .forEach(
-                c -> {
-                  manual[c.getPosicion().getColumna()] = c.getCantidad();
-
-                });
-
-        for (int col = 0; col < 10; col++) {
-          tblDiff.setValueAt(archivo[col], 0, col + 1);
-          tblDiff.setValueAt(manual[col], 1, col + 1);
-        }
-
-      } catch (Exception e) {        
+        hydrate(vuelo);
+      } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Mal formato de archivo", "Error", JOptionPane.ERROR_MESSAGE);
       }
-
     }
   } // GEN-LAST:event_jFileChooser1ActionPerformed
 
@@ -83,12 +111,15 @@ public class RegistrarVuelo extends javax.swing.JFrame {
    */
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated
+  // <editor-fold defaultstate="collapsed" desc="Generated
+  // <editor-fold defaultstate="collapsed" desc="Generated
+  // <editor-fold defaultstate="collapsed" desc="Generated
   // Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
     jFileChooser1 = new javax.swing.JFileChooser();
     pnlDiff = new javax.swing.JPanel();
-    JLabel1 = new javax.swing.JLabel();
+    lblFila = new javax.swing.JLabel();
     jPanel3 = new javax.swing.JPanel();
     lblTotalCoincidencias = new javax.swing.JLabel();
     lblTotalDiferencias = new javax.swing.JLabel();
@@ -108,16 +139,10 @@ public class RegistrarVuelo extends javax.swing.JFrame {
     getContentPane().add(jFileChooser1);
 
     pnlDiff.setLayout(new java.awt.BorderLayout());
-
-    JLabel1.setText("Area: A Fila: 3");
-    pnlDiff.add(JLabel1, java.awt.BorderLayout.NORTH);
+    pnlDiff.add(lblFila, java.awt.BorderLayout.NORTH);
 
     jPanel3.setLayout(new java.awt.GridLayout(2, 1));
-
-    lblTotalCoincidencias.setText("Total de coincidencias: 6");
     jPanel3.add(lblTotalCoincidencias);
-
-    lblTotalDiferencias.setText("Total de diferencias: 4");
     jPanel3.add(lblTotalDiferencias);
 
     pnlDiff.add(jPanel3, java.awt.BorderLayout.SOUTH);
@@ -170,10 +195,10 @@ public class RegistrarVuelo extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JLabel JLabel1;
   private javax.swing.JFileChooser jFileChooser1;
   private javax.swing.JPanel jPanel3;
   private javax.swing.JScrollPane jScrollPane2;
+  private javax.swing.JLabel lblFila;
   private javax.swing.JLabel lblTotalCoincidencias;
   private javax.swing.JLabel lblTotalDiferencias;
   private javax.swing.JPanel pnlDiff;
