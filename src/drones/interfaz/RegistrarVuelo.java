@@ -7,12 +7,17 @@ package drones.interfaz;
 import drones.dominio.Posicion;
 import drones.dominio.Sistema;
 import drones.dominio.Vuelo;
+
+import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
 import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 
 /**
  * @author Franc
@@ -58,11 +63,21 @@ public class RegistrarVuelo extends javax.swing.JFrame {
               manual[c.getPosicion().getColumna()] = c.getCantidad();
             });
 
+    DefaultTableCellRenderer redRenderer = new DefaultTableCellRenderer();
+    redRenderer.setBackground(Color.RED);
+    DefaultTableCellRenderer greenRenderer = new DefaultTableCellRenderer();
+    greenRenderer.setBackground(Color.GREEN);
+
     int coincidencias = 0;
     for (int col = 0; col < sizeDatos; col++) {
+      DefaultTableCellRenderer renderer;
       if (archivo[col] == manual[col]) {
+        renderer = greenRenderer;
         coincidencias++;
+      } else {
+        renderer = redRenderer;
       }
+      tblDiff.getColumnModel().getColumn(col + 1).setCellRenderer(renderer);
     }
 
     lblTotalCoincidencias.setText("Total de coincidencias: " + coincidencias);
