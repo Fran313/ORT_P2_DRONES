@@ -59,14 +59,8 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblTotalCoincidencias">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Total de coincidencias: 6"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblTotalDiferencias">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Total de diferencias: 4"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
