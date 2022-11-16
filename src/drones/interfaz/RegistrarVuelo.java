@@ -37,7 +37,7 @@ public class RegistrarVuelo extends javax.swing.JFrame {
   }
 
   private void hydrate(Vuelo v) {
-    lblFila.setText("Area: " + String.valueOf(Posicion.areaCode(v.getArea())) + " Fila: " + v.getFila());
+    lblFila.setText("Area: " + String.valueOf(Posicion.areaCode(v.getArea())) + " Fila: " + (v.getFila() + 1));
     int[] archivo = new int[10];
     int sizeDatos = v.getDatos().size();
 
@@ -56,7 +56,6 @@ public class RegistrarVuelo extends javax.swing.JFrame {
         .forEach(
             c -> {
               manual[c.getPosicion().getColumna()] = c.getCantidad();
-
             });
 
     int coincidencias = 0;

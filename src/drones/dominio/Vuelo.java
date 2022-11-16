@@ -34,7 +34,7 @@ public class Vuelo implements Serializable {
     Integer fila = null;
     ArrayList<Integer> datos = new ArrayList<>();
 
-    // I must use if because .hayMasLineas() returns the new line, there is no other
+    // I must use if because .hayMasLineas() gets the new line, there is no other
     // method
     if (arch.hayMasLineas()) {
       String identificacion = arch.linea();
@@ -44,7 +44,7 @@ public class Vuelo implements Serializable {
     if (arch.hayMasLineas()) {
       String stringPos = arch.linea();
       intArea = (int) (stringPos.charAt(0) - 65);
-      fila = Integer.parseInt(stringPos.substring(2, stringPos.length()));
+      fila = Integer.parseInt(stringPos.substring(2, stringPos.length())) - 1;
     }
 
     while (arch.hayMasLineas()) {
