@@ -29,6 +29,7 @@ public class Sistema implements Serializable {
     Funcionario f = this.agregarFuncionario("Franki", 19, 812763);
     Posicion p = new Posicion(0, 0, 0);
     this.agregarCarga(1891, a, f, 0, p);
+    this.agregarDron("holasoyDron1", "asdf", 2);
   }
 
   public ArrayList<Carga> getCargas() {
