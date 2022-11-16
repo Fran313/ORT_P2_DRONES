@@ -141,33 +141,14 @@ public class Statistics extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void hydrate() {
-        ArrayList<Dron> drones = this.sistema.getDrones();
-        ArrayList<Dron> dronesConVuelos = new ArrayList<>();
-        ArrayList<Dron> dronesSinVuelos = new ArrayList<>();        
+        ArrayList<Dron> drones = this.sistema.getDrones();        
         
-        for(Dron d : drones) {
-            if(d.getVuelos().isEmpty()) {
-                dronesSinVuelos.add(d);
-            } 
-            else {
-                dronesConVuelos.add(d);
-            }
-        }
+        lstDronesConVuelos.setListData(drones.stream()
+        .filter(d -> !d.getVuelos().isEmpty()).map(d -> d.toString()).toArray(String[]::new));
         
-        String[] dronesConVuelosList = new String[dronesConVuelos.size()];
-        String[] dronesSinVuelosList = new String[dronesSinVuelos.size()];
+        lstDronesSinVuelos.setListData(drones.stream()
+        .filter(d -> d.getVuelos().isEmpty()).map(d -> d.toString()).toArray(String[]::new));
         
-        for (int i = 0; i < dronesConVuelos.size(); i++) {
-            dronesConVuelosList[i] = dronesConVuelos.get(i).toString();
-        }
-        
-        for (int i = 0; i < dronesSinVuelos.size(); i++) {
-            dronesSinVuelosList[i] = dronesSinVuelos.get(i).toString();
-            
-        }
-        
-        lstDronesConVuelos.setListData(dronesConVuelosList);
-        lstDronesSinVuelos.setListData(dronesSinVuelosList);
         
     }
 }
