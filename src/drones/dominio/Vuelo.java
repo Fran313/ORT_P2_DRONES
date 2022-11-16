@@ -26,15 +26,16 @@ public class Vuelo implements Serializable {
     this.datos = datos;
   }
 
-  public static Vuelo fromFile(Path path, Sistema sistema) {
+  public static Vuelo fromFile(Path path, Sistema sistema) throws Exception {
     // TODO: Check if ArchivoLectura receive Path or String param for constructor
     ArchivoLectura arch = new ArchivoLectura(path);
-    Dron dron;
-    int intArea;
-    int fila;
+    Dron dron = null;
+    Integer intArea = null;
+    Integer fila = null;
     ArrayList<Integer> datos = new ArrayList<>();
 
-    // I must use if because .hayMasLineas() returns the new line, there is no other method
+    // I must use if because .hayMasLineas() returns the new line, there is no other
+    // method
     if (arch.hayMasLineas()) {
       String identificacion = arch.linea();
       dron = sistema.buscarDron(identificacion);
@@ -51,6 +52,10 @@ public class Vuelo implements Serializable {
     }
 
     arch.cerrar();
+
+    if (dron == null || intArea == null || fila == null) {
+      throw new Exception("El archivo tiene formato incorrecto");
+    }
 
     return new Vuelo(dron, intArea, fila, datos);
   }
