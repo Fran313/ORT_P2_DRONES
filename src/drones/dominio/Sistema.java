@@ -4,8 +4,6 @@
  */
 package drones.dominio;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -17,15 +15,13 @@ public class Sistema implements Serializable {
   private ArrayList<Articulo> articulos;
   private ArrayList<Funcionario> funcionarios;
   private ArrayList<Dron> drones;
-  private ArrayList<Carga> cargas;
-  private PropertyChangeSupport changes;
+  private ArrayList<Carga> cargas; 
 
   public Sistema() {
     articulos = new ArrayList<>();
     funcionarios = new ArrayList<>();
     drones = new ArrayList<>();
-    cargas = new ArrayList<>();
-    changes = new PropertyChangeSupport(this);
+    cargas = new ArrayList<>();    
   }
 
   public void cargarDatosEjemplo() {
@@ -60,19 +56,10 @@ public class Sistema implements Serializable {
 
   public Articulo agregarArticulo(String nombre, String descripcion) {
     Articulo articulo = new Articulo(nombre, descripcion);
-   articulos.add(articulo);
-    changes.firePropertyChange("articulos", null, articulos);
+   articulos.add(articulo);    
    return articulo;
   }
   
-  public void addPropertyChangeListener (PropertyChangeListener l) {
-      changes.addPropertyChangeListener(l);
-  }
-  
-  public void removePropertyChangeListener (PropertyChangeListener l) {
-      changes.removePropertyChangeListener(l);
-  }
-
   public Dron agregarDron(String identificacion, String modelo, int camara) {
     Dron dron = new Dron(identificacion, modelo, camara);
     drones.add(dron);

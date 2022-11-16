@@ -5,8 +5,6 @@
 package drones.interfaz;
 
 import drones.dominio.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  * @author Franc
  */
-public class RegistrarArticulo extends javax.swing.JFrame implements PropertyChangeListener{
+public class RegistrarArticulo extends javax.swing.JFrame {
 
   private Sistema sistema;
 
@@ -24,8 +22,7 @@ public class RegistrarArticulo extends javax.swing.JFrame implements PropertyCha
   }
 
   public RegistrarArticulo(Sistema s) {
-    this.sistema = s;
-    this.sistema.addPropertyChangeListener(this);
+    this.sistema = s;    
     initComponents();
     hydrate();
   }
@@ -202,9 +199,5 @@ public class RegistrarArticulo extends javax.swing.JFrame implements PropertyCha
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-        hydrate();
-    }
+  
 }
