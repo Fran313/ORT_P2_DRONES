@@ -16,12 +16,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 /**
  * @author Franc
  */
-public class RegistroDeVuelo extends javax.swing.JFrame {
+public class RegistrarVuelo extends javax.swing.JFrame {
 
   Sistema sistema;
 
   /** Creates new form RegistroDeVuelo */
-  public RegistroDeVuelo(Sistema s) {
+  public RegistrarVuelo(Sistema s) {
     this.sistema = s;
     initComponents();
 
@@ -82,7 +82,6 @@ public class RegistroDeVuelo extends javax.swing.JFrame {
    * Form Editor.
    */
   @SuppressWarnings("unchecked")
-  // <editor-fold defaultstate="collapsed" desc="Generated
   // <editor-fold defaultstate="collapsed" desc="Generated
   // Code">//GEN-BEGIN:initComponents
   private void initComponents() {

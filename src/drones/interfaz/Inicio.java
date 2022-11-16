@@ -145,7 +145,7 @@ public class Inicio extends javax.swing.JFrame {
 
   private void btnRegistroDeVueloActionPerformed(
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnRegistroDeVueloActionPerformed
-    RegistroDeVuelo registroDeVuelo = new RegistroDeVuelo(this.sistema);
+    RegistrarVuelo registroDeVuelo = new RegistrarVuelo(this.sistema);
     openFrame(registroDeVuelo);
   } // GEN-LAST:event_btnRegistroDeVueloActionPerformed
 
