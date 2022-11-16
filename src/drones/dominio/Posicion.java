@@ -25,6 +25,10 @@ public class Posicion implements Serializable {
   public int getArea() {
     return this.area;
   }
+  
+  public static char areaCode(int area) {
+      return (char) (area + 65);
+  }
 
   public void setArea(int area) {
     this.area = area;
@@ -60,6 +64,6 @@ public class Posicion implements Serializable {
 
   @Override
   public String toString() {
-    return String.valueOf((char) (this.area + 65)) + this.fila + this.columna;
+    return String.valueOf(Posicion.areaCode(this.area)) + this.fila + this.columna;
   }
 }
