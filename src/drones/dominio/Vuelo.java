@@ -141,13 +141,13 @@ public class Vuelo implements Serializable {
 
     @Override
     public String toString() {
-        String response = "";
+        String response;
         if (this.getExito()) {
-            response += "Nombre de archivo: " + this.fileName + " - Area: " + this.area
+            response = "Nombre de archivo: " + this.fileName + " - Area: " + this.area
                     + " - Fila: " + this.fila + " - Coincidencias: " + this.getCoincidencias() +
                     " - Diferencias: " + this.getDiferencias();
         } else {
-            response += "Nombre de archivo: " + this.fileName + " - Area: " + this.area
+            response = "Nombre de archivo: " + this.fileName + " - Area: " + this.area
                     + " - Fila: " + this.fila + " - Cantidad de lineas de carga: " + this.getDatos().size();
         }
         return response;
