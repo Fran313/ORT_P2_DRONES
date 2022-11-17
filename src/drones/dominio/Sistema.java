@@ -66,10 +66,11 @@ public class Sistema implements Serializable {
     return dron;
   }
 
-  public void agregarCarga(
+  public Carga agregarCarga(
       int codigo, Articulo articulo, Funcionario funcionario, int cantidad, Posicion posicion) {
     Carga carga = new Carga(codigo, articulo, funcionario, cantidad, posicion);
     cargas.add(carga);
+    return carga;
   }
 
   public Carga buscarCarga(final Posicion posicion) {
