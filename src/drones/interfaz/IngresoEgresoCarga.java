@@ -13,163 +13,179 @@ import java.awt.Color;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Pattern;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  * @author nrusso
  */
 public class IngresoEgresoCarga extends javax.swing.JFrame {
 
-  private Sistema sistema;
-  private int areaSeleccionada;
-  JButton[][] buttons;
+    private Sistema sistema;
+    private int areaSeleccionada;
+    JButton[][] buttons;
 
-  /**
-   * Creates new form IngresoEgresoCarga
-   *
-   * @param s
-   */
-  public IngresoEgresoCarga(Sistema s) {
-    this.sistema = s;
-    this.areaSeleccionada = 0;
-    this.buttons = new JButton[12][10];
+    /**
+     * Creates new form IngresoEgresoCarga
+     *
+     * @param s
+     */
+    public IngresoEgresoCarga(Sistema s) {
+        this.sistema = s;
+        this.areaSeleccionada = 0;
+        this.buttons = new JButton[12][10];
 
-    initComponents();
+        initComponents();
 
-    for (int y = 0; y < 12; y++) {
-      for (int x = 0; x < 10; x++) {
-        JButton nuevo = new JButton(" ");
-        nuevo.setMargin(new Insets(-5, -5, -5, -5));
-        nuevo.setBackground(Color.WHITE);
-        nuevo.setForeground(Color.BLACK);
-        nuevo.setText((y + 1) + ":" + (x + 1)); // texto ejemplo, a completar
+        for (int y = 0; y < 12; y++) {
+            for (int x = 0; x < 10; x++) {
+                JButton nuevo = new JButton(" ");
+                nuevo.setMargin(new Insets(-5, -5, -5, -5));
+                nuevo.setBackground(Color.WHITE);
+                nuevo.setForeground(Color.BLACK);
+                nuevo.setText((y + 1) + ":" + (x + 1)); // texto ejemplo, a completar
 
-        this.buttons[y][x] = nuevo;
+                this.buttons[y][x] = nuevo;
 
-        pnlButtonsGrid.add(nuevo);
-      }
-    }
-
-    hydrate();
-  }
-
-  private void hydrate() {
-    CardLayout cl = (CardLayout) (pnlRight.getLayout());
-
-    lblArea.setText("Area " + Posicion.areaCode(areaSeleccionada));
-
-    // Mostramos el filler en el panel de la derecha antes de actualizar
-    // los botones
-    cl.show(pnlRight, "filler");
-
-    lstFuncionarios.setListData(
-        sistema.getFuncionarios().stream().map(f -> f.toString()).toArray(String[]::new));
-
-    lstArticulos.setListData(
-        sistema.getArticulos().stream().map(f -> f.toString()).toArray(String[]::new));
-
-    // Botones sin carga
-    for (int y = 0; y < buttons.length; y++) {
-      JButton[] row = buttons[y];
-      for (int x = 0; x < row.length; x++) {
-        JButton button = row[x];
-
-        if (button.getModel().isRollover()) {
-          button.setBackground(Color.RED);
-          button.setForeground(Color.WHITE);
-        } else {
-          button.setBackground(Color.WHITE);
-          button.setForeground(Color.BLACK);
+                pnlButtonsGrid.add(nuevo);
+            }
         }
 
-        removeAllActionListeners(button);
-        final int _x = x;
-        final int _y = y;
-
-        button.addActionListener(
-            new ActionListener() {
-              public void actionPerformed(ActionEvent e) {
-
-                hydrate();
-
-                cl.show(pnlRight, "ingreso");
-
-                removeAllActionListeners(btnIngresar);
-                btnIngresar.addActionListener(
-                    new ActionListener() {
-                      public void actionPerformed(ActionEvent e) {
-                        Funcionario f = sistema.getFuncionarios().get(lstFuncionarios.getSelectedIndex());
-                        Articulo a = sistema.getArticulos().get(lstArticulos.getSelectedIndex());
-                        int cantidad = Integer.parseInt(fieldIngresoCantidad.getText());
-                        int codigo = Integer.parseInt(fieldIngresoCodigo.getText());
-                        Posicion posicion = new Posicion(areaSeleccionada, _x, _y);
-
-                        sistema.agregarCarga(codigo, a, f, cantidad, posicion);
-                        
-                        hydrate();
-                      }
-                    });
-              }
-            });
-      }
+        hydrate();
     }
 
-    // Botones con carga
-    sistema.getCargas().stream()
-        .filter(c -> c.getPosicion().getArea() == areaSeleccionada)
-        .forEach(
-            c -> {
-              Posicion p = c.getPosicion();
+    private void hydrate() {
+        CardLayout cl = (CardLayout) (pnlRight.getLayout());
 
-              JButton b = this.buttons[p.getFila()][p.getColumna()];
+        lblArea.setText("Area " + Posicion.areaCode(areaSeleccionada));
 
-              removeAllActionListeners(b);
-              b.addActionListener(
-                  new ActionListener() {
+        // Mostramos el filler en el panel de la derecha antes de actualizar
+        // los botones
+        cl.show(pnlRight, "filler");
+
+        lstFuncionarios.setListData(
+                sistema.getFuncionarios().stream().map(f -> f.toString()).toArray(String[]::new));
+
+        lstArticulos.setListData(
+                sistema.getArticulos().stream().map(f -> f.toString()).toArray(String[]::new));
+
+        // Botones sin carga
+        for (int y = 0; y < buttons.length; y++) {
+            JButton[] row = buttons[y];
+            for (int x = 0; x < row.length; x++) {
+                JButton button = row[x];
+
+                if (button.getModel().isRollover()) {
+                    button.setBackground(Color.RED);
+                    button.setForeground(Color.WHITE);
+                } else {
+                    button.setBackground(Color.WHITE);
+                    button.setForeground(Color.BLACK);
+                }
+
+                removeAllActionListeners(button);
+                final int _x = x;
+                final int _y = y;
+
+                button.addActionListener(
+                        new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
 
-                      hydrate();
+                        hydrate();
 
-                      cl.show(pnlRight, "egreso");
+                        cl.show(pnlRight, "ingreso");
 
-                      lblCodigoContent.setText("" + c.getCodigo());
-                      lblArticuloContent.setText(c.getArticulo().toString());
-                      lblCantidadContent.setText("" + c.getCantidad());
-                      lblFuncionarioContent.setText(c.getFuncionario().toString());
-
-                      btnEgresar.addActionListener(
-                          new ActionListener() {
+                        removeAllActionListeners(btnIngresar);
+                        btnIngresar.addActionListener(
+                                new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
-                              sistema.eliminarCarga(c);
-                              hydrate();
+                                Funcionario f = null;
+                                Articulo a = null;
+                                int cantidad = 0;
+                                int codigo = 0;
+
+                                if (lstFuncionarios.isSelectionEmpty()) {
+                                    showError("Ingrese un funcionario.");
+                                } else if (lstArticulos.isSelectionEmpty()) {
+                                    showError("Ingrese un artículo.");
+                                } else if (!Pattern.matches("[0-9]+", fieldIngresoCantidad.getText())) {
+                                    showError("Ingrese la cantidad.");
+                                } else if (!Pattern.matches("[0-9]+", fieldIngresoCodigo.getText())) {
+                                    showError("Ingrese la codigo.");
+                                } else {
+                                    f = sistema.getFuncionarios().get(lstFuncionarios.getSelectedIndex());
+                                    a = sistema.getArticulos().get(lstArticulos.getSelectedIndex());
+                                    cantidad = Integer.parseInt(fieldIngresoCantidad.getText());
+                                    codigo = Integer.parseInt(fieldIngresoCodigo.getText());
+                                }
+                                Posicion posicion = new Posicion(areaSeleccionada, _x, _y);
+
+                                sistema.agregarCarga(codigo, a, f, cantidad, posicion);
+
+                                hydrate();
                             }
-                          });
+                        });
                     }
-                  });
-            });
-  }
+                });
+            }
+        }
 
-  private void removeAllActionListeners(JButton b) {
-    for (ActionListener al : b.getActionListeners()) {
-      b.removeActionListener(al);
+        // Botones con carga
+        sistema.getCargas().stream()
+                .filter(c -> c.getPosicion().getArea() == areaSeleccionada)
+                .forEach(
+                        c -> {
+                            Posicion p = c.getPosicion();
+
+                            JButton b = this.buttons[p.getFila()][p.getColumna()];
+
+                            removeAllActionListeners(b);
+                            b.addActionListener(
+                                    new ActionListener() {
+                                public void actionPerformed(ActionEvent e) {
+
+                                    hydrate();
+
+                                    cl.show(pnlRight, "egreso");
+
+                                    lblCodigoContent.setText("" + c.getCodigo());
+                                    lblArticuloContent.setText(c.getArticulo().toString());
+                                    lblCantidadContent.setText("" + c.getCantidad());
+                                    lblFuncionarioContent.setText(c.getFuncionario().toString());
+
+                                    btnEgresar.addActionListener(
+                                            new ActionListener() {
+                                        public void actionPerformed(ActionEvent e) {
+                                            sistema.eliminarCarga(c);
+                                            hydrate();
+                                        }
+                                    });
+                                }
+                            });
+                        });
     }
-  }
 
-  private void setAreaSeleccionada(int area) {
-    if (area >= 0 && area < 5) {
-      this.areaSeleccionada = area;
-      hydrate();
+    private void removeAllActionListeners(JButton b) {
+        for (ActionListener al : b.getActionListeners()) {
+            b.removeActionListener(al);
+        }
     }
-  }
 
-  /**
-   * This method is called from within the constructor to initialize the form.
-   * WARNING: Do NOT
-   * modify this code. The content of this method is always regenerated by the
-   * Form Editor.
-   */
-  @SuppressWarnings("unchecked")
-  // <editor-fold defaultstate="collapsed" desc="Generated
+    private void setAreaSeleccionada(int area) {
+        if (area >= 0 && area < 5) {
+            this.areaSeleccionada = area;
+            hydrate();
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -541,71 +557,77 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-  private void btnPreviousAreaActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_PreviousAreaButtonActionPerformed
-    if (this.areaSeleccionada > 0) {
-      setAreaSeleccionada(this.areaSeleccionada - 1);
+    private void btnPreviousAreaActionPerformed(
+            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_PreviousAreaButtonActionPerformed
+        if (this.areaSeleccionada > 0) {
+            setAreaSeleccionada(this.areaSeleccionada - 1);
+        }
+    } // GEN-LAST:event_PreviousAreaButtonActionPerformed
+
+    private void btnNextAreaActionPerformed(
+            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_NextAreaButtonActionPerformed
+        if (this.areaSeleccionada < 5) {
+            setAreaSeleccionada(areaSeleccionada + 1);
+        }
+    } // GEN-LAST:event_NextAreaButtonActionPerformed
+
+    private void btnEgresarActionPerformed(
+            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnEgresarActionPerformed
+    } // GEN-LAST:event_btnEgresarActionPerformed
+
+    public void showError(String msg) {
+        JOptionPane.showMessageDialog(null,
+                msg,
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
     }
-  } // GEN-LAST:event_PreviousAreaButtonActionPerformed
-
-  private void btnNextAreaActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_NextAreaButtonActionPerformed
-    if (this.areaSeleccionada < 5) {
-      setAreaSeleccionada(areaSeleccionada + 1);
-    }
-  } // GEN-LAST:event_NextAreaButtonActionPerformed
-
-  private void btnEgresarActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnEgresarActionPerformed
-  } // GEN-LAST:event_btnEgresarActionPerformed
-
-  // /**
-  // * @param args the command line arguments
-  // */
-  // public static void main(String args[]) {
-  // /* Set the Nimbus look and feel */
-  // //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-  // (optional) ">
-  // /* If Nimbus (introduced in Java SE 6) is not available, stay with the
-  // default look and
-  // feel.
-  // * For details see
-  // http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-  // */
-  // try {
-  // for (javax.swing.UIManager.LookAndFeelInfo info :
-  // javax.swing.UIManager.getInstalledLookAndFeels()) {
-  // if ("Nimbus".equals(info.getName())) {
-  // javax.swing.UIManager.setLookAndFeel(info.getClassName());
-  // break;
-  // }
-  // }
-  // } catch (ClassNotFoundException ex) {
-  //
-  // java.util.logging.Logger.getLogger(IngresoEgresoCarga.class.getName()).log(java.util.logging.Level.SEVERE,
-  // null, ex);
-  // } catch (InstantiationException ex) {
-  //
-  // java.util.logging.Logger.getLogger(IngresoEgresoCarga.class.getName()).log(java.util.logging.Level.SEVERE,
-  // null, ex);
-  // } catch (IllegalAccessException ex) {
-  //
-  // java.util.logging.Logger.getLogger(IngresoEgresoCarga.class.getName()).log(java.util.logging.Level.SEVERE,
-  // null, ex);
-  // } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-  //
-  // java.util.logging.Logger.getLogger(IngresoEgresoCarga.class.getName()).log(java.util.logging.Level.SEVERE,
-  // null, ex);
-  // }
-  // //</editor-fold>
-  //
-  // /* Create and display the form */
-  // java.awt.EventQueue.invokeLater(new Runnable() {
-  // public void run() {
-  // new IngresoEgresoCarga().setVisible(true);
-  // }
-  // });
-  // }
+    // /**
+    // * @param args the command line arguments
+    // */
+    // public static void main(String args[]) {
+    // /* Set the Nimbus look and feel */
+    // //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+    // (optional) ">
+    // /* If Nimbus (introduced in Java SE 6) is not available, stay with the
+    // default look and
+    // feel.
+    // * For details see
+    // http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+    // */
+    // try {
+    // for (javax.swing.UIManager.LookAndFeelInfo info :
+    // javax.swing.UIManager.getInstalledLookAndFeels()) {
+    // if ("Nimbus".equals(info.getName())) {
+    // javax.swing.UIManager.setLookAndFeel(info.getClassName());
+    // break;
+    // }
+    // }
+    // } catch (ClassNotFoundException ex) {
+    //
+    // java.util.logging.Logger.getLogger(IngresoEgresoCarga.class.getName()).log(java.util.logging.Level.SEVERE,
+    // null, ex);
+    // } catch (InstantiationException ex) {
+    //
+    // java.util.logging.Logger.getLogger(IngresoEgresoCarga.class.getName()).log(java.util.logging.Level.SEVERE,
+    // null, ex);
+    // } catch (IllegalAccessException ex) {
+    //
+    // java.util.logging.Logger.getLogger(IngresoEgresoCarga.class.getName()).log(java.util.logging.Level.SEVERE,
+    // null, ex);
+    // } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+    //
+    // java.util.logging.Logger.getLogger(IngresoEgresoCarga.class.getName()).log(java.util.logging.Level.SEVERE,
+    // null, ex);
+    // }
+    // //</editor-fold>
+    //
+    // /* Create and display the form */
+    // java.awt.EventQueue.invokeLater(new Runnable() {
+    // public void run() {
+    // new IngresoEgresoCarga().setVisible(true);
+    // }
+    // });
+    // }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEgresar;
