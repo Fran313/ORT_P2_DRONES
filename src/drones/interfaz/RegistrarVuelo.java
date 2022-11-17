@@ -142,6 +142,7 @@ public class RegistrarVuelo extends javax.swing.JFrame {
         tblDiff = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrar Vuelo");
         setPreferredSize(new java.awt.Dimension(1000, 800));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 800));

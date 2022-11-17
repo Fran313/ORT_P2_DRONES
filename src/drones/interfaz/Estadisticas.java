@@ -16,18 +16,18 @@ import javax.swing.event.ListSelectionListener;
  *
  * @author Franc
  */
-public class Statistics extends javax.swing.JFrame {
+public class Estadisticas extends javax.swing.JFrame {
     
     private Sistema sistema;
 
     /**
      * Creates new form Statistics
      */
-    public Statistics() {
+    public Estadisticas() {
         initComponents();
     }
     
-    public Statistics (Sistema s){
+    public Estadisticas (Sistema s){
         this.sistema = s;
         initComponents();
         

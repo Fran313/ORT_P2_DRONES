@@ -53,12 +53,13 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
         tblFuncionarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Funcionarios");
+        setTitle("Registrar Funcionario");
         setPreferredSize(new java.awt.Dimension(1200, 400));
         setResizable(false);
         setSize(new java.awt.Dimension(1200, 400));
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
+        pnlIngresoDatos.setToolTipText("");
         pnlIngresoDatos.setName(""); // NOI18N
         java.awt.GridBagLayout pnlIngresoDatosLayout = new java.awt.GridBagLayout();
         pnlIngresoDatosLayout.columnWidths = new int[] {0, 35, 0, 35, 0, 35, 0, 35, 0, 35, 0, 35, 0, 35, 0};

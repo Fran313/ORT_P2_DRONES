@@ -46,7 +46,7 @@ public class RegistrarArticulo extends javax.swing.JFrame {
         tblArticulos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Artículos");
+        setTitle("Registrar Artículo");
         setPreferredSize(new java.awt.Dimension(1200, 400));
         setResizable(false);
         setSize(new java.awt.Dimension(1200, 400));
