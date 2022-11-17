@@ -42,6 +42,22 @@ public class RegistrarVuelo extends javax.swing.JFrame {
   }
 
   private void hydrate(Vuelo v) {
+    if (v == null) {
+      DefaultTableCellRenderer nullRenderer = new DefaultTableCellRenderer();
+
+      for (int col = 1; col <= 10; col++) {
+        tblDiff.getColumnModel().getColumn(col).setCellRenderer(nullRenderer);
+        for (int row = 0; row < 2; row++) {
+          tblDiff.setValueAt(null, row, col);
+        }
+      }
+
+      lblFila.setText("");
+      lblTotalCoincidencias.setText("");
+      lblTotalDiferencias.setText("");
+
+      return;
+    }
     lblFila.setText("Area: " + String.valueOf(Posicion.areaCode(v.getArea())) + " Fila: " + (v.getFila() + 1));
     int[] archivo = new int[10];
     int sizeDatos = v.getDatos().size();
@@ -100,6 +116,9 @@ public class RegistrarVuelo extends javax.swing.JFrame {
       } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Mal formato de archivo", "Error", JOptionPane.ERROR_MESSAGE);
       }
+    } else if (evt.getActionCommand() == JFileChooser.CANCEL_SELECTION) {
+      hydrate(null);
+
     }
   } // GEN-LAST:event_jFileChooser1ActionPerformed
 
