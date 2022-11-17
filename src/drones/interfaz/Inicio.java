@@ -60,6 +60,7 @@ public class Inicio extends javax.swing.JFrame {
   private void openFrame(javax.swing.JFrame frame) {
     javax.swing.JFrame inicio = this;
     inicio.setVisible(false);
+    frame.setLocationRelativeTo(null);
     frame.setVisible(true);
     frame.addWindowListener(
         new WindowAdapter() {

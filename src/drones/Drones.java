@@ -60,6 +60,7 @@ class Drones {
 
 
     Inicio inicio = new Inicio(sistema);
+    inicio.setLocationRelativeTo(null);
     inicio.setVisible(true);
   }
 }
