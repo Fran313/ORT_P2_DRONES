@@ -79,6 +79,7 @@ public class Statistics extends javax.swing.JFrame {
         lstInfoVuelos = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Estadísticas");
         setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(700, 700));
         setResizable(false);
