@@ -9,15 +9,12 @@ import drones.dominio.Sistema;
 import drones.dominio.Vuelo;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.io.File;
 import java.nio.file.Paths;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
 
 /**
  * @author Franc
@@ -34,11 +31,6 @@ public class RegistrarVuelo extends javax.swing.JFrame {
     // Set working directory as current directory
     File workingDirectory = new File(System.getProperty("user.dir"));
     jFileChooser1.setCurrentDirectory(workingDirectory);
-
-    // Center all table cells
-    DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-    centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-    tblDiff.setDefaultRenderer(Object.class, centerRenderer);
   }
 
   private void hydrate(Vuelo v) {
@@ -81,8 +73,10 @@ public class RegistrarVuelo extends javax.swing.JFrame {
 
     DefaultTableCellRenderer redRenderer = new DefaultTableCellRenderer();
     redRenderer.setBackground(Color.RED);
+    redRenderer.setHorizontalAlignment(JLabel.CENTER);
     DefaultTableCellRenderer greenRenderer = new DefaultTableCellRenderer();
     greenRenderer.setBackground(Color.GREEN);
+    greenRenderer.setHorizontalAlignment(JLabel.CENTER);
 
     int coincidencias = 0;
     for (int col = 0; col < sizeDatos; col++) {
