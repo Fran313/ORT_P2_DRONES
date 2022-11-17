@@ -240,12 +240,13 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         fillerRight = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ingreso/Egreso Carga");
         setMinimumSize(new java.awt.Dimension(1200, 500));
         setPreferredSize(new java.awt.Dimension(1200, 500));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
-        pnlLeft.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        pnlLeft.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnlLeft.setLayout(new java.awt.BorderLayout());
 
         lblArea.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -381,7 +382,8 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
 
         getContentPane().add(pnlLeft);
 
-        pnlRight.setBorder(javax.swing.BorderFactory.createEmptyBorder(70, 20, 70, 20));
+        pnlRight.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        pnlRight.setToolTipText("");
         pnlRight.setLayout(new java.awt.CardLayout());
 
         pnlIngreso.setBackground(new java.awt.Color(51, 255, 51));

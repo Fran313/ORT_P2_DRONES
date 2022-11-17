@@ -16,18 +16,18 @@ import javax.swing.event.ListSelectionListener;
  *
  * @author Franc
  */
-public class Statistics extends javax.swing.JFrame {
+public class Estadisticas extends javax.swing.JFrame {
     
     private Sistema sistema;
 
     /**
      * Creates new form Statistics
      */
-    public Statistics() {
+    public Estadisticas() {
         initComponents();
     }
     
-    public Statistics (Sistema s){
+    public Estadisticas (Sistema s){
         this.sistema = s;
         initComponents();
         
@@ -79,6 +79,8 @@ public class Statistics extends javax.swing.JFrame {
         lstInfoVuelos = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Estadísticas");
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(700, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(700, 700));

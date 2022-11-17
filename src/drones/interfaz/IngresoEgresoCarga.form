@@ -3,6 +3,7 @@
 <Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Ingreso/Egreso Carga"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1200, 500]"/>
     </Property>
@@ -37,7 +38,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-            <EmptyBorder bottom="5" left="5" right="5" top="5"/>
+            <EmptyBorder bottom="10" left="10" right="10" top="10"/>
           </Border>
         </Property>
       </Properties>
@@ -303,9 +304,10 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-            <EmptyBorder bottom="70" left="20" right="20" top="70"/>
+            <EmptyBorder bottom="30" left="30" right="30" top="30"/>
           </Border>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>

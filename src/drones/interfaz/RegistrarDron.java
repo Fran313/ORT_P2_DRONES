@@ -51,6 +51,8 @@ public class RegistrarDron extends javax.swing.JFrame {
         tblDrones = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrar Dron");
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(1200, 400));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));

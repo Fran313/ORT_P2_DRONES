@@ -93,6 +93,7 @@ public class Inicio extends javax.swing.JFrame {
         btnTerminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio");
         setResizable(false);
 
         pnlButtons.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -111,7 +112,7 @@ public class Inicio extends javax.swing.JFrame {
         });
         pnlButtons.add(btnIngresoEgresoCarga);
 
-        btnRegistroDeVuelo.setText("Registro de Vuelo");
+        btnRegistroDeVuelo.setText("Registrar Vuelo");
         btnRegistroDeVuelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroDeVueloActionPerformed(evt);
@@ -165,7 +166,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
-        Statistics stats = new Statistics(this.sistema);
+        Estadisticas stats = new Estadisticas(this.sistema);
         openFrame(stats);
     }//GEN-LAST:event_btnEstadisticasActionPerformed
 
