@@ -18,18 +18,18 @@ public class Vuelo implements Serializable {
   private Dron dron;
   private int area;
   private int fila;
-  ArrayList<Integer> datos = new ArrayList<>();
   private Path fileName;
-  private int[] diff;
+  private ArrayList<Integer> datos;
+  private int[] manual;
 
-  public Vuelo(Dron dron, int area, int fila, ArrayList<Integer> datos, Path fileName,
-      int[] diff) {
+  public Vuelo(Dron dron, int area, int fila, Path fileName, ArrayList<Integer> datos,
+      int[] manual) {
     this.dron = dron;
     this.fila = fila;
     this.area = area;
-    this.datos = datos;
     this.fileName = fileName;
-    this.diff = diff;
+    this.datos = datos;
+    this.manual = manual;
   }
 
   public static Vuelo fromFile(Path path, Sistema sistema) throws Exception {
@@ -63,39 +63,21 @@ public class Vuelo implements Serializable {
       throw new Exception("El archivo tiene formato incorrecto");
     }
 
-    // Calculo coincidencias y diferencias
-    int[] archivo = new int[10];
     int[] manual = new int[10];
-    int coincidencias = 0;
-    int diferencias = 0;
-    int sizeDatos = datos.size();
-
-    for (int i = 0; i < sizeDatos; i++) {
-      archivo[i] = datos.get(i);
-    }
 
     for (Carga c : sistema.getCargas()) {
       if (c.getPosicion().getFila() == fila && c.getPosicion().getArea() == intArea) {
         manual[c.getPosicion().getColumna()] = c.getCodigo();
       }
     }
-    int[] diff = new int[10];
 
-    for (int col = 0; col < sizeDatos; col++) {
-      int coincidencia = 0;
-      if (archivo[col] == manual[col]) {
-        coincidencia = 1;
-      }
-      diff[col] = coincidencia;
-    }
-
-    Vuelo vuelo = new Vuelo(dron, intArea, fila, datos, path.getFileName(), diff);
+    Vuelo vuelo = new Vuelo(dron, intArea, fila, path.getFileName(), datos, manual);
     dron.agregarVuelo(vuelo);
     return vuelo;
   }
 
   public Dron getDron() {
-    return this.dron;
+    return dron;
   }
 
   public void setDron(Dron dron) {
@@ -103,11 +85,11 @@ public class Vuelo implements Serializable {
   }
 
   public int getFila() {
-    return this.fila;
+    return fila;
   }
 
   public int getArea() {
-    return this.area;
+    return area;
   }
 
   public void setFila(int fila) {
@@ -119,19 +101,44 @@ public class Vuelo implements Serializable {
   }
 
   public ArrayList<Integer> getDatos() {
-    return this.datos;
+    return datos;
   }
 
-  public void setDatos(ArrayList<Integer> datos) {
-    this.datos = datos;
+  public int[] getManual() {
+    return manual;
   }
 
   public Boolean getExito() {
     return datos.size() == 10;
   }
 
+  public int[] getReading() {
+    int[] reading = new int[10];
+    for (int i = 0; i < datos.size(); i++) {
+      reading[i] = datos.get(i);
+    }
+    return reading;
+  }
+
+  public int[] getDiff() {
+    int[] diff = new int[10];
+    int[] reading = getReading();
+
+    for (int col = 0; col < reading.length; col++) {
+      int coincidencia = 0;
+      if (reading[col] == manual[col]) {
+        coincidencia = 1;
+      }
+      diff[col] = coincidencia;
+    }
+    return diff;
+
+  }
+
   public int getCoincidencias() {
     int coincidencias = 0;
+    int[] diff = getDiff();
+
     for (int colDiff : diff) {
       if (colDiff == 1)
         coincidencias++;
@@ -146,13 +153,13 @@ public class Vuelo implements Serializable {
   @Override
   public String toString() {
     String response;
-    if (this.getExito()) {
-      response = "Nombre de archivo: " + this.fileName + " - Area: " + this.area
-          + " - Fila: " + this.fila + " - Coincidencias: " + this.getCoincidencias() +
-          " - Diferencias: " + this.getDiferencias();
+    if (getExito()) {
+      response = "Nombre de archivo: " + fileName + " - Area: " + area
+          + " - Fila: " + fila + " - Coincidencias: " + getCoincidencias() +
+          " - Diferencias: " + getDiferencias();
     } else {
-      response = "Nombre de archivo: " + this.fileName + " - Area: " + this.area
-          + " - Fila: " + this.fila + " - Cantidad de lineas de carga: " + this.getDatos().size();
+      response = "Nombre de archivo: " + fileName + " - Area: " + area
+          + " - Fila: " + fila + " - Cantidad de lineas de carga: " + datos.size();
     }
     return response;
   }

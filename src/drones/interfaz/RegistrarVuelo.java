@@ -51,25 +51,6 @@ public class RegistrarVuelo extends javax.swing.JFrame {
       return;
     }
     lblFila.setText("Area: " + String.valueOf(Posicion.areaCode(v.getArea())) + " Fila: " + (v.getFila() + 1));
-    int[] archivo = new int[10];
-    int sizeDatos = v.getDatos().size();
-
-    for (int i = 0; i < sizeDatos; i++) {
-      archivo[i] = v.getDatos().get(i);
-    }
-
-    int[] manual = new int[10];
-
-    sistema.getCargas().stream()
-        .filter(
-            c -> {
-              Posicion p = c.getPosicion();
-              return p.getFila() == v.getFila() && p.getArea() == v.getArea();
-            })
-        .forEach(
-            c -> {
-              manual[c.getPosicion().getColumna()] = c.getCantidad();
-            });
 
     DefaultTableCellRenderer redRenderer = new DefaultTableCellRenderer();
     redRenderer.setBackground(Color.RED);
@@ -78,24 +59,16 @@ public class RegistrarVuelo extends javax.swing.JFrame {
     greenRenderer.setBackground(Color.GREEN);
     greenRenderer.setHorizontalAlignment(JLabel.CENTER);
 
-    int coincidencias = 0;
-    for (int col = 0; col < sizeDatos; col++) {
-      DefaultTableCellRenderer renderer;
-      if (archivo[col] == manual[col]) {
-        renderer = greenRenderer;
-        coincidencias++;
-      } else {
-        renderer = redRenderer;
-      }
-      tblDiff.getColumnModel().getColumn(col + 1).setCellRenderer(renderer);
+    for (int col = 0; col < v.getDatos().size(); col++) {
+      tblDiff.getColumnModel().getColumn(col + 1).setCellRenderer(v.getDiff()[col] == 1 ? greenRenderer : redRenderer);
     }
 
-    lblTotalCoincidencias.setText("Total de coincidencias: " + coincidencias);
-    lblTotalDiferencias.setText("Total de diferencias: " + (sizeDatos - coincidencias));
+    lblTotalCoincidencias.setText("Total de coincidencias: " + v.getCoincidencias());
+    lblTotalDiferencias.setText("Total de diferencias: " + v.getDiferencias());
 
     for (int col = 0; col < 10; col++) {
-      tblDiff.setValueAt(archivo[col], 0, col + 1);
-      tblDiff.setValueAt(manual[col], 1, col + 1);
+      tblDiff.setValueAt(v.getReading()[col], 0, col + 1);
+      tblDiff.setValueAt(v.getManual()[col], 1, col + 1);
     }
 
   }
@@ -109,6 +82,7 @@ public class RegistrarVuelo extends javax.swing.JFrame {
         hydrate(vuelo);
       } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Mal formato de archivo", "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace(System.out);
       }
     } else if (evt.getActionCommand() == JFileChooser.CANCEL_SELECTION) {
       hydrate(null);
