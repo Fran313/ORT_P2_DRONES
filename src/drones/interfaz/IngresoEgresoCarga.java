@@ -73,7 +73,15 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
       JButton[] row = buttons[y];
       for (int x = 0; x < row.length; x++) {
         JButton button = row[x];
-        button.setForeground(Color.BLACK);
+
+        if (button.getModel().isRollover()) {
+          button.setBackground(Color.RED);
+          button.setForeground(Color.WHITE);
+        } else {
+          button.setBackground(Color.WHITE);
+          button.setForeground(Color.BLACK);
+        }
+
         removeAllActionListeners(button);
         final int _x = x;
         final int _y = y;
@@ -81,7 +89,11 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         button.addActionListener(
             new ActionListener() {
               public void actionPerformed(ActionEvent e) {
+
+                hydrate();
+
                 cl.show(pnlRight, "ingreso");
+
                 removeAllActionListeners(btnIngresar);
                 btnIngresar.addActionListener(
                     new ActionListener() {
@@ -115,6 +127,9 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
               b.addActionListener(
                   new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
+
+                      hydrate();
+
                       cl.show(pnlRight, "egreso");
 
                       lblCodigoContent.setText("" + c.getCodigo());
@@ -131,7 +146,6 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
                           });
                     }
                   });
-              b.setForeground(Color.RED);
             });
   }
 
