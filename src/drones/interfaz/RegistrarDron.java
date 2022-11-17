@@ -46,11 +46,14 @@ public class RegistrarDron extends javax.swing.JFrame {
         lblTipo = new javax.swing.JLabel();
         txtTipo = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
-        pnlDatosDron = new javax.swing.JPanel();
+        pnlDatosDrones = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDrones = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(1200, 400));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
         java.awt.GridBagLayout pnlIngresoDatosLayout = new java.awt.GridBagLayout();
@@ -124,6 +127,9 @@ public class RegistrarDron extends javax.swing.JFrame {
 
         getContentPane().add(pnlIngresoDatos);
 
+        pnlDatosDrones.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        pnlDatosDrones.setLayout(new java.awt.BorderLayout());
+
         tblDrones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -157,22 +163,9 @@ public class RegistrarDron extends javax.swing.JFrame {
             tblDrones.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        javax.swing.GroupLayout pnlDatosDronLayout = new javax.swing.GroupLayout(pnlDatosDron);
-        pnlDatosDron.setLayout(pnlDatosDronLayout);
-        pnlDatosDronLayout.setHorizontalGroup(
-            pnlDatosDronLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDatosDronLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 24, Short.MAX_VALUE))
-        );
-        pnlDatosDronLayout.setVerticalGroup(
-            pnlDatosDronLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDatosDronLayout.createSequentialGroup()
-                .addGap(0, 25, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        pnlDatosDrones.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnlDatosDron);
+        getContentPane().add(pnlDatosDrones);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,7 +224,7 @@ public class RegistrarDron extends javax.swing.JFrame {
     private javax.swing.JLabel lblIdentificacion;
     private javax.swing.JLabel lblModelo;
     private javax.swing.JLabel lblTipo;
-    private javax.swing.JPanel pnlDatosDron;
+    private javax.swing.JPanel pnlDatosDrones;
     private javax.swing.JPanel pnlIngresoDatos;
     private javax.swing.JTable tblDrones;
     private javax.swing.JTextField txtIdentificacion;

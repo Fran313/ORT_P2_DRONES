@@ -127,94 +127,103 @@ public class RegistrarVuelo extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated
   // <editor-fold defaultstate="collapsed" desc="Generated
   // <editor-fold defaultstate="collapsed" desc="Generated
-  // Code">//GEN-BEGIN:initComponents
-  private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-    jFileChooser1 = new javax.swing.JFileChooser();
-    pnlDiff = new javax.swing.JPanel();
-    lblFila = new javax.swing.JLabel();
-    jPanel3 = new javax.swing.JPanel();
-    lblTotalCoincidencias = new javax.swing.JLabel();
-    lblTotalDiferencias = new javax.swing.JLabel();
-    jScrollPane2 = new javax.swing.JScrollPane();
-    tblDiff = new javax.swing.JTable();
+        pnlContent = new javax.swing.JPanel();
+        jFileChooser1 = new javax.swing.JFileChooser();
+        pnlDiff = new javax.swing.JPanel();
+        lblFila = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lblTotalCoincidencias = new javax.swing.JLabel();
+        lblTotalDiferencias = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblDiff = new javax.swing.JTable();
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    getContentPane().setLayout(new java.awt.GridLayout(2, 1));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 800));
+        setResizable(false);
+        setSize(new java.awt.Dimension(800, 800));
 
-    jFileChooser1.setApproveButtonToolTipText("");
-    jFileChooser1.setCurrentDirectory(null);
-    jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jFileChooser1ActionPerformed(evt);
-      }
-    });
-    getContentPane().add(jFileChooser1);
+        pnlContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        pnlContent.setLayout(new java.awt.GridLayout(2, 1));
 
-    pnlDiff.setLayout(new java.awt.BorderLayout());
-    pnlDiff.add(lblFila, java.awt.BorderLayout.NORTH);
+        jFileChooser1.setApproveButtonToolTipText("");
+        jFileChooser1.setCurrentDirectory(null);
+        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFileChooser1ActionPerformed(evt);
+            }
+        });
+        pnlContent.add(jFileChooser1);
 
-    jPanel3.setLayout(new java.awt.GridLayout(2, 1));
-    jPanel3.add(lblTotalCoincidencias);
-    jPanel3.add(lblTotalDiferencias);
+        pnlDiff.setLayout(new java.awt.BorderLayout());
+        pnlDiff.add(lblFila, java.awt.BorderLayout.NORTH);
 
-    pnlDiff.add(jPanel3, java.awt.BorderLayout.SOUTH);
+        jPanel3.setLayout(new java.awt.GridLayout(2, 1));
+        jPanel3.add(lblTotalCoincidencias);
+        jPanel3.add(lblTotalDiferencias);
 
-    tblDiff.setModel(new javax.swing.table.DefaultTableModel(
-        new Object[][] {
-            { "Archivo", null, null, null, null, null, null, null, null, null, null },
-            { "Manual", null, null, null, null, null, null, null, null, null, null }
-        },
-        new String[] {
-            "De", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
-        }) {
-      Class[] types = new Class[] {
-          java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class,
-          java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class,
-          java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-      };
-      boolean[] canEdit = new boolean[] {
-          false, false, false, false, false, false, false, false, false, false, false
-      };
+        pnlDiff.add(jPanel3, java.awt.BorderLayout.SOUTH);
 
-      public Class getColumnClass(int columnIndex) {
-        return types[columnIndex];
-      }
+        tblDiff.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Archivo", null, null, null, null, null, null, null, null, null, null},
+                {"Manual", null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "De", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false
+            };
 
-      public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return canEdit[columnIndex];
-      }
-    });
-    jScrollPane2.setViewportView(tblDiff);
-    if (tblDiff.getColumnModel().getColumnCount() > 0) {
-      tblDiff.getColumnModel().getColumn(0).setResizable(false);
-      tblDiff.getColumnModel().getColumn(1).setResizable(false);
-      tblDiff.getColumnModel().getColumn(2).setResizable(false);
-      tblDiff.getColumnModel().getColumn(3).setResizable(false);
-      tblDiff.getColumnModel().getColumn(4).setResizable(false);
-      tblDiff.getColumnModel().getColumn(5).setResizable(false);
-      tblDiff.getColumnModel().getColumn(6).setResizable(false);
-      tblDiff.getColumnModel().getColumn(7).setResizable(false);
-      tblDiff.getColumnModel().getColumn(8).setResizable(false);
-      tblDiff.getColumnModel().getColumn(9).setResizable(false);
-      tblDiff.getColumnModel().getColumn(10).setResizable(false);
-    }
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-    pnlDiff.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tblDiff);
+        if (tblDiff.getColumnModel().getColumnCount() > 0) {
+            tblDiff.getColumnModel().getColumn(0).setResizable(false);
+            tblDiff.getColumnModel().getColumn(1).setResizable(false);
+            tblDiff.getColumnModel().getColumn(2).setResizable(false);
+            tblDiff.getColumnModel().getColumn(3).setResizable(false);
+            tblDiff.getColumnModel().getColumn(4).setResizable(false);
+            tblDiff.getColumnModel().getColumn(5).setResizable(false);
+            tblDiff.getColumnModel().getColumn(6).setResizable(false);
+            tblDiff.getColumnModel().getColumn(7).setResizable(false);
+            tblDiff.getColumnModel().getColumn(8).setResizable(false);
+            tblDiff.getColumnModel().getColumn(9).setResizable(false);
+            tblDiff.getColumnModel().getColumn(10).setResizable(false);
+        }
 
-    getContentPane().add(pnlDiff);
+        pnlDiff.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
-    pack();
-  }// </editor-fold>//GEN-END:initComponents
+        pnlContent.add(pnlDiff);
 
-  // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JFileChooser jFileChooser1;
-  private javax.swing.JPanel jPanel3;
-  private javax.swing.JScrollPane jScrollPane2;
-  private javax.swing.JLabel lblFila;
-  private javax.swing.JLabel lblTotalCoincidencias;
-  private javax.swing.JLabel lblTotalDiferencias;
-  private javax.swing.JPanel pnlDiff;
-  private javax.swing.JTable tblDiff;
-  // End of variables declaration//GEN-END:variables
+        getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblFila;
+    private javax.swing.JLabel lblTotalCoincidencias;
+    private javax.swing.JLabel lblTotalDiferencias;
+    private javax.swing.JPanel pnlContent;
+    private javax.swing.JPanel pnlDiff;
+    private javax.swing.JTable tblDiff;
+    // End of variables declaration//GEN-END:variables
 }

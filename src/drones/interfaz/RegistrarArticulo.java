@@ -47,7 +47,9 @@ public class RegistrarArticulo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Artículos");
-        setMinimumSize(new java.awt.Dimension(1200, 700));
+        setPreferredSize(new java.awt.Dimension(1200, 400));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1200, 400));
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
         java.awt.GridBagLayout pnlIngresoArticulosLayout = new java.awt.GridBagLayout();
@@ -106,6 +108,9 @@ public class RegistrarArticulo extends javax.swing.JFrame {
 
         getContentPane().add(pnlIngresoArticulos);
 
+        pnlArticulos.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        pnlArticulos.setLayout(new java.awt.BorderLayout());
+
         tblArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -135,21 +140,7 @@ public class RegistrarArticulo extends javax.swing.JFrame {
             tblArticulos.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        javax.swing.GroupLayout pnlArticulosLayout = new javax.swing.GroupLayout(pnlArticulos);
-        pnlArticulos.setLayout(pnlArticulosLayout);
-        pnlArticulosLayout.setHorizontalGroup(
-            pnlArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlArticulosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        pnlArticulosLayout.setVerticalGroup(
-            pnlArticulosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlArticulosLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
-        );
+        pnlArticulos.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlArticulos);
 

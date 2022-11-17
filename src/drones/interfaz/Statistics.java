@@ -63,6 +63,8 @@ public class Statistics extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlContent = new javax.swing.JPanel();
+        pnlLeft = new javax.swing.JPanel();
         pnlDronesConVuelos = new javax.swing.JPanel();
         lblDronesConVuelos = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -77,7 +79,15 @@ public class Statistics extends javax.swing.JFrame {
         lstInfoVuelos = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(2, 2));
+        setMinimumSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(700, 700));
+        setResizable(false);
+        setSize(new java.awt.Dimension(700, 700));
+
+        pnlContent.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 30, 30, 30));
+        pnlContent.setLayout(new java.awt.GridLayout(1, 2, 20, 0));
+
+        pnlLeft.setLayout(new java.awt.GridLayout(2, 1, 0, 20));
 
         pnlDronesConVuelos.setLayout(new java.awt.BorderLayout());
 
@@ -88,7 +98,7 @@ public class Statistics extends javax.swing.JFrame {
 
         pnlDronesConVuelos.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnlDronesConVuelos);
+        pnlLeft.add(pnlDronesConVuelos);
 
         pnlDronesSinVuelos.setLayout(new java.awt.BorderLayout());
 
@@ -99,7 +109,9 @@ public class Statistics extends javax.swing.JFrame {
 
         pnlDronesSinVuelos.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnlDronesSinVuelos);
+        pnlLeft.add(pnlDronesSinVuelos);
+
+        pnlContent.add(pnlLeft);
 
         pnlInfoVuelos.setLayout(new java.awt.BorderLayout());
 
@@ -110,7 +122,9 @@ public class Statistics extends javax.swing.JFrame {
 
         pnlInfoVuelos.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnlInfoVuelos);
+        pnlContent.add(pnlInfoVuelos);
+
+        getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -126,9 +140,11 @@ public class Statistics extends javax.swing.JFrame {
     private javax.swing.JList<String> lstDronesConVuelos;
     private javax.swing.JList<String> lstDronesSinVuelos;
     private javax.swing.JList<String> lstInfoVuelos;
+    private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlDronesConVuelos;
     private javax.swing.JPanel pnlDronesSinVuelos;
     private javax.swing.JPanel pnlInfoVuelos;
+    private javax.swing.JPanel pnlLeft;
     // End of variables declaration//GEN-END:variables
 
     private void hydrate() {

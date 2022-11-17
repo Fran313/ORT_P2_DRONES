@@ -93,6 +93,7 @@ public class Inicio extends javax.swing.JFrame {
         btnTerminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         pnlButtons.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnlButtons.setLayout(new java.awt.GridLayout(8, 1, 0, 10));

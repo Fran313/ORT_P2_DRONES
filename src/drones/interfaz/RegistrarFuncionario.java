@@ -54,8 +54,9 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Funcionarios");
-        setMinimumSize(new java.awt.Dimension(1200, 500));
-        setSize(new java.awt.Dimension(1200, 500));
+        setPreferredSize(new java.awt.Dimension(1200, 400));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1200, 400));
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
         pnlIngresoDatos.setName(""); // NOI18N
@@ -130,6 +131,9 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
 
         getContentPane().add(pnlIngresoDatos);
 
+        pnlDatosFuncionarios.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        pnlDatosFuncionarios.setLayout(new java.awt.BorderLayout());
+
         tblFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -159,21 +163,7 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
             tblFuncionarios.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        javax.swing.GroupLayout pnlDatosFuncionariosLayout = new javax.swing.GroupLayout(pnlDatosFuncionarios);
-        pnlDatosFuncionarios.setLayout(pnlDatosFuncionariosLayout);
-        pnlDatosFuncionariosLayout.setHorizontalGroup(
-            pnlDatosFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDatosFuncionariosLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnlDatosFuncionariosLayout.setVerticalGroup(
-            pnlDatosFuncionariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDatosFuncionariosLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        pnlDatosFuncionarios.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlDatosFuncionarios);
 
