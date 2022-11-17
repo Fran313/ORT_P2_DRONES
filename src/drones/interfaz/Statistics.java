@@ -7,6 +7,10 @@ package drones.interfaz;
 import drones.dominio.Dron;
 import drones.dominio.Sistema;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -23,11 +27,32 @@ public class Statistics extends javax.swing.JFrame {
         initComponents();
     }
     
-    public Statistics (Sistema sistema){
-        this.sistema = sistema;
+    public Statistics (Sistema s){
+        this.sistema = s;
         initComponents();
+        
+        lstDronesConVuelos.addListSelectionListener(new ListSelectionListener(){
+            @Override
+            public void valueChanged(ListSelectionEvent arg0) {
+                if(!(arg0.getValueIsAdjusting())){
+                    Dron dron = s.getDrones().stream().filter(d -> d.getIdentificacion()
+                                .equals(lstDronesConVuelos.getSelectedValue()))
+                                .collect(Collectors.toList()).get(0);
+                    
+                    String[] vuelos = new String[dron.getVuelos().size()];
+                    
+                    for (int i = 0; i < vuelos.length; i++) {
+                        vuelos[i] = dron.getVuelos().get(i).toString();   
+                    }
+                    lstInfoVuelos.setListData(vuelos);
+                }
+            }
+        });
+        
+        
         hydrate();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,14 +67,14 @@ public class Statistics extends javax.swing.JFrame {
         lblDronesConVuelos = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstDronesConVuelos = new javax.swing.JList<>();
-        pnlInfoVuelos = new javax.swing.JPanel();
-        lblInformacionVuelos = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lstInfoVuelos = new javax.swing.JList<>();
         pnlDronesSinVuelos = new javax.swing.JPanel();
         lblDronesSinVuelos = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstDronesSinVuelos = new javax.swing.JList<>();
+        pnlInfoVuelos = new javax.swing.JPanel();
+        lblInformacionVuelos = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstInfoVuelos = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridLayout(2, 2));
@@ -65,17 +90,6 @@ public class Statistics extends javax.swing.JFrame {
 
         getContentPane().add(pnlDronesConVuelos);
 
-        pnlInfoVuelos.setLayout(new java.awt.BorderLayout());
-
-        lblInformacionVuelos.setText("Informacion vuelos");
-        pnlInfoVuelos.add(lblInformacionVuelos, java.awt.BorderLayout.NORTH);
-
-        jScrollPane2.setViewportView(lstInfoVuelos);
-
-        pnlInfoVuelos.add(jScrollPane2, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(pnlInfoVuelos);
-
         pnlDronesSinVuelos.setLayout(new java.awt.BorderLayout());
 
         lblDronesSinVuelos.setText("Drones sin vuelos");
@@ -86,6 +100,17 @@ public class Statistics extends javax.swing.JFrame {
         pnlDronesSinVuelos.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlDronesSinVuelos);
+
+        pnlInfoVuelos.setLayout(new java.awt.BorderLayout());
+
+        lblInformacionVuelos.setText("Informacion vuelos");
+        pnlInfoVuelos.add(lblInformacionVuelos, java.awt.BorderLayout.NORTH);
+
+        jScrollPane2.setViewportView(lstInfoVuelos);
+
+        pnlInfoVuelos.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(pnlInfoVuelos);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,14 +166,12 @@ public class Statistics extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void hydrate() {
-        ArrayList<Dron> drones = this.sistema.getDrones();        
+        ArrayList<Dron> drones = this.sistema.getDrones();
         
         lstDronesConVuelos.setListData(drones.stream()
         .filter(d -> !d.getVuelos().isEmpty()).map(d -> d.toString()).toArray(String[]::new));
         
         lstDronesSinVuelos.setListData(drones.stream()
-        .filter(d -> d.getVuelos().isEmpty()).map(d -> d.toString()).toArray(String[]::new));
-        
-        
+        .filter(d -> d.getVuelos().isEmpty()).map(d -> d.toString()).toArray(String[]::new));        
     }
 }

@@ -28,7 +28,7 @@ public class Sistema implements Serializable {
     Articulo a = this.agregarArticulo("Bandera", "De peñarol");
     Funcionario f = this.agregarFuncionario("Franki", 19, 812763);
     Posicion p = new Posicion(0, 0, 0);
-    this.agregarCarga(1891, a, f, 7389099, p);
+    this.agregarCarga(1891, a, f, 20, p);
     this.agregarDron("holasoyDron1", "asdf", 2);
   }
 
