@@ -60,6 +60,7 @@ public class Inicio extends javax.swing.JFrame {
   private void openFrame(javax.swing.JFrame frame) {
     javax.swing.JFrame inicio = this;
     inicio.setVisible(false);
+    frame.setLocationRelativeTo(null);
     frame.setVisible(true);
     frame.addWindowListener(
         new WindowAdapter() {
@@ -81,6 +82,8 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlButtons = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         btnIngresoEgresoCarga = new javax.swing.JButton();
         btnRegistroDeVuelo = new javax.swing.JButton();
         btnRegistroArticulo = new javax.swing.JButton();
@@ -90,7 +93,14 @@ public class Inicio extends javax.swing.JFrame {
         btnTerminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(3, 2, 30, 30));
+
+        pnlButtons.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        pnlButtons.setLayout(new java.awt.GridLayout(7, 1, 0, 10));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Menú");
+        pnlButtons.add(jLabel1);
 
         btnIngresoEgresoCarga.setText("Ingreso/Egreso Carga");
         btnIngresoEgresoCarga.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +108,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnIngresoEgresoCargaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIngresoEgresoCarga);
+        pnlButtons.add(btnIngresoEgresoCarga);
 
         btnRegistroDeVuelo.setText("Registro de Vuelo");
         btnRegistroDeVuelo.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +116,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnRegistroDeVueloActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistroDeVuelo);
+        pnlButtons.add(btnRegistroDeVuelo);
 
         btnRegistroArticulo.setText("Registrar Articulo");
         btnRegistroArticulo.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +124,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnRegistroArticuloActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistroArticulo);
+        pnlButtons.add(btnRegistroArticulo);
 
         btnRegistrarFuncionario.setText("Registrar Funcionario");
         btnRegistrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +132,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnRegistrarFuncionarioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistrarFuncionario);
+        pnlButtons.add(btnRegistrarFuncionario);
 
         btnRegistrarDron.setText("Registrar Dron");
         btnRegistrarDron.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +140,7 @@ public class Inicio extends javax.swing.JFrame {
                 btnRegistrarDronActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRegistrarDron);
+        pnlButtons.add(btnRegistrarDron);
 
         btnEstadisticas.setText("Ver estadisticas");
         btnEstadisticas.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +148,16 @@ public class Inicio extends javax.swing.JFrame {
                 btnEstadisticasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEstadisticas);
+        pnlButtons.add(btnEstadisticas);
+
+        getContentPane().add(pnlButtons, java.awt.BorderLayout.CENTER);
+
+        btnTerminar.setText("Termiinar");
+        btnTerminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTerminarActionPerformed(evt);
+            }
+        });
 
         btnTerminar.setText("Termiinar");
         btnTerminar.addActionListener(new java.awt.event.ActionListener() {
@@ -246,5 +265,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistroArticulo;
     private javax.swing.JButton btnRegistroDeVuelo;
     private javax.swing.JButton btnTerminar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel pnlButtons;
     // End of variables declaration//GEN-END:variables
 }
