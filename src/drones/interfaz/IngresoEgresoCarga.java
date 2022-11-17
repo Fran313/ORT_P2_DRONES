@@ -245,7 +245,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
-        pnlLeft.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        pnlLeft.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnlLeft.setLayout(new java.awt.BorderLayout());
 
         lblArea.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -381,7 +381,7 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
 
         getContentPane().add(pnlLeft);
 
-        pnlRight.setBorder(javax.swing.BorderFactory.createEmptyBorder(70, 20, 70, 20));
+        pnlRight.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 30, 30, 30));
         pnlRight.setLayout(new java.awt.CardLayout());
 
         pnlIngreso.setBackground(new java.awt.Color(51, 255, 51));
