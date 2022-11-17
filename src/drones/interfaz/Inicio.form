@@ -76,5 +76,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEstadisticasActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JButton" name="btnTerminar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Termiinar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTerminarActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
