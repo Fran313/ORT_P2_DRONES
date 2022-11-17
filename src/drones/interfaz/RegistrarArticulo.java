@@ -42,7 +42,7 @@ public class RegistrarArticulo extends javax.swing.JFrame {
         txtDescripcion = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         pnlArticulos = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollArticulos = new javax.swing.JScrollPane();
         tblArticulos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -134,13 +134,13 @@ public class RegistrarArticulo extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblArticulos);
+        scrollArticulos.setViewportView(tblArticulos);
         if (tblArticulos.getColumnModel().getColumnCount() > 0) {
             tblArticulos.getColumnModel().getColumn(0).setResizable(false);
             tblArticulos.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        pnlArticulos.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        pnlArticulos.add(scrollArticulos, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlArticulos);
 
@@ -181,11 +181,11 @@ public class RegistrarArticulo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JPanel pnlArticulos;
     private javax.swing.JPanel pnlIngresoArticulos;
+    private javax.swing.JScrollPane scrollArticulos;
     private javax.swing.JTable tblArticulos;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtNombre;

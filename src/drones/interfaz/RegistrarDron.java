@@ -47,11 +47,10 @@ public class RegistrarDron extends javax.swing.JFrame {
         txtTipo = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         pnlDatosDrones = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollDrones = new javax.swing.JScrollPane();
         tblDrones = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(1200, 400));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridLayout(1, 2));
@@ -156,14 +155,14 @@ public class RegistrarDron extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblDrones);
+        scrollDrones.setViewportView(tblDrones);
         if (tblDrones.getColumnModel().getColumnCount() > 0) {
             tblDrones.getColumnModel().getColumn(0).setResizable(false);
             tblDrones.getColumnModel().getColumn(1).setResizable(false);
             tblDrones.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        pnlDatosDrones.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        pnlDatosDrones.add(scrollDrones, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlDatosDrones);
 
@@ -220,12 +219,12 @@ public class RegistrarDron extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblIdentificacion;
     private javax.swing.JLabel lblModelo;
     private javax.swing.JLabel lblTipo;
     private javax.swing.JPanel pnlDatosDrones;
     private javax.swing.JPanel pnlIngresoDatos;
+    private javax.swing.JScrollPane scrollDrones;
     private javax.swing.JTable tblDrones;
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtModelo;

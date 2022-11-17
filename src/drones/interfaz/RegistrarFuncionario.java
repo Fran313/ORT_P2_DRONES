@@ -49,7 +49,7 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
         lblNumero = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         pnlDatosFuncionarios = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollFuncionarios = new javax.swing.JScrollPane();
         tblFuncionarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -157,13 +157,13 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblFuncionarios);
+        scrollFuncionarios.setViewportView(tblFuncionarios);
         if (tblFuncionarios.getColumnModel().getColumnCount() > 0) {
             tblFuncionarios.getColumnModel().getColumn(0).setResizable(false);
             tblFuncionarios.getColumnModel().getColumn(2).setResizable(false);
         }
 
-        pnlDatosFuncionarios.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        pnlDatosFuncionarios.add(scrollFuncionarios, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlDatosFuncionarios);
 
@@ -222,12 +222,12 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JPanel pnlDatosFuncionarios;
     private javax.swing.JPanel pnlIngresoDatos;
+    private javax.swing.JScrollPane scrollFuncionarios;
     private javax.swing.JTable tblFuncionarios;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtNombre;

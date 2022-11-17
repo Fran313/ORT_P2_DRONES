@@ -83,7 +83,7 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlButtons = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblMenu = new javax.swing.JLabel();
         btnIngresoEgresoCarga = new javax.swing.JButton();
         btnRegistroDeVuelo = new javax.swing.JButton();
         btnRegistroArticulo = new javax.swing.JButton();
@@ -98,10 +98,10 @@ public class Inicio extends javax.swing.JFrame {
         pnlButtons.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnlButtons.setLayout(new java.awt.GridLayout(8, 1, 0, 10));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Menú");
-        pnlButtons.add(jLabel1);
+        lblMenu.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lblMenu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMenu.setText("Menú");
+        pnlButtons.add(lblMenu);
 
         btnIngresoEgresoCarga.setText("Ingreso/Egreso Carga");
         btnIngresoEgresoCarga.addActionListener(new java.awt.event.ActionListener() {
@@ -259,7 +259,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistroArticulo;
     private javax.swing.JButton btnRegistroDeVuelo;
     private javax.swing.JButton btnTerminar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblMenu;
     private javax.swing.JPanel pnlButtons;
     // End of variables declaration//GEN-END:variables
 }

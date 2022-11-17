@@ -55,7 +55,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Container class="javax.swing.JPanel" name="ButtonsPanel">
+        <Container class="javax.swing.JPanel" name="pnlGrid">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="Center"/>
@@ -64,7 +64,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="XLabels">
+            <Container class="javax.swing.JPanel" name="pnlX">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -93,61 +93,61 @@
                     <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.Glue"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel1">
+                <Component class="javax.swing.JLabel" name="lblX1">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel2">
+                <Component class="javax.swing.JLabel" name="lblX2">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="2"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel3">
+                <Component class="javax.swing.JLabel" name="lblX3">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="3"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel4">
+                <Component class="javax.swing.JLabel" name="lblX4">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="4"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel5">
+                <Component class="javax.swing.JLabel" name="lblX5">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="5"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel6">
+                <Component class="javax.swing.JLabel" name="lblX6">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="6"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel7">
+                <Component class="javax.swing.JLabel" name="lblX7">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="7"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel8">
+                <Component class="javax.swing.JLabel" name="lblX8">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="8"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel9">
+                <Component class="javax.swing.JLabel" name="lblX9">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="9"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="XLabel10">
+                <Component class="javax.swing.JLabel" name="lblX10">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="10"/>
@@ -155,7 +155,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="YLabels">
+            <Container class="javax.swing.JPanel" name="pnlY">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
@@ -174,73 +174,73 @@
                 <Property name="rows" type="int" value="12"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="YLabel1">
+                <Component class="javax.swing.JLabel" name="lblY1">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="1"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel2">
+                <Component class="javax.swing.JLabel" name="lblY2">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="2"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel3">
+                <Component class="javax.swing.JLabel" name="lblY3">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="3"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel4">
+                <Component class="javax.swing.JLabel" name="lblY4">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="4"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel5">
+                <Component class="javax.swing.JLabel" name="lblY5">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="5"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel6">
+                <Component class="javax.swing.JLabel" name="lblY6">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="6"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel7">
+                <Component class="javax.swing.JLabel" name="lblY7">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="7"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel8">
+                <Component class="javax.swing.JLabel" name="lblY8">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="8"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel9">
+                <Component class="javax.swing.JLabel" name="lblY9">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="9"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel10">
+                <Component class="javax.swing.JLabel" name="lblY10">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="10"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel11">
+                <Component class="javax.swing.JLabel" name="lblY11">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="11"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="YLabel12">
+                <Component class="javax.swing.JLabel" name="lblY12">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="text" type="java.lang.String" value="12"/>
@@ -248,7 +248,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="ButtonsGrid">
+            <Container class="javax.swing.JPanel" name="pnlButtonsGrid">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="ff" red="ff" type="rgb"/>
@@ -267,7 +267,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="pnlButtonsChangeArea">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
               <BorderConstraints direction="South"/>
@@ -279,20 +279,20 @@
             <Property name="rows" type="int" value="1"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="PreviousAreaButton">
+            <Component class="javax.swing.JButton" name="btnPreviousArea">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&lt;&lt;&lt;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PreviousAreaButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPreviousAreaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="NextAreaButton">
+            <Component class="javax.swing.JButton" name="btnNextArea">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&gt;&gt;&gt;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NextAreaButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextAreaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -553,7 +553,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="lblEgreso">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
