@@ -90,7 +90,6 @@ public class Inicio extends javax.swing.JFrame {
         btnRegistrarFuncionario = new javax.swing.JButton();
         btnRegistrarDron = new javax.swing.JButton();
         btnEstadisticas = new javax.swing.JButton();
-        btnTerminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,21 +151,6 @@ public class Inicio extends javax.swing.JFrame {
 
         getContentPane().add(pnlButtons, java.awt.BorderLayout.CENTER);
 
-        btnTerminar.setText("Termiinar");
-        btnTerminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTerminarActionPerformed(evt);
-            }
-        });
-
-        btnTerminar.setText("Termiinar");
-        btnTerminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTerminarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnTerminar);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -174,10 +158,6 @@ public class Inicio extends javax.swing.JFrame {
         Statistics stats = new Statistics(this.sistema);
         openFrame(stats);
     }//GEN-LAST:event_btnEstadisticasActionPerformed
-
-    private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnTerminarActionPerformed
 
   private void btnIngresoEgresoCargaActionPerformed(
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnIngresoEgresoCargaActionPerformed
@@ -264,7 +244,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarFuncionario;
     private javax.swing.JButton btnRegistroArticulo;
     private javax.swing.JButton btnRegistroDeVuelo;
-    private javax.swing.JButton btnTerminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel pnlButtons;
     // End of variables declaration//GEN-END:variables
