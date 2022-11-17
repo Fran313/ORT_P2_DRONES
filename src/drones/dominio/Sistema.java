@@ -4,90 +4,122 @@
  */
 package drones.dominio;
 
+import drones.interfaz.Inicio;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
 public class Sistema implements Serializable {
-  private ArrayList<Articulo> articulos;
-  private ArrayList<Funcionario> funcionarios;
-  private ArrayList<Dron> drones;
-  private ArrayList<Carga> cargas;
 
-  public Sistema() {
-    articulos = new ArrayList<>();
-    funcionarios = new ArrayList<>();
-    drones = new ArrayList<>();
-    cargas = new ArrayList<>();
-  }
+    private ArrayList<Articulo> articulos;
+    private ArrayList<Funcionario> funcionarios;
+    private ArrayList<Dron> drones;
+    private ArrayList<Carga> cargas;
 
-  public void cargarDatosEjemplo() {
-    Articulo a = this.agregarArticulo("Bandera", "De peñarol");
-    Funcionario f = this.agregarFuncionario("Franki", 19, 812763);
-    Posicion p = new Posicion(0, 0, 0);
-    this.agregarCarga(1891, a, f, 20, p);
-    this.agregarDron("holasoyDron1", "asdf", 2);
-  }
+    public Sistema() {
+        articulos = new ArrayList<>();
+        funcionarios = new ArrayList<>();
+        drones = new ArrayList<>();
+        cargas = new ArrayList<>();
+    }
 
-  public ArrayList<Carga> getCargas() {
-    return this.cargas;
-  }
+    public void cargarDatosEjemplo() {
+        Articulo a = this.agregarArticulo("Bandera", "De peñarol");
+        Funcionario f = this.agregarFuncionario("Franki", 19, 812763);
+        Posicion p = new Posicion(0, 0, 0);
+        this.agregarCarga(1891, a, f, 20, p);
+        this.agregarDron("holasoyDron1", "asdf", 2);
+    }
 
-  public ArrayList<Funcionario> getFuncionarios() {
-    return this.funcionarios;
-  }
+    public ArrayList<Carga> getCargas() {
+        return this.cargas;
+    }
 
-  public ArrayList<Articulo> getArticulos() {
-    return this.articulos;
-  }
+    public ArrayList<Funcionario> getFuncionarios() {
+        return this.funcionarios;
+    }
 
-  public ArrayList<Dron> getDrones() {
-    return this.drones;
-  }
+    public ArrayList<Articulo> getArticulos() {
+        return this.articulos;
+    }
 
-  public Funcionario agregarFuncionario(String nombre, int edad, int numero) {
-    Funcionario funcionario = new Funcionario(nombre, edad, numero);
-    funcionarios.add(funcionario);
-    return funcionario;
-  }
+    public ArrayList<Dron> getDrones() {
+        return this.drones;
+    }
 
-  public Articulo agregarArticulo(String nombre, String descripcion) {
-    Articulo articulo = new Articulo(nombre, descripcion);
-    articulos.add(articulo);
-    return articulo;
-  }
+    public Funcionario agregarFuncionario(String nombre, int edad, int numero) {
+        Funcionario funcionario = new Funcionario(nombre, edad, numero);
+        funcionarios.add(funcionario);
+        return funcionario;
+    }
 
-  public Dron agregarDron(String identificacion, String modelo, int camara) {
-    Dron dron = new Dron(identificacion, modelo, camara);
-    drones.add(dron);
-    return dron;
-  }
+    public Articulo agregarArticulo(String nombre, String descripcion) {
+        Articulo articulo = new Articulo(nombre, descripcion);
+        articulos.add(articulo);
+        return articulo;
+    }
 
-  public Carga agregarCarga(
-      int codigo, Articulo articulo, Funcionario funcionario, int cantidad, Posicion posicion) {
-    Carga carga = new Carga(codigo, articulo, funcionario, cantidad, posicion);
-    cargas.add(carga);
-    return carga;
-  }
+    public Dron agregarDron(String identificacion, String modelo, int camara) {
+        Dron dron = new Dron(identificacion, modelo, camara);
+        drones.add(dron);
+        return dron;
+    }
 
-  public Carga buscarCarga(final Posicion posicion) {
-    return this.cargas.stream()
-        .filter(c -> c.getPosicion().equals(posicion))
-        .findAny()
-        .orElse(null);
-  }
+    public Carga agregarCarga(
+            int codigo, Articulo articulo, Funcionario funcionario, int cantidad, Posicion posicion) {
+        Carga carga = new Carga(codigo, articulo, funcionario, cantidad, posicion);
+        cargas.add(carga);
+        return carga;
+    }
 
-  public Dron buscarDron(String identificacion) {
-    return this.drones.stream()
-        .filter(d -> d.getIdentificacion().equals(identificacion))
-        .findAny()
-        .orElse(null);
-  }
+    public Carga buscarCarga(final Posicion posicion) {
+        return this.cargas.stream()
+                .filter(c -> c.getPosicion().equals(posicion))
+                .findAny()
+                .orElse(null);
+    }
 
-  public void eliminarCarga(final Carga carga) {
-    this.cargas.remove(carga);
-  }
+    public Dron buscarDron(String identificacion) {
+        return this.drones.stream()
+                .filter(d -> d.getIdentificacion().equals(identificacion))
+                .findAny()
+                .orElse(null);
+    }
+
+    public void eliminarCarga(final Carga carga) {
+        this.cargas.remove(carga);
+    }
+    
+    public void write (Path path) {
+        try {
+              FileOutputStream fileOut = new FileOutputStream(path.toString());
+              ObjectOutputStream out = new ObjectOutputStream(fileOut);
+              out.writeObject(this);
+              out.close();
+              fileOut.close();
+              Logger.getLogger(Inicio.class.getName())
+                  .log(Level.INFO, "Sistema serializado y guardado correctamente");
+
+            } catch (FileNotFoundException ex) {
+
+              Logger.getLogger(Inicio.class.getName())
+                  .log(Level.SEVERE, "El archivo de serialización no existe", ex);
+
+            } catch (IOException ex) {
+
+              Logger.getLogger(Inicio.class.getName())
+                  .log(Level.SEVERE, "La serialización ha fallado", ex);
+
+            }
+    }
 }

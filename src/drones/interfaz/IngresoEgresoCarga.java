@@ -102,10 +102,10 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
                         Articulo a = sistema.getArticulos().get(lstArticulos.getSelectedIndex());
                         int cantidad = Integer.parseInt(fieldIngresoCantidad.getText());
                         int codigo = Integer.parseInt(fieldIngresoCodigo.getText());
-
                         Posicion posicion = new Posicion(areaSeleccionada, _x, _y);
 
                         sistema.agregarCarga(codigo, a, f, cantidad, posicion);
+                        
                         hydrate();
                       }
                     });

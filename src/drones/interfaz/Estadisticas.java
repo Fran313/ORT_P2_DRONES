@@ -35,21 +35,13 @@ public class Estadisticas extends javax.swing.JFrame {
             @Override
             public void valueChanged(ListSelectionEvent arg0) {
                 if(!(arg0.getValueIsAdjusting())){
-                    Dron dron = s.getDrones().stream().filter(d -> d.getIdentificacion()
-                                .equals(lstDronesConVuelos.getSelectedValue()))
-                                .collect(Collectors.toList()).get(0);
+                    Dron dron = sistema.buscarDron(lstDronesConVuelos.getSelectedValue());                                        
                     
-                    String[] vuelos = new String[dron.getVuelos().size()];
-                    
-                    for (int i = 0; i < vuelos.length; i++) {
-                        vuelos[i] = dron.getVuelos().get(i).toString();   
-                    }
-                    lstInfoVuelos.setListData(vuelos);
+                    lstInfoVuelos.setListData(dron.getVuelos().stream()
+                            .map(v -> v.toString()).toArray(String[]::new));
                 }
             }
-        });
-        
-        
+        });        
         hydrate();
     }
     
@@ -80,7 +72,6 @@ public class Estadisticas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Estadísticas");
-        setMinimumSize(new java.awt.Dimension(0, 0));
         setPreferredSize(new java.awt.Dimension(700, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(700, 700));
