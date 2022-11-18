@@ -17,7 +17,14 @@ public class Dron implements Serializable {
   private int camara;
   ArrayList<Vuelo> vuelos = new ArrayList<>();
 
-  public Dron(String identificacion, String modelo, int camara) {
+    /**
+     *Constructor de la clase Dron
+     * 
+     * @param identificacion Identificacion del dron
+     * @param modelo Modelo del dron
+     * @param camara Tipo de camara del dron
+     */
+    public Dron(String identificacion, String modelo, int camara) {
     this.identificacion = identificacion;
     this.modelo = modelo;
     this.camara = camara;
@@ -55,7 +62,12 @@ public class Dron implements Serializable {
     this.vuelos = vuelos;
   }
   
-  public void agregarVuelo (Vuelo vuelo) {
+    /**
+     * Agrega un vuelo a los vuelos del dron
+     *
+     * @param vuelo Vuelo del dron
+     */
+    public void agregarVuelo (Vuelo vuelo) {
       this.vuelos.add(vuelo);
   }
   

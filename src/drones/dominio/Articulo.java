@@ -14,7 +14,13 @@ public class Articulo implements Serializable {
   private String nombre;
   private String descripcion;
 
-  public Articulo(String nombre, String descripcion) {
+    /**     
+     * Constructor de la clase Articulo
+     * 
+     * @param nombre Nombre del articulo
+     * @param descripcion Descripcion del articulo
+     */
+    public Articulo(String nombre, String descripcion) {
     this.nombre = nombre;
     this.descripcion = descripcion;
   }

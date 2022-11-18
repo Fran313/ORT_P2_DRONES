@@ -22,7 +22,17 @@ public class Vuelo implements Serializable {
   private ArrayList<Integer> datos;
   private int[] manual;
 
-  public Vuelo(Dron dron, int area, int fila, String fileName, ArrayList<Integer> datos,
+    /**
+     *Constructor de la clase Vuelo
+     * 
+     * @param dron Dron del vuelo
+     * @param area Area del vuelo
+     * @param fila Fila del vuelo
+     * @param fileName Nombre del archivo del vuelo
+     * @param datos Codigos de las cargas del vuelo
+     * @param manual Codigos tomados manualmente
+     */
+    public Vuelo(Dron dron, int area, int fila, String fileName, ArrayList<Integer> datos,
       int[] manual) {
     this.dron = dron;
     this.fila = fila;
@@ -32,16 +42,22 @@ public class Vuelo implements Serializable {
     this.manual = manual;
   }
 
-  public static Vuelo fromFile(Path path, Sistema sistema) throws Exception {
+    /**
+     *Lee un vuelo desde un archivo y lo crea
+     * 
+     * @param path Path del archivo del vuelo a crear
+     * @param sistema i
+     * @return El vuelo tomado el archivo
+     * @throws Exception si el path del archivo no es encontrado
+     */
+    public static Vuelo fromFile(Path path, Sistema sistema) throws Exception {
     // TODO: Check if ArchivoLectura receive Path or String param for constructor
     ArchivoLectura arch = new ArchivoLectura(path);
     Dron dron = null;
     Integer intArea = null;
     Integer fila = null;
     ArrayList<Integer> datos = new ArrayList<>();
-
-    // I must use if because .hayMasLineas() gets the new line, there is no other
-    // method
+    
     if (arch.hayMasLineas()) {
       String identificacion = arch.linea();
       dron = sistema.buscarDron(identificacion);
