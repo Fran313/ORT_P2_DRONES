@@ -21,8 +21,8 @@ public class Dron implements Serializable {
    * Constructor de la clase Dron
    *
    * @param identificacion Identificacion del dron
-   * @param modelo Modelo del dron
-   * @param camara Tipo de camara del dron
+   * @param modelo         Modelo del dron
+   * @param camara         Tipo de camara del dron
    */
   public Dron(String identificacion, String modelo, int camara) {
     this.identificacion = identificacion;
@@ -30,36 +30,40 @@ public class Dron implements Serializable {
     this.camara = camara;
   }
 
+  /**
+   * Devuelve la identificacion del dron
+   *
+   * @return Identificacion del dron
+   */
   public String getIdentificacion() {
     return this.identificacion;
   }
 
-  public void setIdentificacion(String identificacion) {
-    this.identificacion = identificacion;
-  }
-
+  /**
+   * Devuelve el modelo del dron
+   *
+   * @return Modelo del dron
+   */
   public String getModelo() {
     return this.modelo;
   }
 
-  public void setModelo(String modelo) {
-    this.modelo = modelo;
-  }
-
+  /**
+   * Devuelve el tipo de camara del dron
+   *
+   * @return Tipo de camara del dron
+   */
   public int getCamara() {
     return this.camara;
   }
 
-  public void setCamara(int camara) {
-    this.camara = camara;
-  }
-
+  /**
+   * Devuelve los vuelos realizados por el dron
+   *
+   * @return Vuelos realizados por el dron
+   */
   public ArrayList<Vuelo> getVuelos() {
     return this.vuelos;
-  }
-
-  public void setVuelos(ArrayList<Vuelo> vuelos) {
-    this.vuelos = vuelos;
   }
 
   /**
