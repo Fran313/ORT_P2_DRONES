@@ -35,139 +35,140 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
    */
   @SuppressWarnings("unchecked")
   // <editor-fold defaultstate="collapsed" desc="Generated
-  // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-  private void initComponents() {
-    java.awt.GridBagConstraints gridBagConstraints;
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-    pnlIngresoDatos = new javax.swing.JPanel();
-    txtNombre = new javax.swing.JTextField();
-    txtNumero = new javax.swing.JTextField();
-    txtEdad = new javax.swing.JTextField();
-    lblNombre = new javax.swing.JLabel();
-    lblEdad = new javax.swing.JLabel();
-    lblNumero = new javax.swing.JLabel();
-    btnAgregar = new javax.swing.JButton();
-    pnlDatosFuncionarios = new javax.swing.JPanel();
-    scrollFuncionarios = new javax.swing.JScrollPane();
-    tblFuncionarios = new javax.swing.JTable();
+        pnlIngresoDatos = new javax.swing.JPanel();
+        txtNombre = new javax.swing.JTextField();
+        txtNumero = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
+        lblNombre = new javax.swing.JLabel();
+        lblEdad = new javax.swing.JLabel();
+        lblNumero = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
+        pnlDatosFuncionarios = new javax.swing.JPanel();
+        scrollFuncionarios = new javax.swing.JScrollPane();
+        tblFuncionarios = new javax.swing.JTable();
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    setTitle("Registrar Funcionario");
-    setPreferredSize(new java.awt.Dimension(1200, 400));
-    setResizable(false);
-    setSize(new java.awt.Dimension(1200, 400));
-    getContentPane().setLayout(new java.awt.GridLayout(1, 2));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registrar Funcionario");
+        setPreferredSize(new java.awt.Dimension(1200, 400));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1200, 400));
+        getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
-    pnlIngresoDatos.setToolTipText("");
-    pnlIngresoDatos.setName(""); // NOI18N
-    java.awt.GridBagLayout pnlIngresoDatosLayout = new java.awt.GridBagLayout();
-    pnlIngresoDatosLayout.columnWidths =
-        new int[] {0, 35, 0, 35, 0, 35, 0, 35, 0, 35, 0, 35, 0, 35, 0};
-    pnlIngresoDatosLayout.rowHeights = new int[] {0, 31, 0, 31, 0, 31, 0, 31, 0, 31, 0, 31, 0};
-    pnlIngresoDatos.setLayout(pnlIngresoDatosLayout);
+        pnlIngresoDatos.setToolTipText("");
+        pnlIngresoDatos.setName(""); // NOI18N
+        java.awt.GridBagLayout pnlIngresoDatosLayout = new java.awt.GridBagLayout();
+        pnlIngresoDatosLayout.columnWidths = new int[] {0, 35, 0, 35, 0, 35, 0, 35, 0, 35, 0, 35, 0, 35, 0};
+        pnlIngresoDatosLayout.rowHeights = new int[] {0, 31, 0, 31, 0, 31, 0, 31, 0, 31, 0, 31, 0};
+        pnlIngresoDatos.setLayout(pnlIngresoDatosLayout);
 
-    txtNombre.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            txtNombreActionPerformed(evt);
-          }
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
         });
-    gridBagConstraints = new java.awt.GridBagConstraints();
-    gridBagConstraints.gridx = 2;
-    gridBagConstraints.gridy = 0;
-    gridBagConstraints.gridwidth = 13;
-    gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-    gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-    pnlIngresoDatos.add(txtNombre, gridBagConstraints);
-    gridBagConstraints = new java.awt.GridBagConstraints();
-    gridBagConstraints.gridx = 2;
-    gridBagConstraints.gridy = 4;
-    gridBagConstraints.gridwidth = 13;
-    gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-    pnlIngresoDatos.add(txtNumero, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        pnlIngresoDatos.add(txtNombre, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        pnlIngresoDatos.add(txtNumero, gridBagConstraints);
 
-    txtEdad.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            txtEdadActionPerformed(evt);
-          }
+        txtEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEdadActionPerformed(evt);
+            }
         });
-    gridBagConstraints = new java.awt.GridBagConstraints();
-    gridBagConstraints.gridx = 2;
-    gridBagConstraints.gridy = 2;
-    gridBagConstraints.gridwidth = 13;
-    gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-    pnlIngresoDatos.add(txtEdad, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 13;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        pnlIngresoDatos.add(txtEdad, gridBagConstraints);
 
-    lblNombre.setText("Nombre");
-    gridBagConstraints = new java.awt.GridBagConstraints();
-    gridBagConstraints.gridx = 0;
-    gridBagConstraints.gridy = 0;
-    gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-    pnlIngresoDatos.add(lblNombre, gridBagConstraints);
+        lblNombre.setText("Nombre");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        pnlIngresoDatos.add(lblNombre, gridBagConstraints);
 
-    lblEdad.setText("Edad");
-    gridBagConstraints = new java.awt.GridBagConstraints();
-    gridBagConstraints.gridx = 0;
-    gridBagConstraints.gridy = 2;
-    gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-    pnlIngresoDatos.add(lblEdad, gridBagConstraints);
+        lblEdad.setText("Edad");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        pnlIngresoDatos.add(lblEdad, gridBagConstraints);
 
-    lblNumero.setText("Numero de Funcionario");
-    gridBagConstraints = new java.awt.GridBagConstraints();
-    gridBagConstraints.gridx = 0;
-    gridBagConstraints.gridy = 4;
-    pnlIngresoDatos.add(lblNumero, gridBagConstraints);
+        lblNumero.setText("Numero de Funcionario");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        pnlIngresoDatos.add(lblNumero, gridBagConstraints);
 
-    btnAgregar.setText("Agregar");
-    btnAgregar.addActionListener(
-        new java.awt.event.ActionListener() {
-          public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnAgregarActionPerformed(evt);
-          }
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
         });
-    gridBagConstraints = new java.awt.GridBagConstraints();
-    gridBagConstraints.gridx = 8;
-    gridBagConstraints.gridy = 8;
-    gridBagConstraints.gridwidth = 7;
-    gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-    pnlIngresoDatos.add(btnAgregar, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        pnlIngresoDatos.add(btnAgregar, gridBagConstraints);
 
-    getContentPane().add(pnlIngresoDatos);
+        getContentPane().add(pnlIngresoDatos);
 
-    pnlDatosFuncionarios.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
-    pnlDatosFuncionarios.setLayout(new java.awt.BorderLayout());
+        pnlDatosFuncionarios.setBorder(javax.swing.BorderFactory.createEmptyBorder(50, 50, 50, 50));
+        pnlDatosFuncionarios.setLayout(new java.awt.BorderLayout());
 
-    tblFuncionarios.setModel(
-        new javax.swing.table.DefaultTableModel(
-            new Object[][] {}, new String[] {"Nombre", "Edad", "Numero de Funcionario"}) {
+        tblFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-          Class[] types =
-              new Class[] {
+            },
+            new String [] {
+                "Nombre", "Edad", "Numero de Funcionario"
+            }
+        ) {
+            Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
-              };
-          boolean[] canEdit = new boolean[] {false, false, false};
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
-          public Class getColumnClass(int columnIndex) {
-            return types[columnIndex];
-          }
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
-          public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return canEdit[columnIndex];
-          }
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-    scrollFuncionarios.setViewportView(tblFuncionarios);
-    if (tblFuncionarios.getColumnModel().getColumnCount() > 0) {
-      tblFuncionarios.getColumnModel().getColumn(0).setResizable(false);
-      tblFuncionarios.getColumnModel().getColumn(2).setResizable(false);
-    }
+        scrollFuncionarios.setViewportView(tblFuncionarios);
+        if (tblFuncionarios.getColumnModel().getColumnCount() > 0) {
+            tblFuncionarios.getColumnModel().getColumn(0).setResizable(false);
+            tblFuncionarios.getColumnModel().getColumn(2).setResizable(false);
+        }
 
-    pnlDatosFuncionarios.add(scrollFuncionarios, java.awt.BorderLayout.CENTER);
+        pnlDatosFuncionarios.add(scrollFuncionarios, java.awt.BorderLayout.CENTER);
 
-    getContentPane().add(pnlDatosFuncionarios);
+        getContentPane().add(pnlDatosFuncionarios);
 
-    pack();
-  } // </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
   private void txtNombreActionPerformed(
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_txtNombreActionPerformed
@@ -187,11 +188,11 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
       showError("Ingrese edad del funcionario.");
     } else if (txtNumero.getText().equals("")) {
       showError("Ingrese numero de funcionario.");
-    } else if (Pattern.matches("[a-zA-Z]+", txtEdad.getText())
+    } else if (Pattern.matches(".*[a-zA-Z]+.*", txtEdad.getText())
         || Integer.parseInt(txtEdad.getText()) < 18
         || Integer.parseInt(txtEdad.getText()) > 120) {
       showError("Edad invalida.");
-    } else if (Pattern.matches("[a-zA-Z]+", txtNumero.getText())) {
+    } else if (Pattern.matches(".*[a-zA-Z]+.*", txtNumero.getText())) {
       showError("Numero de funcionario invalido.");
     } else {
       this.sistema.agregarFuncionario(
@@ -200,8 +201,13 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
           Integer.parseInt(txtNumero.getText()));
 
       hydrate();
+      showSuccess("Funcionario registrado correctamente.");
     }
   } // GEN-LAST:event_btnAgregarActionPerformed
+  
+  public void showSuccess(String message){
+      JOptionPane.showMessageDialog(null, message, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+  }
 
   public void showError(String message) {
     JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
@@ -229,17 +235,17 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
     txtEdad.setText("");
   }
 
-  // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton btnAgregar;
-  private javax.swing.JLabel lblEdad;
-  private javax.swing.JLabel lblNombre;
-  private javax.swing.JLabel lblNumero;
-  private javax.swing.JPanel pnlDatosFuncionarios;
-  private javax.swing.JPanel pnlIngresoDatos;
-  private javax.swing.JScrollPane scrollFuncionarios;
-  private javax.swing.JTable tblFuncionarios;
-  private javax.swing.JTextField txtEdad;
-  private javax.swing.JTextField txtNombre;
-  private javax.swing.JTextField txtNumero;
-  // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JLabel lblEdad;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNumero;
+    private javax.swing.JPanel pnlDatosFuncionarios;
+    private javax.swing.JPanel pnlIngresoDatos;
+    private javax.swing.JScrollPane scrollFuncionarios;
+    private javax.swing.JTable tblFuncionarios;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNumero;
+    // End of variables declaration//GEN-END:variables
 }
