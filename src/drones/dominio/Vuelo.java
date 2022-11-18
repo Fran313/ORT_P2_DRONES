@@ -25,12 +25,12 @@ public class Vuelo implements Serializable {
   /**
    * Constructor de la clase Vuelo
    *
-   * @param dron Dron del vuelo
-   * @param area Area del vuelo
-   * @param fila Fila del vuelo
+   * @param dron     Dron del vuelo
+   * @param area     Area del vuelo
+   * @param fila     Fila del vuelo
    * @param fileName Nombre del archivo del vuelo
-   * @param datos Codigos de las cargas del vuelo
-   * @param manual Codigos tomados manualmente
+   * @param datos    Codigos de las cargas del vuelo
+   * @param manual   Codigos tomados manualmente
    */
   public Vuelo(
       Dron dron, int area, int fila, String fileName, ArrayList<Integer> datos, int[] manual) {
@@ -45,7 +45,7 @@ public class Vuelo implements Serializable {
   /**
    * Lee un vuelo desde un archivo y lo crea
    *
-   * @param path Path del archivo del vuelo a crear
+   * @param path    Path del archivo del vuelo a crear
    * @param sistema i
    * @return El vuelo tomado el archivo
    * @throws Exception si el path del archivo no es encontrado
@@ -92,42 +92,66 @@ public class Vuelo implements Serializable {
     return vuelo;
   }
 
+  /**
+   * Devuelve el dron que realizo el vuelo
+   *
+   * @return Dron que realizo el vuelo
+   */
   public Dron getDron() {
     return dron;
   }
 
-  public void setDron(Dron dron) {
-    this.dron = dron;
-  }
-
+  /**
+   * Devuelve la fila del vuelo
+   *
+   * @return Fila del vuelo
+   */
   public int getFila() {
     return fila;
   }
 
+  /**
+   * Devuelve el area del vuelo
+   *
+   * @return Area del vuelo
+   */
   public int getArea() {
     return area;
   }
 
-  public void setFila(int fila) {
-    this.fila = fila;
-  }
-
-  public void setArea(int area) {
-    this.area = area;
-  }
-
+  /**
+   * Devuelve los datos del vuelo
+   *
+   * @return Datos del vuelo
+   */
   public ArrayList<Integer> getDatos() {
     return datos;
   }
 
+  /**
+   * Devuelve los datos manuales de la fila del vuelo
+   *
+   * @return Datos manuales
+   */
   public int[] getManual() {
     return manual;
   }
 
+  /**
+   * Devuelve el exito del vuelo
+   *
+   * @return True si el vuelo fue exitoso, false de otra forma
+   */
   public Boolean getExito() {
     return datos.size() == 10;
   }
 
+  /**
+   * Devuelve la lectura completa de los datos del vuelo. Los datos con ceros
+   * dónde no hubo lectura en caso de no ser exitoso
+   *
+   * @return Lectura completa de los datos del vuelo
+   */
   public int[] getReading() {
     int[] reading = new int[10];
     for (int i = 0; i < datos.size(); i++) {
@@ -136,6 +160,12 @@ public class Vuelo implements Serializable {
     return reading;
   }
 
+  /**
+   * Devuelve un vector con las coincidencias y diferencias entre la lectura
+   * completa del vuelo y la lectura manual.
+   *
+   * @return Vector con coincidencias y diferencias.
+   */
   public int[] getDiff() {
     int[] diff = new int[10];
     int[] reading = getReading();
@@ -150,16 +180,29 @@ public class Vuelo implements Serializable {
     return diff;
   }
 
+  /**
+   * Devuelve la cantidad de coincidencias entre la lectura completa del vuelo y
+   * la lectura manual
+   *
+   * @return Cantidad de coincidencias
+   */
   public int getCoincidencias() {
     int coincidencias = 0;
     int[] diff = getDiff();
 
     for (int colDiff : diff) {
-      if (colDiff == 1) coincidencias++;
+      if (colDiff == 1)
+        coincidencias++;
     }
     return coincidencias;
   }
 
+  /**
+   * Devuelve la cantidad de diferencias entre la lectura completa del vuelo y
+   * la lectura manual
+   *
+   * @return Cantidad de diferencias
+   */
   public int getDiferencias() {
     return 10 - getCoincidencias();
   }
@@ -168,27 +211,25 @@ public class Vuelo implements Serializable {
   public String toString() {
     String response;
     if (getExito()) {
-      response =
-          "Nombre de archivo: "
-              + fileName
-              + " - Area: "
-              + area
-              + " - Fila: "
-              + fila
-              + " - Coincidencias: "
-              + getCoincidencias()
-              + " - Diferencias: "
-              + getDiferencias();
+      response = "Nombre de archivo: "
+          + fileName
+          + " - Area: "
+          + area
+          + " - Fila: "
+          + fila
+          + " - Coincidencias: "
+          + getCoincidencias()
+          + " - Diferencias: "
+          + getDiferencias();
     } else {
-      response =
-          "Nombre de archivo: "
-              + fileName
-              + " - Area: "
-              + area
-              + " - Fila: "
-              + fila
-              + " - Cantidad de lineas de carga: "
-              + datos.size();
+      response = "Nombre de archivo: "
+          + fileName
+          + " - Area: "
+          + area
+          + " - Fila: "
+          + fila
+          + " - Cantidad de lineas de carga: "
+          + datos.size();
     }
     return response;
   }
