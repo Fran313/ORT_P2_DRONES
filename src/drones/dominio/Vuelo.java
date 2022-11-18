@@ -4,6 +4,7 @@
  */
 package drones.dominio;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -75,7 +76,7 @@ public class Vuelo implements Serializable {
    * @return El vuelo tomado el archivo
    * @throws Exception si el path del archivo no es encontrado
    */
-  public static Vuelo fromFile(Path path, Sistema sistema) throws Exception {
+  public static Vuelo fromFile(Path path, Sistema sistema) throws IOException, Exception {
     // TODO: Check if ArchivoLectura receive Path or String param for constructor
     ArchivoLectura arch = new ArchivoLectura(path);
     Dron dron = null;
@@ -100,8 +101,12 @@ public class Vuelo implements Serializable {
 
     arch.cerrar();
 
-    if (dron == null || intArea == null || fila == null) {
-      throw new Exception("El archivo tiene formato incorrecto");
+    if (dron == null) {
+      throw new Exception("El dron ingresado no existe");
+    }
+
+    if (intArea == null || fila == null) {
+      throw new IOException("El archivo tiene formato incorrecto");
     }
 
     int[] manual = new int[10];
