@@ -17,18 +17,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RegistrarFuncionario extends javax.swing.JFrame {
 
-  private Sistema sistema;
+    private Sistema sistema;
 
-  /** Creates new form RegistrarFuncionario */
-  public RegistrarFuncionario() {
-    initComponents();
-  }
+    /**
+     * Creates new form RegistrarFuncionario
+     */
+    public RegistrarFuncionario() {
+        initComponents();
+    }
 
-  public RegistrarFuncionario(Sistema s) {
-    this.sistema = s;
-    initComponents();
-    hydrate();
-  }
+    public RegistrarFuncionario(Sistema s) {
+        this.sistema = s;
+        initComponents();
+        hydrate();
+    }
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -173,70 +175,72 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-  private void txtNombreActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_txtNombreActionPerformed
-    // TODO add your handling code here:
-  } // GEN-LAST:event_txtNombreActionPerformed
+    private void txtNombreActionPerformed(
+            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    } // GEN-LAST:event_txtNombreActionPerformed
 
-  private void txtEdadActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_txtEdadActionPerformed
-    // TODO add your handling code here:
-  } // GEN-LAST:event_txtEdadActionPerformed
+    private void txtEdadActionPerformed(
+            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_txtEdadActionPerformed
+        // TODO add your handling code here:
+    } // GEN-LAST:event_txtEdadActionPerformed
 
-  private void btnAgregarActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnAgregarActionPerformed
-    if (txtNombre.getText().equals("")) {
-      showError("Ingrese nombre de funcionario.");
-    } else if (txtEdad.getText().equals("")) {
-      showError("Ingrese edad del funcionario.");
-    } else if (txtNumero.getText().equals("")) {
-      showError("Ingrese numero de funcionario.");
-    } else if (Pattern.matches(".*[a-zA-Z]+.*", txtEdad.getText())
-        || Integer.parseInt(txtEdad.getText()) < 18
-        || Integer.parseInt(txtEdad.getText()) > 120) {
-      showError("Edad invalida.");
-    } else if (Pattern.matches(".*[a-zA-Z]+.*", txtNumero.getText())) {
-      showError("Numero de funcionario invalido.");
-    } else {
-      this.sistema.agregarFuncionario(
-          txtNombre.getText(),
-          Integer.parseInt(txtEdad.getText()),
-          Integer.parseInt(txtNumero.getText()));
+    private void btnAgregarActionPerformed(
+            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnAgregarActionPerformed
+        if (txtNombre.getText().equals("")) {
+            showError("Ingrese nombre de funcionario.");
+        } else if (txtEdad.getText().equals("")) {
+            showError("Ingrese edad del funcionario.");
+        } else if (txtNumero.getText().equals("")) {
+            showError("Ingrese numero de funcionario.");
+        } else if (Pattern.matches(".*[a-zA-Z]+.*", txtEdad.getText())
+                || Integer.parseInt(txtEdad.getText()) < 18
+                || Integer.parseInt(txtEdad.getText()) > 120) {
+            showError("Edad invalida.");
+        } else if (Pattern.matches(".*[a-zA-Z]+.*", txtNumero.getText())) {
+            showError("Numero de funcionario invalido.");
+        } else if (!(this.sistema.buscarFuncionario(Integer.parseInt(txtNumero.getText())) == null)) {
+            showError("El funcionario ya existe.");
+        } else {
+            this.sistema.agregarFuncionario(
+                    txtNombre.getText(),
+                    Integer.parseInt(txtEdad.getText()),
+                    Integer.parseInt(txtNumero.getText()));
 
-      hydrate();
-      showSuccess("Funcionario registrado correctamente.");
-    }
-  } // GEN-LAST:event_btnAgregarActionPerformed
+            hydrate();
+            showSuccess("Funcionario registrado correctamente.");
+        }
+    } // GEN-LAST:event_btnAgregarActionPerformed
 
-  public void showSuccess(String message) {
-    JOptionPane.showMessageDialog(null, message, "Éxito", JOptionPane.INFORMATION_MESSAGE);
-  }
-
-  public void showError(String message) {
-    JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
-  }
-
-  public void hydrate() {
-    ArrayList<Funcionario> funcionarios = this.sistema.getFuncionarios();
-
-    DefaultTableModel tblModel = (DefaultTableModel) tblFuncionarios.getModel();
-
-    tblModel.setRowCount(0);
-
-    for (int i = 0; i < funcionarios.size(); i++) {
-      Funcionario funcionario = funcionarios.get(i);
-      String[] row = {
-          funcionario.getNombre(),
-          String.valueOf(funcionario.getEdad()),
-          String.valueOf(funcionario.getNumero())
-      };
-      tblModel.addRow(row);
+    public void showSuccess(String message) {
+        JOptionPane.showMessageDialog(null, message, "Éxito", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    txtNombre.setText("");
-    txtNumero.setText("");
-    txtEdad.setText("");
-  }
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void hydrate() {
+        ArrayList<Funcionario> funcionarios = this.sistema.getFuncionarios();
+
+        DefaultTableModel tblModel = (DefaultTableModel) tblFuncionarios.getModel();
+
+        tblModel.setRowCount(0);
+
+        for (int i = 0; i < funcionarios.size(); i++) {
+            Funcionario funcionario = funcionarios.get(i);
+            String[] row = {
+                funcionario.getNombre(),
+                String.valueOf(funcionario.getEdad()),
+                String.valueOf(funcionario.getNumero())
+            };
+            tblModel.addRow(row);
+        }
+
+        txtNombre.setText("");
+        txtNumero.setText("");
+        txtEdad.setText("");
+    }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnAgregar;

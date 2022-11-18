@@ -17,18 +17,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class RegistrarDron extends javax.swing.JFrame {
 
-  private Sistema sistema;
+    private Sistema sistema;
 
-  /** Creates new form RegistrarDron */
-  public RegistrarDron() {
-    initComponents();
-  }
+    /**
+     * Creates new form RegistrarDron
+     */
+    public RegistrarDron() {
+        initComponents();
+    }
 
-  public RegistrarDron(Sistema s) {
-    this.sistema = s;
-    initComponents();
-    hydrate();
-  }
+    public RegistrarDron(Sistema s) {
+        this.sistema = s;
+        initComponents();
+        hydrate();
+    }
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -173,62 +175,64 @@ public class RegistrarDron extends javax.swing.JFrame {
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-  private void txtIdentificacionActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_txtIdentificacionActionPerformed
-    // TODO add your handling code here:
-  } // GEN-LAST:event_txtIdentificacionActionPerformed
+    private void txtIdentificacionActionPerformed(
+            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_txtIdentificacionActionPerformed
+        // TODO add your handling code here:
+    } // GEN-LAST:event_txtIdentificacionActionPerformed
 
-  private void txtTipoActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_txtTipoActionPerformed
-    // TODO add your handling code here:
-  } // GEN-LAST:event_txtTipoActionPerformed
+    private void txtTipoActionPerformed(
+            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_txtTipoActionPerformed
+        // TODO add your handling code here:
+    } // GEN-LAST:event_txtTipoActionPerformed
 
-  private void btnAgregarActionPerformed(
-      java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnAgregarActionPerformed
-    if (txtIdentificacion.getText().equals("")) {
-      showError("Ingrese la identificación.");
-    } else if (txtModelo.getText().equals("")) {
-      showError("Ingrese el modelo.");
-    } else if (txtTipo.getText().equals("")) {
-      showError("Ingrese el tipo de camara.");
-    } else if (!Pattern.matches("[0-9]+", txtTipo.getText())) {
-      showError("Tipo de camara incorrecto.");
-    } else if (Integer.parseInt(txtTipo.getText()) > 6 || Integer.parseInt(txtTipo.getText()) < 1) {
-      showError("Tipo de camara incorrecto. Ingrese 1 - 6.");
-    } else {
-      this.sistema.agregarDron(
-          txtIdentificacion.getText(), txtModelo.getText(), Integer.parseInt(txtTipo.getText()));
-      hydrate();
-      showSuccess("Dron registrado correctamente.");
-    }
-  } // GEN-LAST:event_btnAgregarActionPerformed
+    private void btnAgregarActionPerformed(
+            java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnAgregarActionPerformed
+        if (txtIdentificacion.getText().equals("")) {
+            showError("Ingrese la identificación.");
+        } else if (txtModelo.getText().equals("")) {
+            showError("Ingrese el modelo.");
+        } else if (txtTipo.getText().equals("")) {
+            showError("Ingrese el tipo de camara.");
+        } else if (!Pattern.matches("[0-9]+", txtTipo.getText())) {
+            showError("Tipo de camara incorrecto.");
+        } else if (Integer.parseInt(txtTipo.getText()) > 6 || Integer.parseInt(txtTipo.getText()) < 1) {
+            showError("Tipo de camara incorrecto. Ingrese 1 - 6.");
+        } else if (!(this.sistema.buscarDron(txtIdentificacion.getText()) == null)) {
+            showError("El dron ya existe.");
+        } else {
+            this.sistema.agregarDron(
+                    txtIdentificacion.getText(), txtModelo.getText(), Integer.parseInt(txtTipo.getText()));
+            hydrate();
+            showSuccess("Dron registrado correctamente.");
+        }
+    } // GEN-LAST:event_btnAgregarActionPerformed
 
-  public void showSuccess(String message) {
-    JOptionPane.showMessageDialog(null, message, "Éxito", JOptionPane.INFORMATION_MESSAGE);
-  }
-
-  public void showError(String message) {
-    JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
-  }
-
-  public void hydrate() {
-    ArrayList<Dron> drones = this.sistema.getDrones();
-
-    DefaultTableModel tblModel = (DefaultTableModel) tblDrones.getModel();
-
-    tblModel.setRowCount(0);
-
-    for (int i = 0; i < drones.size(); i++) {
-      Dron dron = drones.get(i);
-      String[] row = { dron.getIdentificacion(), dron.getModelo(), String.valueOf(dron.getCamara()) };
-
-      tblModel.addRow(row);
+    public void showSuccess(String message) {
+        JOptionPane.showMessageDialog(null, message, "Éxito", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    txtIdentificacion.setText("");
-    txtModelo.setText("");
-    txtTipo.setText("");
-  }
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void hydrate() {
+        ArrayList<Dron> drones = this.sistema.getDrones();
+
+        DefaultTableModel tblModel = (DefaultTableModel) tblDrones.getModel();
+
+        tblModel.setRowCount(0);
+
+        for (int i = 0; i < drones.size(); i++) {
+            Dron dron = drones.get(i);
+            String[] row = {dron.getIdentificacion(), dron.getModelo(), String.valueOf(dron.getCamara())};
+
+            tblModel.addRow(row);
+        }
+
+        txtIdentificacion.setText("");
+        txtModelo.setText("");
+        txtTipo.setText("");
+    }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton btnAgregar;
