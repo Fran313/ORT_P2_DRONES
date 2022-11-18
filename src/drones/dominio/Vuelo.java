@@ -10,22 +10,47 @@ import java.util.ArrayList;
 import utils.ArchivoLectura;
 
 /**
+ * Vuelo de un dron
+ * 
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
 public class Vuelo implements Serializable {
 
+  /**
+   * Dron que realizó el vuelo
+   */
   private Dron dron;
+
+  /**
+   * Area del vuelo
+   */
   private int area;
+
+  /**
+   * Fila del vuelo
+   */
   private int fila;
+
+  /**
+   * Nombre del archivo del vuelo
+   */
   private String fileName;
+
+  /**
+   * Codigos de las cargas del vuelo
+   */
   private ArrayList<Integer> datos;
+
+  /**
+   * Codigos tomados de la lectura manual
+   */
   private int[] manual;
 
   /**
    * Constructor de la clase Vuelo
    *
-   * @param dron     Dron del vuelo
+   * @param dron     Dron que realizó vuelo
    * @param area     Area del vuelo
    * @param fila     Fila del vuelo
    * @param fileName Nombre del archivo del vuelo

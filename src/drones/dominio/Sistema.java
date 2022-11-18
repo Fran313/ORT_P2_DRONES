@@ -83,7 +83,7 @@ public class Sistema implements Serializable {
    * Crea un funcionario nuevo con los datos ingresados y lo agrega al sistema
    *
    * @param nombre Nombre del funcionario
-   * @param edad Edad del funcionario
+   * @param edad   Edad del funcionario
    * @param numero Numero del funcionario
    * @return Funcionario agregado
    */
@@ -96,7 +96,7 @@ public class Sistema implements Serializable {
   /**
    * Crea un articulo nuevo con los datos ingresados y lo agrega al sistema
    *
-   * @param nombre Nombre del articulo
+   * @param nombre      Nombre del articulo
    * @param descripcion Descripcion del articulo
    * @return Articulo agregado
    */
@@ -110,8 +110,8 @@ public class Sistema implements Serializable {
    * Crea un dron nuevo con los datos ingresados y lo agrega al sistema
    *
    * @param identificacion Identificacion del dron
-   * @param modelo Modelo del dron
-   * @param camara Tipo de camara del dron
+   * @param modelo         Modelo del dron
+   * @param camara         Tipo de camara del dron
    * @return Dron agregado
    */
   public Dron agregarDron(String identificacion, String modelo, int camara) {
@@ -123,11 +123,11 @@ public class Sistema implements Serializable {
   /**
    * Crea una carga nuevo con los datos ingresados y la agrega al sistema
    *
-   * @param codigo Codigo de la carga
-   * @param articulo Articulo cargado
+   * @param codigo      Codigo de la carga
+   * @param articulo    Articulo cargado
    * @param funcionario Funcionario que realizo la carga
-   * @param cantidad Cantidad del articulo en la carga
-   * @param posicion Posicion de la carga
+   * @param cantidad    Cantidad del articulo en la carga
+   * @param posicion    Posicion de la carga
    * @return Carga agregada
    */
   public Carga agregarCarga(
@@ -141,7 +141,8 @@ public class Sistema implements Serializable {
    * Busca una carga ingresada dada una posición
    *
    * @param posicion Posición de la carga a buscar
-   * @return Carga encontrada si existía en esa posición, de lo contrario devuelve null
+   * @return Carga encontrada si existía en esa posición, de lo contrario devuelve
+   *         null
    */
   public Carga buscarCarga(final Posicion posicion) {
     return this.cargas.stream()
@@ -154,7 +155,8 @@ public class Sistema implements Serializable {
    * Busca un dron en el sistema dada una identificación
    *
    * @param identificación Identifiación del dron a buscar
-   * @return Dron encontrado si existía alguno con esa identificación, de lo contrario devuelve null
+   * @return Dron encontrado si existía alguno con esa identificación, de lo
+   *         contrario devuelve null
    */
   public Dron buscarDron(String identificacion) {
     return this.drones.stream()

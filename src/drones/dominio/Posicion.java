@@ -3,20 +3,34 @@ package drones.dominio;
 import java.io.Serializable;
 
 /**
+ * Posicion del deposito
+ *
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
 public class Posicion implements Serializable {
+
+  /**
+   * Area de la posicion
+   */
   private int area;
+
+  /**
+   * Fila de la posicion
+   */
   private int fila;
+
+  /**
+   * Columna de la posicion
+   */
   private int columna;
 
   /**
    * Constructor de la clase Posicion
    *
-   * @param area    Area donde se encuentra la carga
-   * @param fila    Fila donde se encuentra la carga
-   * @param columna Columna donde se encuentra la carga
+   * @param area    Area de la posicion
+   * @param fila    Fila de la posicion
+   * @param columna Columna de la posicion
    */
   public Posicion(int area, int fila, int columna) {
     this.area = area;

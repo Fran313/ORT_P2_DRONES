@@ -3,6 +3,8 @@ package drones.dominio;
 import java.io.Serializable;
 
 /**
+ * Carga de mercaderia
+ *
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
