@@ -15,7 +15,7 @@ public class Funcionario implements Serializable {
    * Constructor de la clase Funcionario
    *
    * @param nombre Nombre del funcionario
-   * @param edad Edad del funcionario
+   * @param edad   Edad del funcionario
    * @param numero Numero del funcionario
    */
   public Funcionario(String nombre, int edad, int numero) {
@@ -24,28 +24,31 @@ public class Funcionario implements Serializable {
     this.numero = numero;
   }
 
+  /**
+   * Devuelve el nombre del funcionario
+   *
+   * @return Nombre del funcionario
+   */
   public String getNombre() {
     return this.nombre;
   }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
-
+  /**
+   * Devuelve la edad del funcionario
+   *
+   * @return Edad del funcionario
+   */
   public int getEdad() {
     return this.edad;
   }
 
-  public void setEdad(int edad) {
-    this.edad = edad;
-  }
-
+  /**
+   * Devuelve el numero del funcionario
+   *
+   * @return Numero del funcionario
+   */
   public int getNumero() {
     return this.numero;
-  }
-
-  public void setNumero(int numero) {
-    this.numero = numero;
   }
 
   @Override
