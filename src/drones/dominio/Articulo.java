@@ -17,7 +17,7 @@ public class Articulo implements Serializable {
   /**
    * Constructor de la clase Articulo
    *
-   * @param nombre Nombre del articulo
+   * @param nombre      Nombre del articulo
    * @param descripcion Descripcion del articulo
    */
   public Articulo(String nombre, String descripcion) {
@@ -25,20 +25,22 @@ public class Articulo implements Serializable {
     this.descripcion = descripcion;
   }
 
+  /**
+   * Devuelve el nombre del articulo
+   *
+   * @return Nombre del articulo
+   */
   public String getNombre() {
     return this.nombre;
   }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
-
+  /**
+   * Devuelve la descripcion del articulo
+   *
+   * @return Descripcion del articulo
+   */
   public String getDescripcion() {
     return this.descripcion;
-  }
-
-  public void setDescripcion(String descripcion) {
-    this.descripcion = descripcion;
   }
 
   @Override
