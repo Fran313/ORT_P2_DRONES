@@ -14,8 +14,8 @@ public class Posicion implements Serializable {
   /**
    * Constructor de la clase Posicion
    *
-   * @param area Area donde se encuentra la carga
-   * @param fila Fila donde se encuentra la carga
+   * @param area    Area donde se encuentra la carga
+   * @param fila    Fila donde se encuentra la carga
    * @param columna Columna donde se encuentra la carga
    */
   public Posicion(int area, int fila, int columna) {
@@ -24,32 +24,41 @@ public class Posicion implements Serializable {
     this.columna = columna;
   }
 
+  /**
+   * Devuelve el area de la posicion
+   * 
+   * @return Area de la posicion
+   */
   public int getArea() {
     return this.area;
   }
 
+  /**
+   * Devuelve el codigo human-friendly del area dada
+   * 
+   * @param area Area a convertir
+   * @return Codigo del area
+   */
   public static char areaCode(int area) {
     return (char) (area + 65);
   }
 
-  public void setArea(int area) {
-    this.area = area;
-  }
-
+  /**
+   * Devuelve la fila de la posicion
+   * 
+   * @return Fila de la posicion
+   */
   public int getFila() {
     return this.fila;
   }
 
-  public void setFila(int fila) {
-    this.fila = fila;
-  }
-
+  /**
+   * Devuelve la columna de la posicion
+   * 
+   * @return Columna de la posicion
+   */
   public int getColumna() {
     return this.columna;
-  }
-
-  public void setColumna(int columna) {
-    this.columna = columna;
   }
 
   @Override
