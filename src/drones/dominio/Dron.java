@@ -8,13 +8,31 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
+ * Dron para controlar el inventario de mercaderia
+ *
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
 public class Dron implements Serializable {
+
+  /**
+   * Identificiacion del dron
+   */
   private String identificacion;
+
+  /**
+   * Modelo del dron
+   */
   private String modelo;
+
+  /**
+   * Tipo de camara del dron
+   */
   private int camara;
+
+  /**
+   * Vuelos realizados por el dron
+   */
   ArrayList<Vuelo> vuelos = new ArrayList<>();
 
   /**

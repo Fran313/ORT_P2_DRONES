@@ -3,12 +3,26 @@ package drones.dominio;
 import java.io.Serializable;
 
 /**
+ * Funcionario de la empresa
+ * 
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
 public class Funcionario implements Serializable {
+
+  /**
+   * Nombre del funcionario
+   */
   private String nombre;
+
+  /**
+   * Edad del funcionario
+   */
   private int edad;
+
+  /**
+   * Numero del funcionario
+   */
   private int numero;
 
   /**

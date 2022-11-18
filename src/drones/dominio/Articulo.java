@@ -7,11 +7,21 @@ package drones.dominio;
 import java.io.Serializable;
 
 /**
+ * Articulo de mercadería
+ *
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
 public class Articulo implements Serializable {
+
+  /**
+   * Nombre del articulo
+   */
   private String nombre;
+
+  /**
+   * Descripcion del articulo
+   */
   private String descripcion;
 
   /**
