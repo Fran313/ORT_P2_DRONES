@@ -18,11 +18,11 @@ public class Vuelo implements Serializable {
   private Dron dron;
   private int area;
   private int fila;
-  private Path fileName;
+  private String fileName;
   private ArrayList<Integer> datos;
   private int[] manual;
 
-  public Vuelo(Dron dron, int area, int fila, Path fileName, ArrayList<Integer> datos,
+  public Vuelo(Dron dron, int area, int fila, String fileName, ArrayList<Integer> datos,
       int[] manual) {
     this.dron = dron;
     this.fila = fila;
@@ -71,7 +71,7 @@ public class Vuelo implements Serializable {
       }
     }
 
-    Vuelo vuelo = new Vuelo(dron, intArea, fila, path.getFileName(), datos, manual);
+    Vuelo vuelo = new Vuelo(dron, intArea, fila, path.getFileName().toString(), datos, manual);
     dron.agregarVuelo(vuelo);
     return vuelo;
   }
