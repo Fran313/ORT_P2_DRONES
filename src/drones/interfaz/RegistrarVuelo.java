@@ -11,9 +11,15 @@ import drones.dominio.Vuelo;
 import java.awt.Color;
 import java.io.File;
 import java.nio.file.Paths;
+
+import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -31,11 +37,12 @@ public class RegistrarVuelo extends javax.swing.JFrame {
     // Set working directory as current directory
     File workingDirectory = new File(System.getProperty("user.dir"));
     jFileChooser1.setCurrentDirectory(workingDirectory);
+    hydrate(null);
   }
 
   private void hydrate(Vuelo v) {
     if (v == null) {
-      DefaultTableCellRenderer nullRenderer = new DefaultTableCellRenderer();
+      DefaultTableCellRenderer nullRenderer = createTableRenderer(null);
 
       for (int col = 1; col <= 10; col++) {
         tblDiff.getColumnModel().getColumn(col).setCellRenderer(nullRenderer);
@@ -52,12 +59,8 @@ public class RegistrarVuelo extends javax.swing.JFrame {
     }
     lblFila.setText("Area: " + String.valueOf(Posicion.areaCode(v.getArea())) + " Fila: " + (v.getFila() + 1));
 
-    DefaultTableCellRenderer redRenderer = new DefaultTableCellRenderer();
-    redRenderer.setBackground(Color.RED);
-    redRenderer.setHorizontalAlignment(JLabel.CENTER);
-    DefaultTableCellRenderer greenRenderer = new DefaultTableCellRenderer();
-    greenRenderer.setBackground(Color.GREEN);
-    greenRenderer.setHorizontalAlignment(JLabel.CENTER);
+    DefaultTableCellRenderer redRenderer = createTableRenderer(Color.RED);
+    DefaultTableCellRenderer greenRenderer = createTableRenderer(Color.GREEN);
 
     for (int col = 0; col < v.getDatos().size(); col++) {
       tblDiff.getColumnModel().getColumn(col + 1).setCellRenderer(v.getDiff()[col] == 1 ? greenRenderer : redRenderer);
@@ -71,6 +74,16 @@ public class RegistrarVuelo extends javax.swing.JFrame {
       tblDiff.setValueAt(v.getManual()[col], 1, col + 1);
     }
 
+  }
+
+  private DefaultTableCellRenderer createTableRenderer(Color bgColor) {
+
+    DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+    renderer.setHorizontalAlignment(JLabel.CENTER);
+    renderer.setBackground(bgColor);
+    renderer.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+
+    return renderer;
   }
 
   private void jFileChooser1ActionPerformed(
