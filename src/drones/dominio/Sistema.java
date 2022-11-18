@@ -53,14 +53,6 @@ public class Sistema implements Serializable {
     cargas = new ArrayList<>();
   }
 
-  public void cargarDatosEjemplo() {
-    Articulo a = this.agregarArticulo("Bandera", "De peñarol");
-    Funcionario f = this.agregarFuncionario("Franki", 19, 812763);
-    Posicion p = new Posicion(0, 0, 0);
-    this.agregarCarga(1891, a, f, 20, p);
-    this.agregarDron("holasoyDron1", "asdf", 2);
-  }
-
   /**
    * Devuelve las cargas del sistema
    * 

@@ -161,7 +161,6 @@ public class RegistrarArticulo extends javax.swing.JFrame {
         if (txtNombre.getText().equals("") || txtDescripcion.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Campos incompletos", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-
             this.sistema.agregarArticulo(txtNombre.getText(), txtDescripcion.getText());
             hydrate();
         }

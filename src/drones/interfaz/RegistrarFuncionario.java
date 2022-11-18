@@ -185,13 +185,18 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(
             java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnAgregarActionPerformed
-        if (txtNombre.getText().equals("")
-                || txtNumero.getText().equals("")
-                || Pattern.matches("[a-zA-Z]+", txtNumero.getText())
-                || txtEdad.getText().equals("")
-                || Pattern.matches("[a-zA-Z]+", txtEdad.getText())) {
-
-            JOptionPane.showMessageDialog(null, "Campos Incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtNombre.getText().equals("")) {
+            showError("Ingrese nombre de funcionario.");
+        } else if (txtEdad.getText().equals("")) {
+            showError("Ingrese edad del funcionario.");
+        } else if (txtNumero.getText().equals("")) {
+            showError("Ingrese numero de funcionario.");
+        } else if (Pattern.matches("[a-zA-Z]+", txtEdad.getText())
+                || Integer.parseInt(txtEdad.getText()) < 18
+                || Integer.parseInt(txtEdad.getText()) > 120) {
+            showError("Edad invalida.");
+        } else if (Pattern.matches("[a-zA-Z]+", txtNumero.getText())) {
+            showError("Numero de funcionario invalido.");
         } else {
             this.sistema.agregarFuncionario(
                     txtNombre.getText(),
@@ -201,6 +206,10 @@ public class RegistrarFuncionario extends javax.swing.JFrame {
             hydrate();
         }
     } // GEN-LAST:event_btnAgregarActionPerformed
+
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
     public void hydrate() {
         ArrayList<Funcionario> funcionarios = this.sistema.getFuncionarios();
