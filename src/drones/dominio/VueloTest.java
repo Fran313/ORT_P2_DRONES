@@ -17,7 +17,7 @@ public class VueloTest {
   static Vuelo v;
 
   @BeforeAll
-  public static void setup() throws IOException {
+  public static void setup() throws IOException, Exception {
     sistema = new Sistema();
     d = sistema.agregarDron("holasoyDron1", "modeloDron2", 3);
     v = Vuelo.fromFile(Paths.get("vuelo.ejemplo.txt"), sistema);
@@ -26,21 +26,32 @@ public class VueloTest {
   @Test
   public void itShouldLoadSuccessVueloFromFile() {
     List<Integer> datosEsperados =
-        new ArrayList<Integer>(Arrays.asList(7389099, 7328947, 0, 0, 0, 0, 0, 0, 9043859, 0));
+        new ArrayList<Integer>(Arrays.asList(1891, 7328947, 0, 0, 0, 0, 0, 0, 9043859, 0));
 
     assertEquals(d, v.getDron());
-    assertEquals(new Posicion(0, 0), v.getFila());
+    assertEquals(0, v.getArea());
+    assertEquals(0, v.getFila());
     assertEquals(datosEsperados, v.getDatos());
-    assertEquals(true, v.getExito(datosEsperados));
+    assertEquals(true, v.getExito());
   }
 
   @Test
-  public void itShouldLoadFailedVueloFromFile() {
+  public void itShouldLoadFailedVueloFromFile() throws IOException, Exception {
+      Vuelo failedVuelo = Vuelo.fromFile(Paths.get("vuelo.menoscarga.txt"), sistema);
     List<Integer> datosEsperados =
-        new ArrayList<Integer>(Arrays.asList(222000, 7328947, 0, 0, 0, 0, 0, 0, 9043859, 0));
-    assertEquals(d, v.getDron());
-    assertEquals(new Posicion(0, 0), v.getFila());
-    //        assertEquals(datosEsperados, v.getDatos());
-    assertEquals(false, v.getExito(datosEsperados));
+        new ArrayList<Integer>(Arrays.asList(
+                7389099,
+                7328947,
+                0,
+                0,
+                0,
+                0,
+                9043859,
+                0));
+    assertEquals(d, failedVuelo.getDron());
+    assertEquals(0, failedVuelo.getArea());
+    assertEquals(0, failedVuelo.getFila());
+    assertEquals(datosEsperados, failedVuelo.getDatos());
+    assertEquals(false, failedVuelo.getExito());
   }
 }

@@ -27,7 +27,7 @@ class CargaTest {
     Posicion p2 = new Posicion(2, 2, 2);
 
     Carga cargaIgual = new Carga(cargaBase.getCodigo(), a2, f2, cantidad2, p2);
-    assertEquals(true, cargaBase.equals(cargaIgual));
+    assertEquals(cargaBase, cargaIgual);
   }
 
   @Test
@@ -39,6 +39,6 @@ class CargaTest {
             cargaBase.getFuncionario(),
             cargaBase.getCantidad(),
             cargaBase.getPosicion());
-    assertEquals(false, cargaBase.equals(cargaDistinta));
+    assertNotEquals(cargaBase,cargaDistinta);
   }
 }

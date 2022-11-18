@@ -461,11 +461,6 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
     lblIngresoCantidad.setText("Cantidad");
     pnlCantidad.add(lblIngresoCantidad);
 
-    fieldIngresoCantidad.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        fieldIngresoCantidadActionPerformed(evt);
-      }
-    });
     pnlCantidad.add(fieldIngresoCantidad);
 
     pnlCantidadCodigo.add(pnlCantidad);
@@ -481,11 +476,6 @@ public class IngresoEgresoCarga extends javax.swing.JFrame {
     pnlCantidadCodigo.add(pnlCodigo);
 
     btnIngresar.setText("Ingresar");
-    btnIngresar.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        btnIngresarActionPerformed(evt);
-      }
-    });
     pnlCantidadCodigo.add(btnIngresar);
 
     pnlIngresoContent.add(pnlCantidadCodigo);
