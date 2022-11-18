@@ -77,9 +77,9 @@ public class Estadisticas extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(700, 700));
 
         pnlContenido.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 30, 30, 30));
-        pnlContenido.setLayout(new java.awt.GridLayout(1, 2, 20, 0));
+        pnlContenido.setLayout(new java.awt.GridLayout(2, 1, 0, 20));
 
-        pnlDrones.setLayout(new java.awt.GridLayout(2, 1, 0, 20));
+        pnlDrones.setLayout(new java.awt.GridLayout(1, 2, 20, 0));
 
         pnlDronesConVuelos.setLayout(new java.awt.BorderLayout());
 
