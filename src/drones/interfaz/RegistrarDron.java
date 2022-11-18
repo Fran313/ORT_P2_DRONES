@@ -185,19 +185,29 @@ public class RegistrarDron extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(
             java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnAgregarActionPerformed
-        if (txtIdentificacion.getText().equals("")
-                || txtModelo.getText().equals("")
-                || !Pattern.matches("[0-9]+", txtTipo.getText())
-                || txtTipo.getText().equals("")) {
-
-            JOptionPane.showMessageDialog(null, "Campos Incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+        if (txtIdentificacion.getText().equals("")) {
+            showError("Ingrese la identificación.");
+        } else if (txtModelo.getText().equals("")) {
+            showError("Ingrese el modelo.");
+        } else if (txtTipo.getText().equals("")) {
+            showError("Ingrese el tipo de camara.");
+        } else if (!Pattern.matches("[0-9]+", txtTipo.getText())) {
+            showError("Tipo de camara incorrecto.");
+        } else if (Integer.parseInt(txtTipo.getText()) > 6 || Integer.parseInt(txtTipo.getText()) < 1) {
+            showError("Tipo de camara incorrecto. Ingrese 1 - 6.");
         } else {
             this.sistema.agregarDron(
-                    txtIdentificacion.getText(), txtModelo.getText(), Integer.parseInt(txtTipo.getText()));
-
+                    txtIdentificacion.getText(),
+                    txtModelo.getText(),
+                    Integer.parseInt(txtTipo.getText()));
             hydrate();
         }
+
     } // GEN-LAST:event_btnAgregarActionPerformed
+
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
     public void hydrate() {
         ArrayList<Dron> drones = this.sistema.getDrones();
