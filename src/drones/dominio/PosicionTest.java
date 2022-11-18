@@ -13,7 +13,7 @@ public class PosicionTest {
   public static void setup() {
     pBase = new Posicion(1, 1, 1);
   }
-  
+
   @Test
   public void itShouldCreatePosicionFromNumbers() {
     assertEquals(1, pBase.getArea());

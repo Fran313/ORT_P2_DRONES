@@ -11,14 +11,14 @@ public class Funcionario implements Serializable {
   private int edad;
   private int numero;
 
-    /**
-     *Constructor de la clase Funcionario
-     * 
-     * @param nombre Nombre del funcionario
-     * @param edad Edad del funcionario
-     * @param numero Numero del funcionario
-     */
-    public Funcionario(String nombre, int edad, int numero) {
+  /**
+   * Constructor de la clase Funcionario
+   *
+   * @param nombre Nombre del funcionario
+   * @param edad Edad del funcionario
+   * @param numero Numero del funcionario
+   */
+  public Funcionario(String nombre, int edad, int numero) {
     this.nombre = nombre;
     this.edad = edad;
     this.numero = numero;

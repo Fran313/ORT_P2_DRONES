@@ -11,25 +11,25 @@ public class Posicion implements Serializable {
   private int fila;
   private int columna;
 
-    /**
-     *Constructor de la clase Posicion
-     * 
-     * @param area Area donde se encuentra la carga
-     * @param fila Fila donde se encuentra la carga
-     * @param columna Columna donde se encuentra la carga
-     */
-    public Posicion(int area, int fila, int columna) {
+  /**
+   * Constructor de la clase Posicion
+   *
+   * @param area Area donde se encuentra la carga
+   * @param fila Fila donde se encuentra la carga
+   * @param columna Columna donde se encuentra la carga
+   */
+  public Posicion(int area, int fila, int columna) {
     this.area = area;
     this.fila = fila;
     this.columna = columna;
   }
-  
+
   public int getArea() {
     return this.area;
   }
-  
+
   public static char areaCode(int area) {
-      return (char) (area + 65);
+    return (char) (area + 65);
   }
 
   public void setArea(int area) {

@@ -21,23 +21,28 @@ class Drones {
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-      
-      try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Drones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Drones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Drones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Drones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+    try {
+      for (javax.swing.UIManager.LookAndFeelInfo info :
+          javax.swing.UIManager.getInstalledLookAndFeels()) {
+        if ("Nimbus".equals(info.getName())) {
+          javax.swing.UIManager.setLookAndFeel(info.getClassName());
+          break;
         }
+      }
+    } catch (ClassNotFoundException ex) {
+      java.util.logging.Logger.getLogger(Drones.class.getName())
+          .log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+      java.util.logging.Logger.getLogger(Drones.class.getName())
+          .log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+      java.util.logging.Logger.getLogger(Drones.class.getName())
+          .log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+      java.util.logging.Logger.getLogger(Drones.class.getName())
+          .log(java.util.logging.Level.SEVERE, null, ex);
+    }
 
     // Cargar sistema serializado o crear uno nuevo si no existe
     Sistema sistema;
@@ -54,9 +59,8 @@ class Drones {
 
       Logger.getLogger(Inicio.class.getName())
           .log(Level.INFO, "No se encontró un sistema previo. Nuevo sistema creado");
-      sistema = new Sistema();      
-    }   
-
+      sistema = new Sistema();
+    }
 
     Inicio inicio = new Inicio(sistema);
     inicio.setLocationRelativeTo(null);

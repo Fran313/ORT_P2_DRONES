@@ -8,27 +8,26 @@ import java.io.FileNotFoundException;
 import java.util.Formatter;
 
 /**
- *
  * @author Franc
  */
 public class ArchivoGrabacion {
 
-    private Formatter out;
+  private Formatter out;
 
-    public ArchivoGrabacion(String fileName) {
-        try {
-            out = new Formatter(fileName);
-        } catch (FileNotFoundException fnfe) {
-            System.err.println("Error: No se pudo encontrar el archivo.");
-            System.exit(1); // Indicates unsuccessfull termination
-        }
+  public ArchivoGrabacion(String fileName) {
+    try {
+      out = new Formatter(fileName);
+    } catch (FileNotFoundException fnfe) {
+      System.err.println("Error: No se pudo encontrar el archivo.");
+      System.exit(1); // Indicates unsuccessfull termination
     }
+  }
 
-    public void grabarLinea(String linea) {
-        out.format("%s%n", linea);
-    }
+  public void grabarLinea(String linea) {
+    out.format("%s%n", linea);
+  }
 
-    public void cerrar() {
-        out.close();
-    }
+  public void cerrar() {
+    out.close();
+  }
 }

@@ -9,41 +9,40 @@ import java.nio.file.Path;
 import java.util.Scanner;
 
 /**
- *
  * @author Franc
  */
 public class ArchivoLectura {
 
-    private Scanner in;
+  private Scanner in;
 
-    private String linea;
+  private String linea;
 
-    public ArchivoLectura(Path fileName) {
-        try {
-            // Should be: in = new Scanner(Paths.get(fileName));
-            in = new Scanner(fileName);
-        } catch (IOException e) {
-            System.err.print("Error de apertura");
-            System.exit(1);
-        }
+  public ArchivoLectura(Path fileName) {
+    try {
+      // Should be: in = new Scanner(Paths.get(fileName));
+      in = new Scanner(fileName);
+    } catch (IOException e) {
+      System.err.print("Error de apertura");
+      System.exit(1);
     }
+  }
 
-    public boolean hayMasLineas() {
-        boolean hay = false;
-        linea = null;
+  public boolean hayMasLineas() {
+    boolean hay = false;
+    linea = null;
 
-        if (in.hasNext()) {
-            linea = in.nextLine();
-            hay = true;
-        }
-        return hay;
+    if (in.hasNext()) {
+      linea = in.nextLine();
+      hay = true;
     }
+    return hay;
+  }
 
-    public String linea() {
-        return linea;
-    }
+  public String linea() {
+    return linea;
+  }
 
-    public void cerrar() {
-        in.close();
-    }
+  public void cerrar() {
+    in.close();
+  }
 }
