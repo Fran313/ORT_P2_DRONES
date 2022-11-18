@@ -157,12 +157,18 @@ public class RegistrarArticulo extends javax.swing.JFrame {
       java.awt.event.ActionEvent evt) { // GEN-FIRST:event_btnAgregarActionPerformed
     if (txtNombre.getText().equals("") || txtDescripcion.getText().equals("")) {
       JOptionPane.showMessageDialog(null, "Campos incompletos", "Error", JOptionPane.ERROR_MESSAGE);
+    } else if (!(this.sistema.buscarArticulo(txtNombre.getText()) == null)){
+        showError("El articulo ya existe.");
     } else {
       this.sistema.agregarArticulo(txtNombre.getText(), txtDescripcion.getText());      
       hydrate();      
       showSuccess("Articulo registrado exitosamente.");
     }
   } // GEN-LAST:event_btnAgregarActionPerformed
+  
+  public void showError (String message) {
+      JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+  }
   
   public void showSuccess(String message){
       JOptionPane.showMessageDialog(null, message, "Éxito", JOptionPane.INFORMATION_MESSAGE);
