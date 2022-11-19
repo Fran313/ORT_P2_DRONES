@@ -3,47 +3,76 @@ package drones.dominio;
 import java.io.Serializable;
 
 /**
+ * Posicion del deposito
+ *
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
 public class Posicion implements Serializable {
+
+  /**
+   * Area de la posicion
+   */
   private int area;
+
+  /**
+   * Fila de la posicion
+   */
   private int fila;
+
+  /**
+   * Columna de la posicion
+   */
   private int columna;
 
+  /**
+   * Constructor de la clase Posicion
+   *
+   * @param area    Area de la posicion
+   * @param fila    Fila de la posicion
+   * @param columna Columna de la posicion
+   */
   public Posicion(int area, int fila, int columna) {
     this.area = area;
     this.fila = fila;
     this.columna = columna;
   }
 
-  public static Posicion fromChar(char area, int fila, int columna) {
-    int intArea = (int) Character.toUpperCase(area) - 65;
-    return new Posicion(intArea, fila, columna);
-  }
-
+  /**
+   * Devuelve el area de la posicion
+   * 
+   * @return Area de la posicion
+   */
   public int getArea() {
     return this.area;
   }
 
-  public void setArea(int area) {
-    this.area = area;
+  /**
+   * Devuelve el codigo human-friendly del area dada
+   * 
+   * @param area Area a convertir
+   * @return Codigo del area
+   */
+  public static char areaCode(int area) {
+    return (char) (area + 65);
   }
 
+  /**
+   * Devuelve la fila de la posicion
+   * 
+   * @return Fila de la posicion
+   */
   public int getFila() {
     return this.fila;
   }
 
-  public void setFila(int fila) {
-    this.fila = fila;
-  }
-
+  /**
+   * Devuelve la columna de la posicion
+   * 
+   * @return Columna de la posicion
+   */
   public int getColumna() {
     return this.columna;
-  }
-
-  public void setColumna(int columna) {
-    this.columna = columna;
   }
 
   @Override
@@ -60,6 +89,6 @@ public class Posicion implements Serializable {
 
   @Override
   public String toString() {
-    return String.valueOf((char) (this.area + 65)) + this.fila + this.columna;
+    return String.valueOf(Posicion.areaCode(this.area)) + this.fila + this.columna;
   }
 }

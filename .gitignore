@@ -11,3 +11,6 @@ nbdist/
 # idea
 out/
 .idea/
+
+# custom
+sistema.ser

@@ -4,37 +4,86 @@
  */
 package drones.dominio;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.List;
+import utils.ArchivoLectura;
 
 /**
+ * Vuelo de un dron
+ * 
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
 public class Vuelo implements Serializable {
-  private Dron dron;
-  private int area;
-  private int fila;
-  ArrayList<Integer> datos = new ArrayList<>();
 
-  public Vuelo(Dron dron, int area, int fila, ArrayList<Integer> datos) {
+  /**
+   * Dron que realizó el vuelo
+   */
+  private Dron dron;
+
+  /**
+   * Area del vuelo
+   */
+  private int area;
+
+  /**
+   * Fila del vuelo
+   */
+  private int fila;
+
+  /**
+   * Nombre del archivo del vuelo
+   */
+  private String fileName;
+
+  /**
+   * Codigos de las cargas del vuelo
+   */
+  private ArrayList<Integer> datos;
+
+  /**
+   * Codigos tomados de la lectura manual
+   */
+  private int[] manual;
+
+  /**
+   * Constructor de la clase Vuelo
+   *
+   * @param dron     Dron que realizó vuelo
+   * @param area     Area del vuelo
+   * @param fila     Fila del vuelo
+   * @param fileName Nombre del archivo del vuelo
+   * @param datos    Codigos de las cargas del vuelo
+   * @param manual   Codigos tomados manualmente
+   */
+  public Vuelo(
+      Dron dron, int area, int fila, String fileName, ArrayList<Integer> datos, int[] manual) {
     this.dron = dron;
     this.fila = fila;
     this.area = area;
+    this.fileName = fileName;
     this.datos = datos;
+    this.manual = manual;
   }
 
-  public static Vuelo fromFile(Path path, Sistema sistema) {
+  /**
+   * Lee un vuelo desde un archivo y lo crea
+   *
+   * @param path    Path del archivo del vuelo a crear
+   * @param sistema i
+   * @return El vuelo tomado el archivo
+   * @throws Exception si el path del archivo no es encontrado
+   */
+  public static Vuelo fromFile(Path path, Sistema sistema) throws IOException, Exception {
     // TODO: Check if ArchivoLectura receive Path or String param for constructor
     ArchivoLectura arch = new ArchivoLectura(path);
-    Dron dron;
-    int intArea;
-    int fila;
+    Dron dron = null;
+    Integer intArea = null;
+    Integer fila = null;
     ArrayList<Integer> datos = new ArrayList<>();
 
-    // I must use if because .hayMasLineas() returns the new line, there is no other method
     if (arch.hayMasLineas()) {
       String identificacion = arch.linea();
       dron = sistema.buscarDron(identificacion);
@@ -43,7 +92,7 @@ public class Vuelo implements Serializable {
     if (arch.hayMasLineas()) {
       String stringPos = arch.linea();
       intArea = (int) (stringPos.charAt(0) - 65);
-      fila = Integer.parseInt(stringPos.substring(2, stringPos.length()));
+      fila = Integer.parseInt(stringPos.substring(2, stringPos.length())) - 1;
     }
 
     while (arch.hayMasLineas()) {
@@ -52,42 +101,166 @@ public class Vuelo implements Serializable {
 
     arch.cerrar();
 
-    return new Vuelo(dron, intArea, fila, datos);
+    if (dron == null) {
+      throw new Exception("El dron ingresado no existe");
+    }
+
+    if (intArea == null || fila == null) {
+      throw new IOException("El archivo tiene formato incorrecto");
+    }
+
+    int[] manual = new int[10];
+
+    for (Carga c : sistema.getCargas()) {
+      if (c.getPosicion().getFila() == fila && c.getPosicion().getArea() == intArea) {
+        manual[c.getPosicion().getColumna()] = c.getCodigo();
+      }
+    }
+
+    Vuelo vuelo = new Vuelo(dron, intArea, fila, path.getFileName().toString(), datos, manual);
+    dron.agregarVuelo(vuelo);
+    return vuelo;
   }
 
+  /**
+   * Devuelve el dron que realizo el vuelo
+   *
+   * @return Dron que realizo el vuelo
+   */
   public Dron getDron() {
-    return this.dron;
+    return dron;
   }
 
-  public void setDron(Dron dron) {
-    this.dron = dron;
-  }
-
+  /**
+   * Devuelve la fila del vuelo
+   *
+   * @return Fila del vuelo
+   */
   public int getFila() {
-    return this.fila;
+    return fila;
   }
 
+  /**
+   * Devuelve el area del vuelo
+   *
+   * @return Area del vuelo
+   */
   public int getArea() {
-    return this.area;
+    return area;
   }
 
-  public void setFila(int fila) {
-    this.fila = fila;
-  }
-
-  public void setArea(int area) {
-    this.area = area;
-  }
-
+  /**
+   * Devuelve los datos del vuelo
+   *
+   * @return Datos del vuelo
+   */
   public ArrayList<Integer> getDatos() {
-    return this.datos;
+    return datos;
   }
 
-  public void setDatos(ArrayList<Integer> datos) {
-    this.datos = datos;
+  /**
+   * Devuelve los datos manuales de la fila del vuelo
+   *
+   * @return Datos manuales
+   */
+  public int[] getManual() {
+    return manual;
   }
 
-  public Boolean getExito(List<Integer> d) {
-    return datos.size() == 10 && datos.equals(d);
+  /**
+   * Devuelve el exito del vuelo
+   *
+   * @return True si el vuelo fue exitoso, false de otra forma
+   */
+  public Boolean getExito() {
+    return datos.size() == 10;
+  }
+
+  /**
+   * Devuelve la lectura completa de los datos del vuelo. Los datos con ceros
+   * dónde no hubo lectura en caso de no ser exitoso
+   *
+   * @return Lectura completa de los datos del vuelo
+   */
+  public int[] getReading() {
+    int[] reading = new int[10];
+    for (int i = 0; i < datos.size(); i++) {
+      reading[i] = datos.get(i);
+    }
+    return reading;
+  }
+
+  /**
+   * Devuelve un vector con las coincidencias y diferencias entre la lectura
+   * completa del vuelo y la lectura manual.
+   *
+   * @return Vector con coincidencias y diferencias.
+   */
+  public int[] getDiff() {
+    int[] diff = new int[10];
+    int[] reading = getReading();
+
+    for (int col = 0; col < reading.length; col++) {
+      int coincidencia = 0;
+      if (reading[col] == manual[col]) {
+        coincidencia = 1;
+      }
+      diff[col] = coincidencia;
+    }
+    return diff;
+  }
+
+  /**
+   * Devuelve la cantidad de coincidencias entre la lectura completa del vuelo y
+   * la lectura manual
+   *
+   * @return Cantidad de coincidencias
+   */
+  public int getCoincidencias() {
+    int coincidencias = 0;
+    int[] diff = getDiff();
+
+    for (int colDiff : diff) {
+      if (colDiff == 1)
+        coincidencias++;
+    }
+    return coincidencias;
+  }
+
+  /**
+   * Devuelve la cantidad de diferencias entre la lectura completa del vuelo y
+   * la lectura manual
+   *
+   * @return Cantidad de diferencias
+   */
+  public int getDiferencias() {
+    return 10 - getCoincidencias();
+  }
+
+  @Override
+  public String toString() {
+    String response;
+    if (getExito()) {
+      response = "Nombre de archivo: "
+          + fileName
+          + " - Area: "
+          + area
+          + " - Fila: "
+          + fila
+          + " - Coincidencias: "
+          + getCoincidencias()
+          + " - Diferencias: "
+          + getDiferencias();
+    } else {
+      response = "Nombre de archivo: "
+          + fileName
+          + " - Area: "
+          + area
+          + " - Fila: "
+          + fila
+          + " - Cantidad de lineas de carga: "
+          + datos.size();
+    }
+    return response;
   }
 }

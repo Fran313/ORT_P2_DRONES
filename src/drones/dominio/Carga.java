@@ -3,16 +3,47 @@ package drones.dominio;
 import java.io.Serializable;
 
 /**
+ * Carga de mercaderia
+ *
  * @author Nicolas Russo
  * @author Francisco Suarez
  */
 public class Carga implements Serializable {
+
+  /**
+   * Codigo de la carga
+   */
   private int codigo;
+
+  /**
+   * Articulo cargado
+   */
   private Articulo articulo;
+
+  /**
+   * Funcionario que realizo la carga
+   */
   private Funcionario funcionario;
+
+  /**
+   * Cantidad del articulo en la carga
+   */
   private int cantidad;
+
+  /**
+   * Posicion de la carga
+   */
   private Posicion posicion;
 
+  /**
+   * Constructor de la clase Carga
+   *
+   * @param codigo      Codigo de la carga
+   * @param articulo    Articulo cargado
+   * @param funcionario Funcionario que realizo la carga
+   * @param cantidad    Cantidad del articulo en la carga
+   * @param posicion    Posicion de la carga
+   */
   public Carga(
       int codigo, Articulo articulo, Funcionario funcionario, int cantidad, Posicion posicion) {
     this.codigo = codigo;
@@ -22,44 +53,49 @@ public class Carga implements Serializable {
     this.posicion = posicion;
   }
 
+  /**
+   * Devuelve el codigo de la carga
+   *
+   * @return Codigo de la carga
+   */
   public int getCodigo() {
     return this.codigo;
   }
 
-  public void setCodigo(int codigo) {
-    this.codigo = codigo;
-  }
-
+  /**
+   * Devuelve el articulo cargado
+   *
+   * @return Articulo cargado
+   */
   public Articulo getArticulo() {
     return this.articulo;
   }
 
-  public void setArticulo(Articulo articulo) {
-    this.articulo = articulo;
-  }
-
+  /**
+   * Devuelve el funcionario que realizo la carga
+   *
+   * @return Funcionario que realizo la carga
+   */
   public Funcionario getFuncionario() {
     return this.funcionario;
   }
 
-  public void setFuncionario(Funcionario funcionario) {
-    this.funcionario = funcionario;
-  }
-
+  /**
+   * Devuelve la cantidad del articulo en la carga
+   *
+   * @return Cantidad del articulo en la carga
+   */
   public int getCantidad() {
     return this.cantidad;
   }
 
-  public void setCantidad(int cantidad) {
-    this.cantidad = cantidad;
-  }
-
+  /**
+   * Devuelve la posicion de la carga
+   *
+   * @return Posicion de la carga
+   */
   public Posicion getPosicion() {
     return this.posicion;
-  }
-
-  public void setPosicion(Posicion posicion) {
-    this.posicion = posicion;
   }
 
   @Override
