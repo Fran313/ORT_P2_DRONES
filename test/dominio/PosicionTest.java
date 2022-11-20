@@ -1,5 +1,6 @@
-package drones.dominio;
+package dominio;
 
+import drones.dominio.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
