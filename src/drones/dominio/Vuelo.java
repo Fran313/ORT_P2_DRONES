@@ -74,7 +74,8 @@ public class Vuelo implements Serializable {
    * @param path    Path del archivo del vuelo a crear
    * @param sistema i
    * @return El vuelo tomado el archivo
-   * @throws Exception si el path del archivo no es encontrado
+   * @throws IOException si el archivo tiene formato incorrecto
+   * @throws Exception si el dron especificado en el archivo no existe
    */
   public static Vuelo fromFile(Path path, Sistema sistema) throws IOException, Exception {
     // TODO: Check if ArchivoLectura receive Path or String param for constructor
