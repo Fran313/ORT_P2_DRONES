@@ -215,8 +215,7 @@ public class Sistema implements Serializable {
    * @param path Camino donde guardar el sistema
    */
   public void write(Path path) {
-    try {
-      FileOutputStream fileOut = new FileOutputStream(path.toString());
+    try (FileOutputStream fileOut = new FileOutputStream(path.toString());){
       ObjectOutputStream out = new ObjectOutputStream(fileOut);
       out.writeObject(this);
       out.close();
